@@ -1,0 +1,19 @@
+header {
+    background-color: #028ee442;
+    display: grid;
+}
+
+.header {
+    display: flex;
+    max-width: 1320px;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo img {
+    width: 100px;
+    margin-top:20px;
+}
+
