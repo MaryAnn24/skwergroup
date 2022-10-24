@@ -1,13 +1,5 @@
 footer {
-    background-color: #028ee442;
+    /* background-color: #028ee442; */
     display: grid;
 }
 
-.footer {
-    display: flex;
-    max-width: 1320px;
-    margin: auto;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-}

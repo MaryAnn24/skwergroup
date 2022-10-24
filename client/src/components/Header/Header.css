@@ -1,19 +1,100 @@
 header {
     background-color: #028ee442;
     display: grid;
+    padding: 40px 0;
+    display: block;
 }
 
-.header {
-    display: flex;
-    max-width: 1320px;
-    margin: auto;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.container {
     width: 100%;
+    max-width: 1140px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.header__container {
+    justify-content: space-between;
+}
+
+.logo {
+    min-width : 110px;
+}
+
+.logo-default {
+    display: block;
 }
 
 .logo img {
     width: 100px;
     margin-top:20px;
+    
 }
+
+.nav__bar {
+    position: relative;
+    margin-right: -20px;
+    padding: 0;
+}
+
+.nav__bar ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav__bar ul li {
+    float: left;
+    position: relative;
+    margin-left: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__bar ul li a {
+    text-align: center;
+    position: relative;
+    padding: 5px 10px 5px 0;
+    margin-right: 10px;
+    font-size: 17px;
+    overflow: hidden;
+    color: rgba(255, 255, 255, .5);
+}
+
+.nav__bar ul li a::before {
+    content: "";
+    width: 0px;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width .3s;
+}
+
+.active {
+    color: #fff!important;
+}
+
+.active::before {
+    background-color: #ff5858;
+    transition-delay: .3s;
+    width: 30px!important;
+}
+
+.nav__bar ul li a:hover::before{
+    background-color: #ff5858;
+    transition-delay: .3s;
+    width: 30px;
+}
+
+
 

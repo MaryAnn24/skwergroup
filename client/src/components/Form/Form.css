@@ -1,9 +1,171 @@
+
 body {
     margin: 0;
+    font-family: 'Epilogue', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.8em;
+    letter-spacing: -0.3px;
+    scroll-behavior: smooth;
 }
-
 
 .form___container {
     max-width: 1320px;
     margin:auto;
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    width: 700px;
 }
+
+.form___container .header h1 {
+    font-size: 2.529em;
+    line-height: 1.3em;
+}
+
+.flex {
+    display: flex!important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.section__bg {
+    padding-top: 200px;
+    background-color: #1732a4 !important;
+    background-image: url('../../assets/images/white-shape-bg.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: block;
+}
+
+.mbt__bottom__shape {
+    background-image: url('../../assets/images/hero-bottom.svg');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center bottom;
+    margin-bottom: 80px;
+}
+
+.mbt__container__left {
+    width: 30%;
+}
+
+.btn {
+    display: block;
+    width: 225px;
+    height: 45px;
+    line-height: 44px;
+    color: #404BCB;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.81px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    background: #fff;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.btn:hover {
+    background-color: #ff5858;
+    border: 1px solid #ff5858;
+    color: #fff;
+}
+
+
+.form___container .footer {
+    display: flex;
+    max-width: 1320px;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+
+
+
+
+
+
+
+/***************/
+/* Steps */
+.step {
+    position: relative;
+    min-height: 1em;
+    color: gray;
+  }
+  .step + .step {
+    margin-top: 1.5em
+  }
+  .step > div:first-child {
+    position: static;
+    height: 0;
+  }
+  .step > div:not(:first-child) {
+    margin-left: 1.5em;
+    padding-left: 1em;
+  }
+  .step.step-active {
+    color: #4285f4
+  }
+  .step.step-active .circle {
+    background-color: #4285f4;
+  }
+  
+  /* Circle */
+  .circle {
+    background: gray;
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    border-radius: 100%;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 0 3px #fff;
+  }
+  
+  /* Vertical Line */
+  .circle:after {
+    content: ' ';
+    position: absolute;
+    display: block;
+    top: 1px;
+    right: 50%;
+    bottom: 1px;
+    left: 50%;
+    height: 100%;
+    /* width: 1px; */
+    width: 2px;
+    transform: scale(1, 2);
+    transform-origin: 50% -100%;
+    /* background-color: rgba(0, 0, 0, 0.25); */
+    background-color: rgba(255, 255, 255, 0.25);
+    /*z-index: -1;*/
+    z-index: 0;
+  }
+  .step:last-child .circle:after {
+    display: none
+  }
+  
+  /* Stepper Titles */
+  .title {
+    line-height: 1.5em;
+    font-weight: bold;
+  }
+  .caption {
+    font-size: 0.8em;
+  }
