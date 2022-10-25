@@ -1,5 +1,16 @@
 footer {
-    /* background-color: #028ee442; */
+    background: #f2f2f2;
+}
+
+.footer__content {
     display: grid;
+    text-align: center;
+    font-size: 0.9rem;
+    grid-template-columns: repeat(2, max-content);
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 20px 100px;
+    max-width: 1320px;
+    margin: auto;
 }
 

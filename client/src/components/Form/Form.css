@@ -9,10 +9,19 @@ body {
     scroll-behavior: smooth;
 }
 
+.container {
+  width: 100%;
+  max-width: 1320px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .form___container {
     max-width: 1320px;
     margin:auto;
-    min-height: 500px;
+    min-height: 600px;
 
     display: flex;
     flex-direction: column;
@@ -22,10 +31,15 @@ body {
 .form___container .header h1 {
     font-size: 2.529em;
     line-height: 1.3em;
+    margin-top: 0;
 }
 
 .flex {
     display: flex!important;
+}
+
+.grid {
+  display: grid;
 }
 
 a {
@@ -34,7 +48,7 @@ a {
 
 .section__bg {
     padding-top: 200px;
-    background-color: #1732a4 !important;
+    background-color:#293f9d !important;
     background-image: url('../../assets/images/white-shape-bg.png');
     background-position: center center;
     background-repeat: no-repeat;
@@ -49,6 +63,7 @@ a {
     background-size: auto;
     background-position: center bottom;
     margin-bottom: 80px;
+    padding-top: 30px;
 }
 
 .mbt__container__left {
@@ -93,79 +108,36 @@ a {
     
 }
 
-
-
-
+.mbt__container__right {
+  color: #fff;
+  padding-left: 50px;
+}
 
 
 
 
 /***************/
-/* Steps */
-.step {
-    position: relative;
-    min-height: 1em;
-    color: gray;
-  }
-  .step + .step {
-    margin-top: 1.5em
-  }
-  .step > div:first-child {
-    position: static;
-    height: 0;
-  }
-  .step > div:not(:first-child) {
-    margin-left: 1.5em;
-    padding-left: 1em;
-  }
-  .step.step-active {
-    color: #4285f4
-  }
-  .step.step-active .circle {
-    background-color: #4285f4;
-  }
-  
-  /* Circle */
-  .circle {
-    background: gray;
-    position: relative;
-    width: 1.5em;
-    height: 1.5em;
-    line-height: 1.5em;
-    border-radius: 100%;
-    color: #fff;
-    text-align: center;
-    box-shadow: 0 0 0 3px #fff;
-  }
-  
-  /* Vertical Line */
-  .circle:after {
-    content: ' ';
-    position: absolute;
-    display: block;
-    top: 1px;
-    right: 50%;
-    bottom: 1px;
-    left: 50%;
-    height: 100%;
-    /* width: 1px; */
-    width: 2px;
-    transform: scale(1, 2);
-    transform-origin: 50% -100%;
-    /* background-color: rgba(0, 0, 0, 0.25); */
-    background-color: rgba(255, 255, 255, 0.25);
-    /*z-index: -1;*/
-    z-index: 0;
-  }
-  .step:last-child .circle:after {
-    display: none
-  }
-  
-  /* Stepper Titles */
-  .title {
-    line-height: 1.5em;
-    font-weight: bold;
-  }
-  .caption {
-    font-size: 0.8em;
-  }
+.section__bg{
+  color: #fff;
+}
+    @keyframes fade-frames {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes slide{
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-1692px, 0, 0);
+      }
+    }

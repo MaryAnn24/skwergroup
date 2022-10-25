@@ -1,8 +1,13 @@
 header {
-    background-color: #028ee442;
+    background-color: transparent;
     display: grid;
-    padding: 40px 0;
+    padding: 20px 0;
     display: block;
+    transition: all .3s ease;
+}
+
+.header-right {
+    padding-top: 40px;
 }
 
 .fixed-top {
@@ -11,15 +16,6 @@ header {
     right: 0;
     left: 0;
     z-index: 1030;
-}
-
-.container {
-    width: 100%;
-    max-width: 1140px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 .header__container {
@@ -35,7 +31,7 @@ header {
 }
 
 .logo img {
-    width: 100px;
+    width: 150px;
     margin-top:20px;
     
 }
@@ -96,5 +92,19 @@ header {
     width: 30px;
 }
 
+.menu-black ul li a {
+    color: #000!important;
+}
+
+.scroll-header {
+    box-shadow: 0 -1px 4px rgb(0 0 0 / 15%);
+    background-color: #fff!important;
+    padding: 0!important;
+    transition: all .3s ease;
+}
+
+.scroll-header .skwer__logo{
+    width: 100px!important;
+}
 
 

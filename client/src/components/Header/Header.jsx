@@ -2,7 +2,22 @@ import React from 'react';
 import './Header.css';
 import SkwerLogo from '../../assets/images/skwerlogo.png';
 
-function Header() {
+const Header = () => {
+  /*=============== Change Background header ===============*/
+  window.addEventListener("scroll", function () {
+    const header = this.document.querySelector(".fixed-top");
+    const menu = this.document.querySelector(".nav__bar");
+    /* scroll is higher than 560 viewport height */
+    if(this.scrollY >= 20) {
+      header.classList.add("scroll-header");
+      menu.classList.add("menu-black");
+    }
+    else {
+      header.classList.remove("scroll-header");
+      menu.classList.remove("menu-black");
+    }
+  });
+
   return (
     <header className='fixed-top'>
         <div className='container'>
