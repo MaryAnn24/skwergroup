@@ -1,5 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+
+import './Form.css';
+import '../Steps/Steps.css';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Jurisdiction from '../Jurisdiction/Jurisdiction';
@@ -9,12 +13,29 @@ import OtherServices from '../OtherServices/OtherServices';
 import ClientDetails from '../ClientDetails/ClientDetails';
 import Order from '../Order/Order';
 
-import './Form.css';
-import '../Steps/Steps.css';
+
 
 function Form() {
   const FormTitles = ["Select Country", "Company name and company type", "Select Packages", "Additional Services", "Basic Details", "Order Summary"]
-  const BodyContent = [<Jurisdiction />, <NameType />, <SkwerPackages />, <OtherServices />, <ClientDetails />, <Order />];
+ 
+  const [formData, setFormData] = useState({
+    jurisdiction: "",
+    c_name1: "",
+    type_1: "",
+    c_name2: "",
+    type_2: "",
+    c_name3: "",
+    type_3: "",
+    package: "",
+    add_serv1: [0],
+    p_name: "",
+    email: "",
+    address: "",
+    contact_no: ""
+});
+
+const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormData} />, <NameType formData = {formData} setFormData = {setFormData} />, <SkwerPackages formData = {formData} setFormData = {setFormData}  />, <OtherServices formData = {formData} setFormData = {setFormData}  />, <ClientDetails formData = {formData} setFormData = {setFormData}  />, <Order formData = {formData} setFormData = {setFormData} />];
+
 
   const [page, setPage] = useState(0);
 
@@ -115,7 +136,7 @@ function Form() {
                   <div className="body">
                     {BodyContent[page]}
                   </div>
-                  <div className="footer">
+                  <div className="form__footer">
                     <button className='btn'
                       disabled={page === 0}
                       onClick={() => {

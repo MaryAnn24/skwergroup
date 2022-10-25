@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import {countryData} from './Country_data';
-import Country_items from './Country_items';
+import CountryItems from './Country_items';
 
 import './Jurisdiction.css';
 
@@ -22,9 +22,9 @@ const Jurisdiction = () => {
 
   return (
     <div>
-      <div className="country__container container grid">
+      <div className="country__container container grid grid__5">
         {country.map((item) => {
-          return <Country_items item={item} key={item.id} />;
+          return <CountryItems item={item} key={item.id} />;
         })}
       </div>
     </div>

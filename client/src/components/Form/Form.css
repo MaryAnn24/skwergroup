@@ -11,7 +11,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1600px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -25,7 +25,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 1000px;
 }
 
 .form___container .header h1 {
@@ -48,7 +48,7 @@ a {
 
 .section__bg {
     padding-top: 200px;
-    background-color:#293f9d !important;
+    background-color: #616d9fed !important;
     background-image: url('../../assets/images/white-shape-bg.png');
     background-position: center center;
     background-repeat: no-repeat;
@@ -79,7 +79,7 @@ a {
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.81px;
-    border: 1px solid #fff;
+    border: 1px solid #ff5858;
     border-radius: 100px;
     background: #fff;
     -webkit-transition: all 0.3s ease 0s;
@@ -98,21 +98,65 @@ a {
 }
 
 
-.form___container .footer {
+.form___container .form__footer {
     display: flex;
     max-width: 1320px;
     margin: auto;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    
+    margin-top: 20px;
 }
 
 .mbt__container__right {
-  color: #fff;
+  color: #000;
   padding-left: 50px;
 }
 
+/* GENERAL */
+select {
+    margin: 0;
+    font-weight: 400;
+    -moz-appearance: window;
+    -webkit-appearance: none;
+    cursor: pointer;
+    outline: 0;
+    max-height: 51px!important;
+}
+
+.form-control {
+  background: 0 0;
+  background-color: #fff;
+  border: 2px solid #e8ebed;
+  border-radius: 2px;
+  box-shadow: none;
+  -webkit-transition: none;
+  color: #565360;
+  max-height: 35px;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  padding: 0.375rem 0.75rem;
+  margin-right: 5px;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 17px;
+  font-size: 1rem;
+  height: 56px;
+}
+
+.form-control:focus-visible {
+  outline: #ff5858 auto 1px;
+}
+
+.color__white {
+  color: #fff!important;
+}
+
+.hidden {visibility: hidden;}
+
+.none {
+  display: none;
+}
 
 
 

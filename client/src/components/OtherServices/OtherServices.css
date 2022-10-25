@@ -1,0 +1,19 @@
+input.form-control.checkbox {
+    width: 1em;
+      height: 1.5rem;
+      accent-color: #ff5858;
+      margin: 0;
+      position: absolute;
+      margin-left: -21px;
+  }
+
+.add__services label {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.grid__3 {
+    grid-template-columns: repeat(3, max-content);
+    gap: 0.5rem;
+    justify-content: center;
+}

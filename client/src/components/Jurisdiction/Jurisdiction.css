@@ -2,7 +2,7 @@
     width: 150px;
 }
 
-.grid {
+.grid__5 {
     grid-template-columns: repeat(5, max-content);
     gap: 1rem;
     justify-content: center;
