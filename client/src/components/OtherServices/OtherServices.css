@@ -17,3 +17,10 @@ input.form-control.checkbox {
     gap: 0.5rem;
     justify-content: center;
 }
+
+span.desc {
+    display: block;
+    font-size: 0.7em;
+    max-width: 150px;
+    line-height: 1.5;
+}

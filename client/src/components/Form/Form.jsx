@@ -14,30 +14,33 @@ import ClientDetails from '../ClientDetails/ClientDetails';
 import Order from '../Order/Order';
 
 
-
 function Form() {
-  const FormTitles = ["Select Country", "Company name and company type", "Select Packages", "Additional Services", "Basic Details", "Order Summary"]
+  const FormTitles = ["Select Country", "Provide Propose Company Name and Company Type", "Select a Package", "Add Additional Services", "Input Your Basic Details", "Your Order Summary"]
  
   const [formData, setFormData] = useState({
     jurisdiction: "",
     c_name1: "",
-    type_1: "",
+    type_1: "Limited",
     c_name2: "",
-    type_2: "",
+    type_2: "Limited",
     c_name3: "",
-    type_3: "",
+    type_3: "Limited",
     package: "",
-    add_serv1: [0],
+    add_serv: [0],
     p_name: "",
     email: "",
     address: "",
-    contact_no: ""
-});
-
-const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormData} />, <NameType formData = {formData} setFormData = {setFormData} />, <SkwerPackages formData = {formData} setFormData = {setFormData}  />, <OtherServices formData = {formData} setFormData = {setFormData}  />, <ClientDetails formData = {formData} setFormData = {setFormData}  />, <Order formData = {formData} setFormData = {setFormData} />];
+    contact_no: "",
+    package_price: 0,
+    add_serv_price: 0,
+    remarks: "",
+    dateCreated: ""
+  });
 
 
   const [page, setPage] = useState(0);
+
+  const BodyContent = [<Jurisdiction page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData} />, <NameType formData = {formData} setFormData = {setFormData} />, <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  />, <OtherServices formData = {formData} setFormData = {setFormData}  />, <ClientDetails formData = {formData} setFormData = {setFormData}  />, <Order formData = {formData} setFormData = {setFormData} />];
 
   var step = 0;
 
@@ -45,16 +48,19 @@ const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormD
     <div>
       <Header />
       <main>
+        <div className="subheader" id="quote"></div>
         <section className='mbt section__bg'>
           <div className='mbt__bottom__shape'>
             <div className="container mbt__container flex">
               {/* LEFT */}
               <div className="mbt__container__left">
+                <h2>Request a Quote and Compare prices!</h2>
+                <p className="lead">An mei sadipscing dissentiet, eos ea partem viderer facilisi.</p>
                 {/* Left Steps */}
                 <div className= {`step ${step === page ? "step-active " : null} ${step < page ? "step-done " : ""}` + step} >
                   <div>
                     <div className="circle">
-                      {step+1 > page ? step+1 : <i class='fa fa-check'></i>}
+                      {step+1 > page ? step+1 : <i className='fa fa-check'></i>}
                     </div>
                   </div>
                   <div>
@@ -66,7 +72,7 @@ const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormD
                 >
                   <div>
                     <div className="circle" >
-                      {(step+1 === page) || (step+1 > page) ? step+2 : <i class='fa fa-check'></i>}
+                      {(step+1 === page) || (step+1 > page) ? step+2 : <i className='fa fa-check'></i>}
                     </div>
                   </div>
                   <div>
@@ -77,18 +83,18 @@ const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormD
                 <div className={`step ${step+2 === page ? "step-active " : null} ${step+2 < page ? "step-done " : ""}`}>
                   <div>
                     <div className="circle">
-                      {(step+2 === page) || (step+2 > page) ? step+3 : <i class='fa fa-check'></i>}
+                      {(step+2 === page) || (step+2 > page) ? step+3 : <i className='fa fa-check'></i>}
                     </div>
                   </div>
                   <div>
-                    <div className="title">Select Packages</div>
+                    <div className="title">Select a Package</div>
                       <div className="caption">Basic | Plus | Premium</div>
                   </div>
                 </div>    
                 <div className={`step ${step+3 === page ? "step-active " : null} ${step+3 < page ? "step-done " : ""}`}>
                   <div>
                     <div className="circle">
-                      {(step+3 === page) || (step+3 > page) ? step+4 : <i class='fa fa-check'></i>}
+                      {(step+3 === page) || (step+3 > page) ? step+4 : <i className='fa fa-check'></i>}
                     </div>
                   </div>
                   <div>
@@ -99,7 +105,7 @@ const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormD
                 <div className={`step ${step+4 === page ? "step-active " : null} ${step+4 < page ? "step-done " : ""}`}>
                   <div>
                     <div className="circle">
-                      {(step+4 === page) || (step+4 > page) ? step+5 : <i class='fa fa-check'></i>}
+                      {(step+4 === page) || (step+4 > page) ? step+5 : <i className='fa fa-check'></i>}
                     </div>
                   </div>
                   <div>
@@ -111,7 +117,7 @@ const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormD
                 <div className={`step ${step+5 === page ? "step-active " : null} ${step+5 < page ? "step-done " : ""}`}>
                   <div>
                     <div className="circle">
-                      {(step+5 === page) || (step+5 > page) ? step+6 : <i class='fa fa-check'></i>}
+                      {(step+5 === page) || (step+5 > page) ? step+6 : <i className='fa fa-check'></i>}
                     </div>
                   </div>
                   <div>
@@ -122,8 +128,6 @@ const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormD
               </div>
               {/* RIGHT */}
               <div className="mbt__container__right">
-                
-                
                 {/* Progress bar */}
                 {/* <div className="progress__bar">
                 </div> */}
@@ -131,20 +135,21 @@ const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormD
                 {/* Multi form */}
                 <div className="form___container">
                   <div className="header">
-                    <h1>{FormTitles[page]}</h1>
+                    <h2>{FormTitles[page]}</h2>
                   </div>
                   <div className="body">
                     {BodyContent[page]}
                   </div>
                   <div className="form__footer">
-                    <button className='btn'
+                    <button className={page === 0 ? 'btn hidden' : 'btn backward'}
                       disabled={page === 0}
                       onClick={() => {
                         setPage((currPage) => currPage - 1);
                       }}>
-                      BACK
+                      Back
                     </button>
-                    <button className='btn'
+                    <button className={(page === 0) || page === 2 ? 'btn hidden' : 'btn forward'}
+                      disabled={page === 0}
                       onClick={() => {
                         if (page === FormTitles.length - 1) {
                           alert("Make Payment");
@@ -156,7 +161,7 @@ const BodyContent = [<Jurisdiction formData = {formData} setFormData = {setFormD
 
                       }}
                     >
-                      {page === FormTitles.length - 1 ? "MAKE PAYMENT" : "NEXT"}
+                      {page === FormTitles.length - 1 ? "Make Payment" : "Next"}
                     </button>
                   </div>
                 </div>

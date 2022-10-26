@@ -17,6 +17,7 @@ const NameType = ({formData, setFormData}) => {
 
   }, [item]);
 
+  console.log(formData);
   return (
     <div>
         <input className='form-control'

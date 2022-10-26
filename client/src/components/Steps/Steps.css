@@ -2,7 +2,6 @@
 .step {
     position: relative;
     min-height: 1em;
-    color: #fffcfc4f;
   }
   .step + .step {
     margin-top: 1.5em
@@ -16,7 +15,7 @@
     padding-left: 1em;
   }
   .step.step-active {
-    color: #fff;
+    color: #000;
   }
   .step.step-active .circle {
     background-color: #ff5858;
@@ -35,7 +34,7 @@
     border-radius: 100%;
     color: #fff;
     text-align: center;
-    box-shadow: 0 0 0 2px #fff;
+    box-shadow: 0 0 0 2px #e8e8e8;
     padding-top: 0.3rem;
     font-family: 'Epilogue', sans-serif;
     font-weight: bold;
@@ -56,7 +55,7 @@
     transform: scale(1, 2);
     transform-origin: 50% -100%;
     /* background-color: rgba(0, 0, 0, 0.25); */
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: #e8e8e8;
     /*z-index: -1;*/
     z-index: 0;
     

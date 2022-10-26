@@ -6,7 +6,7 @@ import CountryItems from './Country_items';
 
 import './Jurisdiction.css';
 
-const Jurisdiction = () => {
+  const Jurisdiction = ({formData, setFormData, page, setPage}) => {
   const [country, setCountry] = useState([]);
   const [item, setItem] = useState({cat: 'active'});
 
@@ -24,7 +24,7 @@ const Jurisdiction = () => {
     <div>
       <div className="country__container container grid grid__5">
         {country.map((item) => {
-          return <CountryItems item={item} key={item.id} />;
+          return <CountryItems formData = {formData} setFormData = {setFormData} page = {page} setPage = {setPage} item={item} key={item.id} />;
         })}
       </div>
     </div>

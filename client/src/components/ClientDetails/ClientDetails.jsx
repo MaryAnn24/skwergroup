@@ -1,6 +1,8 @@
 import React from 'react';
+import './ClientDetails.css';
 
 function ClientDetails({formData, setFormData}) {
+
   return (
     <div>
         <input className='form-control'
@@ -24,6 +26,7 @@ function ClientDetails({formData, setFormData}) {
           })}
   
         />
+         <br></br>
         <input className='form-control'
           type="text" 
           placeholder='Your Contact Number'
@@ -35,8 +38,8 @@ function ClientDetails({formData, setFormData}) {
   
         />
 
-          <br></br>
-        <textarea className='form-control' name="address" id="" cols="70" rows="10" placeholder='Company Address '
+         
+        <textarea className='form-control' name="address" id="" cols="40" rows="10" placeholder='Company Address '
           onChange={(event) => setFormData({
             ...formData, address: event.target.value
           })}
