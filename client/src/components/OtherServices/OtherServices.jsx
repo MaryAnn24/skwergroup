@@ -4,13 +4,16 @@ import { getData } from './ServicesData';
 import './OtherServices.css';
 
 function OtherServices ({formData, setFormData}) {
+  // console.log(formData);
   const [service, setService] = useState([]);
 
   const [item, setItem] = useState({remarks: 'active'});
 
-  const [arr, setArr] = useState([formData.add_serv]);
 
-  //const arrServices = ["hi", "hello"];
+  //console.log(formData.add_serv);
+  const [arr, setArr] = useState([formData.add_serv]);
+  console.log(arr);
+  
 
   useEffect(() => {
     if(item.remarks === 'active'){
@@ -21,10 +24,15 @@ function OtherServices ({formData, setFormData}) {
     }
 
   }, [item]);
+  //var checkMark = "";
+  //const itemList = ["Item1", "Item2", "Item3", "Item4", "Item5"];
+  // const renderList = arr.map((item) => 
+  //   <div>{item}</div>
+  // );
 
   return (
-    
     <div className='add__services grid grid__3'>
+     
       <input className='form-control none'
           type="text" 
           placeholder='Company name'
@@ -33,32 +41,46 @@ function OtherServices ({formData, setFormData}) {
          
           />
       {/* <p>Additional Hi</p> */}
+                
           {service.map((item) => {
+            //  if (arr.includes('item.id')) {
+            //   checkMark = "checked"
+            // }else {
+            //   checkMark = ""
+            // }
       
-            return <label>
+            return <label key={item.id}>        
               <input className='form-control checkbox' 
-                type="checkbox"
+                type="checkbox" 
                 name="c_name1"
-                value={formData.c_name1}
+                // onLoad={() => {
+                //    if (arr.includes('item.id')) {
+                //       checkMark = "checked";
+                //     }else {
+                //       checkMark = "not";
+                //     }
+                //     return checkMark;
+                // }}
+                value={item.id}
 
                 onClick={
                   () => {
-                    setArr((oldArray) => [...oldArray, item.id]);
-                    setFormData({
-                      ...formData, amount: formData.amount+item.price
-                    });
-                    
+                    if(arr.includes(item.id)) {
+                      setArr(current =>
+                        current.filter(services => {
+                          return services !== item.id;
+                        }),
+                      );
+                      // setFormData({
+                      //   ...formData, amount: formData.amount-item.price
+                      // });
+                    } else {
+                      setArr((oldArray) => [...oldArray, item.id]);
+                      // setFormData({
+                      //   ...formData, amount: formData.amount+item.price
+                      // });
+                    }
                     formData.add_serv = arr;
-                    
-                    // //console.log(formData.add_serv)
-                    // if(arr.includes(item.id)) {
-                    //   console.log('meron');
-                    //   //setArr(arr.filter((fruit) => fruit.id !== 1));
-                    //   // setArr((products) => products.filter((_, index) => index !== 0));
-                    //   console.log(arr.slice(1));
-                    // } else {
-                    //   console.log('wala');
-                    // }
                   }
 
                 }

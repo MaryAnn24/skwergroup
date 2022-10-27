@@ -10,6 +10,7 @@ const Country_items = ({item, formData, setFormData, page, setPage}) => {
             ...formData, jurisdiction: item.country
             });
             setPage((page) => page + 1);
+            console.log(page);
             }
           }
         >

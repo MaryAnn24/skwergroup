@@ -26,7 +26,7 @@ function Form() {
     c_name3: "",
     type_3: "Limited",
     package: "",
-    add_serv: [0],
+    add_serv:[0],
     p_name: "",
     email: "",
     address: "",
@@ -40,13 +40,21 @@ function Form() {
 
   const [page, setPage] = useState(0);
 
-  const BodyContent = [<Jurisdiction page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData} />, <NameType formData = {formData} setFormData = {setFormData} />, <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  />, <OtherServices formData = {formData} setFormData = {setFormData}  />, <ClientDetails formData = {formData} setFormData = {setFormData}  />, <Order formData = {formData} setFormData = {setFormData} />];
+  const [checkAgreement, setCheckAgreement] = useState(false);
+
+  const BodyContent = [<Jurisdiction page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData} />, 
+  <NameType formData = {formData} setFormData = {setFormData} />, 
+  <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  />, 
+  <OtherServices formData = {formData} setFormData = {setFormData}  />, 
+  <ClientDetails formData = {formData} setFormData = {setFormData}  />,
+  <Order checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} />];
 
   var step = 0;
 
   return (
     <div>
       <Header />
+      
       <main>
         <div className="subheader" id="quote"></div>
         <section className='mbt section__bg'>
@@ -149,7 +157,7 @@ function Form() {
                       Back
                     </button>
                     <button className={(page === 0) || page === 2 ? 'btn hidden' : 'btn forward'}
-                      disabled={page === 0}
+                      disabled={(page === 0) || ((page === 5) && (checkAgreement === false))}
                       onClick={() => {
                         if (page === FormTitles.length - 1) {
                           alert("Make Payment");

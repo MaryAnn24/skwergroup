@@ -2,11 +2,14 @@ import React from 'react';
 import './Order.css';
 import StripePic from '../../assets/images/card-stripe.svg';
 //import { getData } from '../OtherServices/ServicesData';
+import Axios from "axios";
+// import { useState } from 'react';
 
-function Order({formData, setFormData}) {
-  console.log(formData);
-
+function Order({formData, setFormData, checkAgreement, setCheckAgreement}) {
+  
   const serv = formData.add_serv;
+  //var checkAgree = 0;
+
   //const servData = getData;
   // const [servData, setservData] = useState([getData]);
 
@@ -27,12 +30,57 @@ function Order({formData, setFormData}) {
     {id: 14, service: "6mo. Digital Marketing Support", desc:"", price: 720, remarks: "active"},
     {id: 15, service: "12mo. Digital Marketing Support", desc:"", price: 1350, remarks: "active"},
 ];
-  
+
   var total_serv = 0;
-  var package_amt = 150;
+  var package_amt = formData.package_price;
+
+  const jurisdiction = "Canada";
+  const p_name = "Mary";
+  const email = "text@gmail.com";
+
+
+  const addData = () => {
+    // setJurisdiction("Canada");
+    // setPName("Test");
+    // setEmail("test@gmail.com");
+
+    // Axios.post("http://localhost:3001/saveData", {
+    //     jurisdiction: jurisdiction,
+    //       p_name: p_name,
+    //       email: email,
+      
+    // }).then(() => {
+    //   setRegistration([
+    //     ...registration,
+    //     {
+    //       jurisdiction: jurisdiction,
+    //       p_name: p_name,
+    //       email: email,
+    //     },
+    //   ]);
+
+      
+    // });
+
+    //console.log(jurisdiction);
+
+    Axios.post("http://localhost:3001/saveData", {
+      jurisdiction: jurisdiction,
+      p_name: p_name,
+      email: email
+    }).then(() => {
+            console.log("sucess");
+    });
+
+    //console.log(registration);
+  };
+
+  
+
 
   return (
     <div>
+      <button onClick={addData}>Add DATA</button>
       <div className='grid grid__2 grid__left'>
         <div className='order'>
           <div className='grid grid__2 border__gray'>
@@ -158,8 +206,12 @@ function Order({formData, setFormData}) {
         </div>
       </div>
       <div className='order__left agreement'>
-        <label >
-          <input type="checkbox" className="form-control checkbox" />
+        <label>
+          <input type="checkbox" className="form-control checkbox" 
+            onClick={() => {
+              /*console.log(checkAgreement);*/
+              setCheckAgreement(!checkAgreement);
+            }}/>
           <p class="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
             <a href="#hi" target="_blank"> Terms</a> &amp; 
             <a href="#hi" target="_blank"> Policy</a> and 

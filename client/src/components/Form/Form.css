@@ -219,11 +219,19 @@ input[type="text"] {
   display: none;
 }
 
+button[disabled], button[disabled]:hover {
+  background: #e8e8e8;
+  color: gray;
+  cursor: help;
+}
+
+
 
 
 /***************/
 .subheader#quote {
-  background: #32407e  url("../../assets/images/quote_bg.svg") no-repeat center bottom;
+  background: #32407e;
+  /* background: #32407e  url("../../assets/images/quote_bg.svg") no-repeat center bottom; */
 }
 
 

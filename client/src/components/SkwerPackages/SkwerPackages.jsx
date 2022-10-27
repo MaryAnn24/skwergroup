@@ -1,7 +1,20 @@
 import React from 'react';
 import './SkwerPackages.css';
+import { countryData } from '../Jurisdiction/Country_data';
 
 function SkwerPackages({formData, setFormData, page, setPage}) {
+    
+    const filtered = countryData.filter(country => {
+        return country.country === formData.jurisdiction;
+      });
+
+      var basicPrice, plusPrice, premiumPrice;
+      filtered.map((item) => {
+        basicPrice = item.basic;
+        plusPrice = item.plus;
+        premiumPrice = item.premium;
+        return "";
+      });
     
   return (
     <div>
@@ -14,7 +27,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                     setPage((page) => page + 1);
 
                     setFormData({
-                        ...formData, package_price: 100
+                        ...formData, package: "basic", package_price: basicPrice
                     });
                     }
 
@@ -24,7 +37,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 <div class="dtr-pricing bg__dark color__white">
                     <h3 class="dtr-pricing-heading border-white-muted color__white">Basic</h3>
                     <p class="dtr-price-subtext color-white-muted">from</p>
-                    <p class="dtr-price">$29.99</p>
+                    <p class="dtr-price">${basicPrice}</p>
                     <p class="dtr-price-subtext color-white-muted">per month</p>
                     
                     <div class="dtr-pricing-details">
@@ -46,7 +59,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
             <section className='package__section '
               onClick={() => {
                 setFormData({
-                ...formData, package: 'Plus'
+                ...formData, package: "plus", package_price: plusPrice
                 });
                 setPage((page) => page + 1);
                 }
@@ -55,7 +68,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 <div class="dtr-pricing bg__light color__white">
                     <h3 class="dtr-pricing-heading border-white-muted color__white">Plus</h3>
                     <p class="dtr-price-subtext color-white-muted">from</p>
-                    <p class="dtr-price">$29.99</p>
+                    <p class="dtr-price">${plusPrice}</p>
                     <p class="dtr-price-subtext color-white-muted">per month</p>
                     
                     <div class="dtr-pricing-details">
@@ -77,7 +90,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
             <section className='package__section'
               onClick={() => {
                 setFormData({
-                ...formData, package: 'Premium'
+                ...formData, package: "premium", package_price: premiumPrice
                 });
                 setPage((page) => page + 1);
                 }
@@ -86,7 +99,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 <div class="dtr-pricing bg__dark color__white">
                     <h3 class="dtr-pricing-heading border-white-muted color__white">Premium</h3>
                     <p class="dtr-price-subtext color-white-muted">from</p>
-                    <p class="dtr-price">$29.99</p>
+                    <p class="dtr-price">${premiumPrice}</p>
                     <p class="dtr-price-subtext color-white-muted">per month</p>
                     
                     <div class="dtr-pricing-details">
