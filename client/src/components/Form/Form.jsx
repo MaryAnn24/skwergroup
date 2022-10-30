@@ -13,7 +13,6 @@ import OtherServices from '../OtherServices/OtherServices';
 import ClientDetails from '../ClientDetails/ClientDetails';
 import Order from '../Order/Order';
 
-
 function Form() {
   const FormTitles = ["Select Country", "Provide Propose Company Name and Company Type", "Select a Package", "Add Additional Services", "Input Your Basic Details", "Your Order Summary"]
  
@@ -43,11 +42,11 @@ function Form() {
   const [checkAgreement, setCheckAgreement] = useState(false);
 
   const BodyContent = [<Jurisdiction page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData} />, 
-  <NameType formData = {formData} setFormData = {setFormData} />, 
-  <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  />, 
-  <OtherServices formData = {formData} setFormData = {setFormData}  />, 
-  <ClientDetails formData = {formData} setFormData = {setFormData}  />,
-  <Order checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} />];
+    <NameType formData = {formData} setFormData = {setFormData} />, 
+    <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  />, 
+    <OtherServices formData = {formData} setFormData = {setFormData}  />, 
+    <ClientDetails formData = {formData} setFormData = {setFormData}  />,
+    <Order page = {page} checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} />];
 
   var step = 0;
 
@@ -156,8 +155,8 @@ function Form() {
                       }}>
                       Back
                     </button>
-                    <button className={(page === 0) || page === 2 ? 'btn hidden' : 'btn forward'}
-                      disabled={(page === 0) || ((page === 5) && (checkAgreement === false))}
+                    <button className={(page === 0) || page === 2 || page === 5 ? 'btn hidden' : 'btn forward'}
+                      disabled={(page === 0) /*|| ((page === 5) && (checkAgreement === false))*/}
                       onClick={() => {
                         if (page === FormTitles.length - 1) {
                           alert("Make Payment");

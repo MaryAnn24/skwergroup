@@ -1,75 +1,49 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-
-const mysql = require('mysql');
-
-const cors = require('cors');
-app.use(cors());
 app.use(express.json());
 
-/* DATABASE CONNECTIVITY */
+const bodyParser =require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:true }));
 
-const db = mysql.createConnection({
-    user: "root",
-    host: "localhost",
-    password: "",
-    database: "skwer_db"
+const cors = require("cors");
+app.use(cors());
+
+require("dotenv").config();
+
+const Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+app.get("/products", (req, res) => {
+  res.send(products);
 });
 
-app.get("/getData", (req, res) => {
-    db.query("SELECT * from tbl_registration", (err, result) => {
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
+const PORT = process.env.PORT || 3001;
 
+app.listen(PORT, error => {
+    if(error) throw error;
+
+    console.log(`Server running on port: ${PORT}...`);
 });
 
-// app.get("/savesData", (req, res) => {
-//     db.query("SELECT * from tbl_registration", (err, result) => {
-//         if(err) {
-//             res.json(err);
-//         } else {
-//             res.json(result);
-//         }
-//     });
+app.post('/payment', async(req, res) => {
+    let status, error;
 
-// });
+    const { token, amount } = req.body;
 
-app.post("/saveData", (req, res) => {
-    console.log(req.body);
-    const jurisdiction = req.body.jurisdiction;
-    const p_name = req.body.p_name;
-    const email = req.body.email;
+    try {
+        await Stripe.charges.create({
+            source: token.id,
+            amount,
+            currency: 'usd',
+            description: 'Payment from skwergroup.com',
+        });
+        status = 'success';
+        // console.log(token);
+    } catch (error) {
+        console.log(error);
+        status = 'failure';
+    }
 
-    db.query(
-        "INSERT INTO tbl_registration (jurisdiction, p_name, email) VALUES (?, ?, ?)",
-        [jurisdiction, p_name, email],
-        (err, result) => {
-          if (err) {
-            console.log(err);
-          } else {
-            res.send("Values Inserted");
-          }
-        }
-      );
+    res.json({ error, status });
+    
 });
-
-// app.post('/user_form', function (req, res, next) {
-//     var name = req.body.name
-//     var email = req.body.email
-//     var message = req.body.message
-//     var sql = `INSERT INTO tbl_registration (jurisdiction, p_name, email) VALUES ('A','B','C')`
-//     db.query(sql, function (err, result) {
-//       if (err) throw err
-//       console.log('Row has been updated')
-//       req.flash('success', 'Data stored!')
-//       res.redirect('/')
-//     })
-//   })
-
-app.listen(3001, () => {
-    console.log("SERVER RUNS 3001");
-})

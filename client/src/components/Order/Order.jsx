@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Order.css';
 import StripePic from '../../assets/images/card-stripe.svg';
-//import { getData } from '../OtherServices/ServicesData';
-import Axios from "axios";
-// import { useState } from 'react';
+import axios from 'axios';
+import StripeCheckout from 'react-stripe-checkout';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content';
 
-function Order({formData, setFormData, checkAgreement, setCheckAgreement}) {
-  
+const MySwal = withReactContent(Swal);
+
+function Order({formData, setFormData, checkAgreement, setCheckAgreement, page}) {
+
   const serv = formData.add_serv;
-  //var checkAgree = 0;
-
-  //const servData = getData;
-  // const [servData, setservData] = useState([getData]);
-
+  
   const servData = [
     {id: 1, service: "Company Rubber Stamp", desc:"", price: 70, remarks: "active"},
     {id: 2, service: "Company Seal", desc:"", price: 150, remarks: "active"},
@@ -29,58 +28,102 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement}) {
     {id: 13, service: "3mo. Digital Marketing Support", desc:"", price: 380, remarks: "active"},
     {id: 14, service: "6mo. Digital Marketing Support", desc:"", price: 720, remarks: "active"},
     {id: 15, service: "12mo. Digital Marketing Support", desc:"", price: 1350, remarks: "active"},
-];
+  ];
 
   var total_serv = 0;
   var package_amt = formData.package_price;
+  
 
-  const jurisdiction = "Canada";
-  const p_name = "Mary";
-  const email = "text@gmail.com";
+  servData.map((data) => {
+    {serv.map((item) => {
+      if(item===data.id) {
+        total_serv = total_serv + data.price;
+      }
+      return "";
+    })};
+  });
+
+  var total_charge = total_serv+package_amt;
+
+  /* STRIPE */
+
+  const [product, setProduct] = useState({
+    name: formData.package,
+    price: total_charge
+  });
 
 
-  const addData = () => {
-    // setJurisdiction("Canada");
-    // setPName("Test");
-    // setEmail("test@gmail.com");
+  const publishableKey = "pk_test_51LxV0VHy5jodEtzYJKTNcEC16U8FbvAjDlq7iJ5bUIhQTAYmMabixF29xPJnP6SNkYlEt3J5t7SdKqZuLtULwkLg009bSzCj2i";
 
-    // Axios.post("http://localhost:3001/saveData", {
-    //     jurisdiction: jurisdiction,
-    //       p_name: p_name,
-    //       email: email,
-      
-    // }).then(() => {
-    //   setRegistration([
-    //     ...registration,
-    //     {
-    //       jurisdiction: jurisdiction,
-    //       p_name: p_name,
-    //       email: email,
-    //     },
-    //   ]);
 
-      
-    // });
+  const priceForStripe = product.price*100;
 
-    //console.log(jurisdiction);
-
-    Axios.post("http://localhost:3001/saveData", {
-      jurisdiction: jurisdiction,
-      p_name: p_name,
-      email: email
-    }).then(() => {
-            console.log("sucess");
+  const handleSuccess = () => {
+    MySwal.fire({
+      icon: 'success',
+      title: 'Payment was successful',
+      time: 1000,
     });
+  }
 
-    //console.log(registration);
-  };
+  const handleError = () => {
+    MySwal.fire({
+      icon: 'error',
+      title: 'Payment was not successful',
+      time: 1000,
+    });
+  }
+
+  const payNow = async token => {
+    try {
+      const response = await axios({
+        url:'http://localhost:3001/payment',
+        method: 'post',
+        data: {
+          name: formData.p_name,
+          amount: product.price * 100,
+          token,
+        }
+      });
+      if(response.status === 200) {
+        handleSuccess();
+        console.log('Your payment was successful');
+      }
+      
+    } catch (error) {
+      handleError();
+      console.log(error);
+    }
+  }
+
+  /* END STRIPE CODE */
+
+  const [btnActive, setActive] = useState("block");
+  const [btnStripe, setBtnStripe] = useState("deactivate");
+
+  const activePay = () => {
+    if(btnActive === "block") {
+      setActive("none");
+      setBtnStripe('active');
+    }else {
+      setActive("block");
+      setBtnStripe('deactivate');
+    }
+    //alert(btnActive);
+  }
 
   
 
+  
 
   return (
     <div>
-      <button onClick={addData}>Add DATA</button>
+     
+      {/* <div className="stripe">
+        {product.name} <br />
+        {product.price}
+      </div> */}
+
       <div className='grid grid__2 grid__left'>
         <div className='order'>
           <div className='grid grid__2 border__gray'>
@@ -198,10 +241,24 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement}) {
 
         <div className='payment__method'>
           <div className='total'>
-            <h3>Total: <span className='amount'>${total_serv + package_amt}</span></h3>
+            <h3>Total: <span className='amount'>${total_charge}</span></h3>
+            <div className={'stripe__btn ' + btnStripe}>
+              <div className={'box ' + btnActive}></div>
+              <StripeCheckout
+                stripeKey={publishableKey}
+                label='Make Payment'
+                name='Pay With Credit Card'
+                billingAddress
+                shippingAddress
+                amount={priceForStripe}
+                description={`Your order amount is $${product.price}`}
+                token={payNow}
+              />
+            </div>
+            
           </div>
           <div className="stripe">
-            <a href="#stripe"><img src={StripePic} alt="stripe_logo" /></a>
+            <img src={StripePic} alt="stripe_logo" />
           </div>
         </div>
       </div>
@@ -210,7 +267,11 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement}) {
           <input type="checkbox" className="form-control checkbox" 
             onClick={() => {
               /*console.log(checkAgreement);*/
-              setCheckAgreement(!checkAgreement);
+              //setCheckAgreement(!checkAgreement);
+              activePay();
+
+              
+
             }}/>
           <p class="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
             <a href="#hi" target="_blank"> Terms</a> &amp; 
@@ -220,9 +281,6 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement}) {
         </label>
       </div>
     </div>
-    
-
-    
   )
 }
 

@@ -219,6 +219,10 @@ input[type="text"] {
   display: none;
 }
 
+.block {
+  display: block;
+}
+
 button[disabled], button[disabled]:hover {
   background: #e8e8e8;
   color: gray;
