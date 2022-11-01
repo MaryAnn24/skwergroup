@@ -3,6 +3,7 @@ import './ClientDetails.css';
 
 function ClientDetails({formData, setFormData}) {
 
+  console.log(formData.add_serv_price);
   return (
     <div>
         <input className='form-control'
@@ -38,7 +39,6 @@ function ClientDetails({formData, setFormData}) {
   
         />
 
-         
         <textarea className='form-control' name="address" id="" cols="40" rows="10" placeholder='Company Address '
           onChange={(event) => setFormData({
             ...formData, address: event.target.value
@@ -48,9 +48,8 @@ function ClientDetails({formData, setFormData}) {
 
         </textarea>
 
-        
     </div>
   )
 }
 
-export default ClientDetails
+export default ClientDetails;

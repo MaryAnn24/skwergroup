@@ -6,7 +6,8 @@ import CountryItems from './Country_items';
 
 import './Jurisdiction.css';
 
-  const Jurisdiction = ({formData, setFormData, page, setPage}) => {
+const Jurisdiction = ({formData, setFormData, page, setPage, fields}) => {
+  /* VARIABLES DECLARATION */
   const [country, setCountry] = useState([]);
   const [item, setItem] = useState({cat: 'active'});
 
@@ -28,7 +29,8 @@ import './Jurisdiction.css';
         })}
       </div>
     </div>
-  )
+  );
+
 }
 
-export default Jurisdiction
+export default Jurisdiction;

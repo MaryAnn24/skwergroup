@@ -3,7 +3,7 @@ import './SkwerPackages.css';
 import { countryData } from '../Jurisdiction/Country_data';
 
 function SkwerPackages({formData, setFormData, page, setPage}) {
-    
+    /* VARIABLES DECLARATION */
     const filtered = countryData.filter(country => {
         return country.country === formData.jurisdiction;
       });
@@ -123,4 +123,4 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
   )
 }
 
-export default SkwerPackages
+export default SkwerPackages;

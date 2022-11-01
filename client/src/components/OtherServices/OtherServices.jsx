@@ -4,17 +4,11 @@ import { getData } from './ServicesData';
 import './OtherServices.css';
 
 function OtherServices ({formData, setFormData}) {
-  // console.log(formData);
+  /* VARIABLES DECLARATION */
   const [service, setService] = useState([]);
-
   const [item, setItem] = useState({remarks: 'active'});
-
-
-  //console.log(formData.add_serv);
   const [arr, setArr] = useState([formData.add_serv]);
-  console.log(arr);
   
-
   useEffect(() => {
     if(item.remarks === 'active'){
       setService(getData);
@@ -22,13 +16,7 @@ function OtherServices ({formData, setFormData}) {
       /* Filter condition hear */
       setItem({remarks: 'active'});
     }
-
   }, [item]);
-  //var checkMark = "";
-  //const itemList = ["Item1", "Item2", "Item3", "Item4", "Item5"];
-  // const renderList = arr.map((item) => 
-  //   <div>{item}</div>
-  // );
 
   return (
     <div className='add__services grid grid__3'>
@@ -38,11 +26,9 @@ function OtherServices ({formData, setFormData}) {
           placeholder='Company name'
           name="c_name1"
           value={formData.add_serv}
-         
-          />
-      {/* <p>Additional Hi</p> */}
-                
+      />          
           {service.map((item) => {
+            /*==== TO BE CONTINUE === */
             //  if (arr.includes('item.id')) {
             //   checkMark = "checked"
             // }else {
@@ -53,6 +39,7 @@ function OtherServices ({formData, setFormData}) {
               <input className='form-control checkbox' 
                 type="checkbox" 
                 name="c_name1"
+                /*==== TO BE CONTINUE === */
                 // onLoad={() => {
                 //    if (arr.includes('item.id')) {
                 //       checkMark = "checked";
@@ -71,20 +58,20 @@ function OtherServices ({formData, setFormData}) {
                           return services !== item.id;
                         }),
                       );
-                      // setFormData({
-                      //   ...formData, amount: formData.amount-item.price
-                      // });
+                      setFormData({
+                        ...formData, add_serv_price: formData.add_serv_price-item.price
+                      });
+                      
                     } else {
                       setArr((oldArray) => [...oldArray, item.id]);
-                      // setFormData({
-                      //   ...formData, amount: formData.amount+item.price
-                      // });
+                      setFormData({
+                        ...formData, add_serv_price: formData.add_serv_price+item.price
+                      });
                     }
                     formData.add_serv = arr;
                   }
 
                 }
-
                 />{item.service} (${item.price})
                 <span className='desc'>{item.desc}</span>
             </label>;
@@ -97,4 +84,4 @@ function OtherServices ({formData, setFormData}) {
   )
 }
 
-export default OtherServices
+export default OtherServices;

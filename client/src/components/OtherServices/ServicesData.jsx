@@ -16,6 +16,4 @@ export function getData() {
         {id: 14, service: "6mo. Digital Marketing Support", desc:"", price: 720, remarks: "active"},
         {id: 15, service: "12mo. Digital Marketing Support", desc:"", price: 1350, remarks: "active"},
     ];
-
-
 }

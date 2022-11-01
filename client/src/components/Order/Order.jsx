@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './Order.css';
 import StripePic from '../../assets/images/card-stripe.svg';
-import axios from 'axios';
+import Axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
 
 const MySwal = withReactContent(Swal);
 
-function Order({formData, setFormData, checkAgreement, setCheckAgreement, page}) {
+function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, setPage, fields}) {
 
+  /* CALCULATE AND DISPLAY ADDITIONAL SERVICES */
   const serv = formData.add_serv;
   
   const servData = [
@@ -30,33 +31,70 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
     {id: 15, service: "12mo. Digital Marketing Support", desc:"", price: 1350, remarks: "active"},
   ];
 
-  var total_serv = 0;
+  var total_serv = formData.add_serv_price;
   var package_amt = formData.package_price;
   
-
-  servData.map((data) => {
-    {serv.map((item) => {
-      if(item===data.id) {
-        total_serv = total_serv + data.price;
-      }
-      return "";
-    })};
-  });
+   /*====DOUBLE CHECK AND DELETE=== */
+  // servData.map((data) => {
+  //   {
+  //     serv.map((item) => {
+  //       if(item===data.id) {
+  //         total_serv = total_serv + data.price;
+  //       }
+  //       return "";
+  //     });
+  //   }
+  //   return "";
+  // });
 
   var total_charge = total_serv+package_amt;
+  /* END */
 
-  /* STRIPE */
+  /* SAVE TO DATABASE */
+  const add_serv = formData.add_serv;
 
-  const [product, setProduct] = useState({
-    name: formData.package,
-    price: total_charge
-  });
+  var today = new Date();
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+  
+  const addData = () => {
+    Axios.post("https://skwerapi.skwergroup.com/saveData", {
+      jurisdiction: formData.jurisdiction,
+      c_name1: formData.c_name1,
+      type_1: formData.type_1,
+      c_name2: formData.c_name2,
+      type_2: formData.type_2,
+      c_name3: formData.c_name3,
+      type_3: formData.type_3,
+      skwer_package: formData.package,
+      add_serv: add_serv,
+      p_name: formData.p_name,
+      email: formData.email,
+      address: formData.address,
+      contact_no: formData.contact_no,
+      package_price: formData.package_price,
+      add_serv_price: formData.add_serv_price,
+      regis_remarks: "registered",
+      payment_remarks: "success",
+      dateCreated: date + ' ' + time,
+      dateUpdated: date + ' ' + time
+    }).then(() => {
+            console.log("sucess");
+    });
+  };
+  /* END */
 
+  /* STRIPE PAYMENT */
+
+  /*====DOUBLE CHECK AND DELETE=== */
+  // const [product, setProduct] = useState({
+  //   name: formData.package,
+  //   price: total_charge
+  // });
 
   const publishableKey = "pk_test_51LxV0VHy5jodEtzYJKTNcEC16U8FbvAjDlq7iJ5bUIhQTAYmMabixF29xPJnP6SNkYlEt3J5t7SdKqZuLtULwkLg009bSzCj2i";
 
-
-  const priceForStripe = product.price*100;
+  const priceForStripe = total_charge*100;
 
   const handleSuccess = () => {
     MySwal.fire({
@@ -76,18 +114,21 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
 
   const payNow = async token => {
     try {
-      const response = await axios({
-        url:'http://localhost:3001/payment',
+      const response = await Axios({
+        url:'https://skwerapi.skwergroup.com/payment',
         method: 'post',
         data: {
           name: formData.p_name,
-          amount: product.price * 100,
+          amount: total_charge * 100,
           token,
         }
       });
       if(response.status === 200) {
         handleSuccess();
         console.log('Your payment was successful');
+        addData();
+        setPage(0);
+        setFormData(fields);
       }
       
     } catch (error) {
@@ -95,9 +136,9 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
       console.log(error);
     }
   }
+  /* END */
 
-  /* END STRIPE CODE */
-
+  /* CHECKBOX/MAKEPAYMENT APPEAR */
   const [btnActive, setActive] = useState("block");
   const [btnStripe, setBtnStripe] = useState("deactivate");
 
@@ -109,21 +150,12 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
       setActive("block");
       setBtnStripe('deactivate');
     }
-    //alert(btnActive);
   }
-
-  
-
-  
+  /* END */
 
   return (
     <div>
-     
-      {/* <div className="stripe">
-        {product.name} <br />
-        {product.price}
-      </div> */}
-
+      {/* ORDER SUMMARY */}
       <div className='grid grid__2 grid__left'>
         <div className='order'>
           <div className='grid grid__2 border__gray'>
@@ -143,7 +175,6 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
                 <li>{formData.contact_no}</li>
               </ul>
             </div>
-
           </div>
 
           <div className='grid grid__2 border__gray'>
@@ -234,11 +265,8 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
             </div>
 
           </div>
-    
-            
-            {/* <p>Select Payment (Stripe API) / Receive Payment / Notify client via Email (invoice if possible)</p> */}
         </div>
-
+        {/* PAYMENT COLUMN */}
         <div className='payment__method'>
           <div className='total'>
             <h3>Total: <span className='amount'>${total_charge}</span></h3>
@@ -251,7 +279,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
                 billingAddress
                 shippingAddress
                 amount={priceForStripe}
-                description={`Your order amount is $${product.price}`}
+                description={`Your order amount is $${total_charge}`}
                 token={payNow}
               />
             </div>
@@ -262,16 +290,15 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
           </div>
         </div>
       </div>
+      {/* TERMS CHECKBOX */}
       <div className='order__left agreement'>
         <label>
           <input type="checkbox" className="form-control checkbox" 
             onClick={() => {
+              /*====DOUBLE CHECK AND DELETE=== */
               /*console.log(checkAgreement);*/
               //setCheckAgreement(!checkAgreement);
-              activePay();
-
-              
-
+               activePay();
             }}/>
           <p class="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
             <a href="#hi" target="_blank"> Terms</a> &amp; 
@@ -284,4 +311,4 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page})
   )
 }
 
-export default Order
+export default Order;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import './Form.css';
-import '../Steps/Steps.css';
+import './Steps.css';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -14,9 +14,10 @@ import ClientDetails from '../ClientDetails/ClientDetails';
 import Order from '../Order/Order';
 
 function Form() {
+  /* VARIABLES DECLARATION */
   const FormTitles = ["Select Country", "Provide Propose Company Name and Company Type", "Select a Package", "Add Additional Services", "Input Your Basic Details", "Your Order Summary"]
  
-  const [formData, setFormData] = useState({
+  const fields = {
     jurisdiction: "",
     c_name1: "",
     type_1: "Limited",
@@ -25,17 +26,16 @@ function Form() {
     c_name3: "",
     type_3: "Limited",
     package: "",
-    add_serv:[0],
+    add_serv: Array,
     p_name: "",
     email: "",
     address: "",
     contact_no: "",
     package_price: 0,
-    add_serv_price: 0,
-    remarks: "",
-    dateCreated: ""
-  });
+    add_serv_price: 0
+  };
 
+  const [formData, setFormData] = useState(fields);
 
   const [page, setPage] = useState(0);
 
@@ -46,14 +46,14 @@ function Form() {
     <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  />, 
     <OtherServices formData = {formData} setFormData = {setFormData}  />, 
     <ClientDetails formData = {formData} setFormData = {setFormData}  />,
-    <Order page = {page} checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} />];
+    <Order fields = {fields} page = {page} setPage = {setPage} checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} />];
 
   var step = 0;
 
   return (
     <div>
       <Header />
-      
+
       <main>
         <div className="subheader" id="quote"></div>
         <section className='mbt section__bg'>
@@ -133,12 +133,9 @@ function Form() {
                   </div>
                 </div>
               </div>
+              
               {/* RIGHT */}
               <div className="mbt__container__right">
-                {/* Progress bar */}
-                {/* <div className="progress__bar">
-                </div> */}
-
                 {/* Multi form */}
                 <div className="form___container">
                   <div className="header">
@@ -159,9 +156,7 @@ function Form() {
                       disabled={(page === 0) /*|| ((page === 5) && (checkAgreement === false))*/}
                       onClick={() => {
                         if (page === FormTitles.length - 1) {
-                          alert("Make Payment");
-
-                          console.log("Data here");
+                          /* LAST PAGE */
                         } else {
                           setPage((currPage) => currPage + 1);
                         }
@@ -173,16 +168,14 @@ function Form() {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
         </section>
       </main>
-      <Footer />
 
+      <Footer />
     </div>
   )
 }
 
-export default Form
+export default Form;

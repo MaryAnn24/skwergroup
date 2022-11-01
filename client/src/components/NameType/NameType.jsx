@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getData } from './TypeData';
 
 const NameType = ({formData, setFormData}) => {
+  /* VARIABLES DECLARATION */
   const [type, setType] = useState([]);
 
   const [item, setItem] = useState({remarks: 'active'});
@@ -17,7 +18,6 @@ const NameType = ({formData, setFormData}) => {
 
   }, [item]);
 
-  console.log(formData);
   return (
     <div>
         <input className='form-control'
@@ -102,4 +102,4 @@ const NameType = ({formData, setFormData}) => {
   )
 }
 
-export default NameType
+export default NameType;
