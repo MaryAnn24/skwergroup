@@ -18,11 +18,11 @@
     position: relative;
     text-align: center;
     border-radius: 10px;
-    padding: 20px;
+    border-bottom: 1px solid white!important;
 }
 
 .dtr-pricing:hover h3 {
-    border-bottom: 1px solid white!important;
+    /* border-bottom: 1px solid #000!important; */
     transition: all .3s ease;
 }
 
@@ -34,15 +34,20 @@
     background-color: #1732a4  !important;
 }
 
+.bg__white {
+    background-color: #fff  !important;
+    box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+}
+
 .border-white-muted, .border-white-muted li {
-    border-color: rgba(255,255,255,0.10) !important;
+    border-color: #f2f2f2 !important;
 }
 
 .dtr-pricing-heading {
     border-width: 0 0 1px 0;
     border-style: solid;
     padding-bottom: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: 36px;
     line-height: 40px;
 }
@@ -69,8 +74,25 @@
 }
 
 .dtr-price {
-    margin: 0;
-    font-size: 30px;
+    margin: 10px 0;
+    font-size: 48px;
     line-height: 36px;
     font-weight: 700;
+}
+
+
+.p__pic img {
+    border-radius: 10px;
+}
+
+.basic__pacn, .basic__pack h3 {
+    color: #2c2c51!important;
+}
+
+.premium__pac, .premium__pac h3 {
+    color: #007eff!important;
+}
+
+.plus__pac, .plus__pac h3 {
+    color: #f1cd0d!important;
 }

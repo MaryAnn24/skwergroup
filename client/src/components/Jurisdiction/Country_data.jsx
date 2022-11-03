@@ -1,6 +1,6 @@
-import Flag1 from '../../assets/images/flags/Belize.png';
-import Flag2 from '../../assets/images/flags/BVI.png';
-import Flag3 from '../../assets/images/flags/Canada.png';
+import Flag1 from '../../assets/images/flags/belize.svg';
+import Flag2 from '../../assets/images/flags/bvi.svg';
+import Flag3 from '../../assets/images/flags/cy.svg';
 
 export const countryData = [
     {id: 1, country: 'Belize', image: Flag1, basic: 910, plus: 1710, premium: 2610, cat: 'active'},
@@ -13,7 +13,7 @@ export const countryData = [
     {id: 8, country: 'Hong Kong', image: Flag2, basic: 1800, plus: 2600, premium: 3500, cat: 'active'},
     {id: 9, country: 'Mauritius', image: Flag3, basic: 2130, plus: 2930, premium: 3830, cat: 'active'},
     {id: 10, country: 'Panama', image: Flag1, basic: 1130, plus: 1930, premium: 2830, cat: 'active'},
-    {id: 11, country: 'Ras al-Khaimah (UAE', image: Flag2, basic: 2950, plus: 3750, premium: 4650, cat: 'active'},
+    {id: 11, country: 'Ras al-Khaimah', image: Flag2, basic: 2950, plus: 3750, premium: 4650, cat: 'active'},
     {id: 12, country: 'Seychelles', image: Flag3, basic: 910, plus: 1710, premium: 2610, cat: 'active'},
     {id: 13, country: 'Singapore', image: Flag1, basic: 2600, plus: 3400, premium: 4300, cat: 'active'},
     {id: 14, country: 'Switzerland', image: Flag2, basic: 5940, plus: 6740, premium: 7640, cat: 'active'},

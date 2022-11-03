@@ -4,7 +4,7 @@
     min-height: 1em;
   }
   .step + .step {
-    margin-top: 1.5em
+    margin-top: 0.8em
   }
   .step > div:first-child {
     position: static;
@@ -15,29 +15,36 @@
     padding-left: 1em;
   }
   .step.step-active {
-    color: #000;
+    color: #007eff!important;
   }
   .step.step-active .circle {
-    background-color: #ff5858;
+    background-color: #007eff;
+  }
+
+  .step-active .title {
+    color: #007eff!important;
+  } 
+
+  .step-done .title {
+    color: #28a745!important;
   } 
   .step.step-done .circle {
-    background-color: #1732a4;
+    background-color: #28a745
   }
   
   /* Circle */
   .circle {
-    background: white;
+    background: #adadad;
     position: relative;
-    width: 1.8em;
-    height: 1.5em;
+    width: 1.6em;
+    height: 1.4em;
     line-height: 1.5em;
     border-radius: 100%;
     color: #fff;
     text-align: center;
-    box-shadow: 0 0 0 2px #e8e8e8;
-    padding-top: 0.3rem;
-    font-family: 'Epilogue', sans-serif;
+    padding-top: 0.2rem;
     font-weight: bold;
+    font-size: 16px;
   }
   
   /* Vertical Line */
@@ -55,7 +62,7 @@
     transform: scale(1, 2);
     transform-origin: 50% -100%;
     /* background-color: rgba(0, 0, 0, 0.25); */
-    background-color: #e8e8e8;
+    background-color: transparent;
     /*z-index: -1;*/
     z-index: 0;
     
@@ -67,7 +74,9 @@
   /* Stepper Titles */
   .title {
     line-height: 1.5em;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 24px;
+    color:  #adadad; /*#28a745*/
   }
   .caption {
     font-size: 0.8em;

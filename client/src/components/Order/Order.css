@@ -27,7 +27,7 @@
 
 .order li {
     line-height: 1.5em;
-    font-size: 0.8em;
+    font-size: 16px;
 }
 
 .order__left ul, .order__left p {
@@ -48,6 +48,8 @@
     font-weight: bold;
     font-size: 15px;
     margin-bottom: 0px!important;
+    color: #2c2c51;
+    font-size: 20px;
 }
 
 .agreement p {
@@ -62,7 +64,7 @@
 }
 
 .amount {
-    color: #ff5858;
+    color: #007eff;
     font-size: 2.5rem;
 }
 
@@ -98,7 +100,7 @@ button.StripeCheckout span {
     border-radius: 2px!important;
     box-shadow: none!important;
     /* font-family: "Roboto" !important; */
-    font-family: "Roboto Condensed",Arial,sans-serif!important;
+    font-family: "Roboto",sans-serif;
     font-weight: 400!important;
     padding: 5px 22px !important;
     width: 150px;
@@ -128,4 +130,18 @@ button.StripeCheckout span {
 
 .active button.StripeCheckout span {
     background: #32407e!important;
+}
+
+.order {
+    filter: drop-shadow(0 2px 8px rgba(201,201,201,.75));
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 50px;
+}
+
+.stripe {
+    border: 2px solid transparent;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+    box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
 }

@@ -58,7 +58,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
   
   const addData = () => {
-    Axios.post("https://skwerapi.skwergroup.com/saveData", {
+    Axios.post("http://localhost:3001/saveData", {
       jurisdiction: formData.jurisdiction,
       c_name1: formData.c_name1,
       type_1: formData.type_1,
@@ -115,7 +115,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   const payNow = async token => {
     try {
       const response = await Axios({
-        url:'https://skwerapi.skwergroup.com/payment',
+        url:'http://localhost:3001/payment',
         method: 'post',
         data: {
           name: formData.p_name,
@@ -303,7 +303,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
           <p class="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
             <a href="#hi" target="_blank"> Terms</a> &amp; 
             <a href="#hi" target="_blank"> Policy</a> and 
-            <a href="#hi" target="_blank"> Refund Policy</a> at BBCIncorp.com
+            <a href="#hi" target="_blank"> Refund Policy</a> at skwergroup.com
           </p>
         </label>
       </div>

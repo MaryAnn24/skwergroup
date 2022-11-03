@@ -1,9 +1,11 @@
 .country__card img{
-    width: 150px;
+    border-radius: 58px;
+    width: 58px;
+    height: 58px;
 }
 
-.grid__5 {
-    grid-template-columns: repeat(5, max-content);
+.grid__3 {
+    grid-template-columns: repeat(3, 33.3%);
     gap: 1rem;
     justify-content: center;
 }
@@ -14,7 +16,17 @@
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 2px 48px 0 rgb(0 0 0 / 6%);
+    box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+    grid-template-columns: repeat(2, max-content);
+    gap: 1rem;
+    display: grid;
+    min-height: 154px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 4px 20px 8px;
+    margin: 0 0 30px;
+    cursor: pointer;
+    align-items: center;
 }
 
 .country__card:hover {
@@ -27,4 +39,26 @@
     text-transform: uppercase;
     /* font-weight: normal; */
     letter-spacing: 0.5px;
+}
+
+
+/* NEW CSS */
+
+.country__card span {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #2c2c51;
+    margin-bottom: 0;
+}
+
+.country__card ul {
+    font-size: 12px;
+    color: #677294;
+    padding-left: 1rem!important;
+    margin: 0;
+}
+
+.p__data {
+    padding: 0px 20px 20px 20px;
 }

@@ -29,6 +29,7 @@ const NameType = ({formData, setFormData}) => {
               ...formData, c_name1: event.target.value
           })}
         />
+        
         <select name="type_1" id="" className='form-control'
           onChange={(event) => setFormData({
             ...formData, type_1: event.target.value

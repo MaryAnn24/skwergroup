@@ -25,7 +25,7 @@ const Header = () => {
              <div className='header-left logo'>
                 <a class="logo-default dtr-scroll-link" href="#home"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" /></a>
                 {/* Mobile menu */}
-            </div>
+              </div>
             <div className='header-right'>
                 <div className="nav__bar">
                   <ul>

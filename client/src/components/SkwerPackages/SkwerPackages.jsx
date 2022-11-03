@@ -1,6 +1,9 @@
 import React from 'react';
 import './SkwerPackages.css';
 import { countryData } from '../Jurisdiction/Country_data';
+import BasicPic from '../../assets/images/packages/pac-basic.png';
+import PlusPic from '../../assets/images/packages/pac-plus.png';
+import PremiumPic from '../../assets/images/packages/pac-premium.png';
 
 function SkwerPackages({formData, setFormData, page, setPage}) {
     /* VARIABLES DECLARATION */
@@ -29,19 +32,21 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                     setFormData({
                         ...formData, package: "basic", package_price: basicPrice
                     });
-                    }
-
-                    
+                    }   
                 }
             > 
-                <div class="dtr-pricing bg__dark color__white">
-                    <h3 class="dtr-pricing-heading border-white-muted color__white">Basic</h3>
-                    <p class="dtr-price-subtext color-white-muted">from</p>
-                    <p class="dtr-price">${basicPrice}</p>
-                    <p class="dtr-price-subtext color-white-muted">per month</p>
-                    
-                    <div class="dtr-pricing-details">
-                        <p> <span class="dtr-pricing-details-title color__white" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> See full details </span> </p>
+                <div class="dtr-pricing bg__white basic__pac">
+                    <div className='grid p__pic '>
+                        <img src={BasicPic} alt="basic-pac" />
+                        <h3 class="dtr-pricing-heading border-white-muted color__black">Basic</h3>
+                    </div>
+                    <div className='p__data'>
+                        <p class="dtr-price-subtext color-white-muted">from</p>
+                        <p class="dtr-price">${basicPrice}</p>
+                        <p class="dtr-price-subtext color-white-muted">per month</p>
+
+                        <div class="dtr-pricing-details color__black">
+                        <p> <span class="dtr-pricing-details-title " data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Full Details </span> </p>
                         <div class="collapse" id="pricing1">
                             <ul class="dtr-list-pricing">
                                 <li>Daily Feedback</li>
@@ -51,8 +56,8 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                                 <li>Timely Service</li>
                             </ul>
                         </div>
-                    </div>
-                    
+                        </div>
+                    </div>    
                 </div>
             </section>
 
@@ -65,14 +70,18 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 }
             }
             > 
-                <div class="dtr-pricing bg__light color__white">
-                    <h3 class="dtr-pricing-heading border-white-muted color__white">Plus</h3>
-                    <p class="dtr-price-subtext color-white-muted">from</p>
-                    <p class="dtr-price">${plusPrice}</p>
-                    <p class="dtr-price-subtext color-white-muted">per month</p>
-                    
-                    <div class="dtr-pricing-details">
-                        <p> <span class="dtr-pricing-details-title color__white" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> See full details </span> </p>
+                <div class="dtr-pricing bg__white plus__pac">
+                    <div className='grid p__pic'>
+                        <img src={PlusPic} alt="basic-pac" />
+                        <h3 class="dtr-pricing-heading border-white-muted color__black">Plus</h3>
+                    </div>
+                    <div className='p__data'>
+                        <p class="dtr-price-subtext color-white-muted">from</p>
+                        <p class="dtr-price">${plusPrice}</p>
+                        <p class="dtr-price-subtext color-white-muted">per month</p>
+
+                        <div class="dtr-pricing-details color__black">
+                        <p> <span class="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Full Details </span> </p>
                         <div class="collapse" id="pricing1">
                             <ul class="dtr-list-pricing">
                                 <li>Daily Feedback</li>
@@ -82,8 +91,8 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                                 <li>Timely Service</li>
                             </ul>
                         </div>
-                    </div>
-                    
+                        </div>
+                    </div>    
                 </div>
             </section>
 
@@ -96,14 +105,18 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 }
             }
             > 
-                <div class="dtr-pricing bg__dark color__white">
-                    <h3 class="dtr-pricing-heading border-white-muted color__white">Premium</h3>
-                    <p class="dtr-price-subtext color-white-muted">from</p>
-                    <p class="dtr-price">${premiumPrice}</p>
-                    <p class="dtr-price-subtext color-white-muted">per month</p>
-                    
-                    <div class="dtr-pricing-details">
-                        <p> <span class="dtr-pricing-details-title color__white" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> See full details </span> </p>
+                <div class="dtr-pricing bg__white premium__pac">
+                    <div className='grid p__pic'>
+                        <img src={PremiumPic} alt="basic-pac" />
+                        <h3 class="dtr-pricing-heading border-white-muted">Premium</h3>
+                    </div>
+                    <div className='p__data'>
+                        <p class="dtr-price-subtext color-white-muted">from</p>
+                        <p class="dtr-price">${premiumPrice}</p>
+                        <p class="dtr-price-subtext color-white-muted">per month</p>
+
+                        <div class="dtr-pricing-details color__black">
+                        <p> <span class="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Full Details </span> </p>
                         <div class="collapse" id="pricing1">
                             <ul class="dtr-list-pricing">
                                 <li>Daily Feedback</li>
@@ -113,8 +126,8 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                                 <li>Timely Service</li>
                             </ul>
                         </div>
-                    </div>
-                    
+                        </div>
+                    </div>    
                 </div>
             </section>
         </div>

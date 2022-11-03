@@ -1,3 +1,4 @@
+/* DEPENDENCIES DECLARATION */
 const express = require("express");
 const app = express();
 app.use(express.json());
@@ -16,10 +17,10 @@ const mysql = require('mysql');
 /* DATABASE CONNECTIVITY */
 
 const db = mysql.createConnection({
-    user: "root",
-    host: "localhost",
+    user: process.env.DATABASE_USER,
+    host: process.env.DB_HOST,
     password: "",
-    database: "db_skwer"
+    database: process.env.DB_NAME
 });
 
 app.post("/saveData", (req, res) => {
@@ -61,7 +62,7 @@ app.post("/saveData", (req, res) => {
       
 });
 
-const Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const Stripe = require('stripe')('sk_test_51LxV0VHy5jodEtzYOqTQt6pqz1eus4LRK0eyIXQcKcoq0VZHx16DpfmkbvAyl2s7pqxrfYqnOrRUGysoaqnQ5DK700HIhqt4ba');
 
 app.get("/products", (req, res) => {
   res.send(products);
@@ -85,12 +86,12 @@ app.post('/payment', async(req, res) => {
             source: token.id,
             amount,
             currency: 'usd',
-            description: 'Payment from skwergroup.com',
+            description: 'Payment from LOCALHOST skwergroup.com',
         });
 
 
         status = 'success';
-        // console.log(token);
+        /* console.log(token); */
     } catch (error) {
         console.log(error);
         status = 'failure';

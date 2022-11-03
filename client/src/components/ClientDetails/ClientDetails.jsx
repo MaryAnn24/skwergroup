@@ -39,7 +39,7 @@ function ClientDetails({formData, setFormData}) {
   
         />
 
-        <textarea className='form-control' name="address" id="" cols="40" rows="10" placeholder='Company Address '
+        <textarea className='form-control' name="address" id="" cols="35" rows="10" placeholder='Company Address '
           onChange={(event) => setFormData({
             ...formData, address: event.target.value
           })}
