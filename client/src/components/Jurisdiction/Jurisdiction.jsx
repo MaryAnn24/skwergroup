@@ -23,7 +23,7 @@ const Jurisdiction = ({formData, setFormData, page, setPage, fields}) => {
 
   return (
     <div className='jurisdiction'>
-      <div className="country__container container grid grid__3">
+      <div className="country__container container grid grid__4">
         {country.map((item) => {
           return <CountryItems formData = {formData} setFormData = {setFormData} page = {page} setPage = {setPage} item={item} key={item.id} />;
         })}

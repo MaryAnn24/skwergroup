@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getData } from './TypeData';
+import { countryData } from '../Jurisdiction/Country_data';
 
 const NameType = ({formData, setFormData}) => {
   /* VARIABLES DECLARATION */
@@ -8,15 +9,33 @@ const NameType = ({formData, setFormData}) => {
 
   const [item, setItem] = useState({remarks: 'active'});
 
+  const c_type = countryData;
+
+  var juris_type = [];
+
+  c_type.map((item) => {
+    if(item.country === formData.jurisdiction){
+      juris_type = item.type;
+    }
+    return "";
+  });
+
+  //console.log(c_type);
+
   useEffect(() => {
     if(item.remarks === 'active'){
       setType(getData);
+      //console.log(type);
     } else {
       /* Filter condition hear */
       setItem({remarks: 'active'});
     }
 
   }, [item]);
+
+  
+
+  //console.log('hi');
 
   return (
     <div>
@@ -35,7 +54,7 @@ const NameType = ({formData, setFormData}) => {
             ...formData, type_1: event.target.value
           })}
         >
-          {type.map((item) => {
+          {/* {type.map((item) => {
            
            var selected = "";
            if(formData.type_1 === item.type) {
@@ -44,6 +63,16 @@ const NameType = ({formData, setFormData}) => {
             selected = "";
            }
             return <option value={item.type} key={item.id} selected={selected}>{item.type}</option>;
+          })} */}
+
+          {juris_type.map((item2) => {
+            var selected = "";
+           if(formData.type_1 === item2) {
+            selected = "selected";
+           } else {
+            selected = "";
+           }
+            return <option value={item2} key={item2} selected={selected}>{item2}</option>;
           })}
 
         </select><br />
@@ -62,7 +91,7 @@ const NameType = ({formData, setFormData}) => {
             ...formData, type_2: event.target.value
           })}
         >
-          {type.map((item) => {
+          {/* {type.map((item) => {
            
            var selected = "";
            if(formData.type_2 === item.type) {
@@ -71,7 +100,18 @@ const NameType = ({formData, setFormData}) => {
             selected = "";
            }
             return <option value={item.type} key={item.id} selected={selected}>{item.type}</option>;
+          })} */}
+
+          {juris_type.map((item2) => {
+            var selected = "";
+           if(formData.type_2 === item2) {
+            selected = "selected";
+           } else {
+            selected = "";
+           }
+            return <option value={item2} key={item2} selected={selected}>{item2}</option>;
           })}
+
         </select><br />
 
         <input className='form-control'
@@ -88,7 +128,7 @@ const NameType = ({formData, setFormData}) => {
             ...formData, type_3: event.target.value
           })}
         >
-          {type.map((item) => {
+          {/* {type.map((item) => {
            
            var selected = "";
            if(formData.type_3 === item.type) {
@@ -97,7 +137,18 @@ const NameType = ({formData, setFormData}) => {
             selected = "";
            }
             return <option value={item.type} key={item.id} selected={selected}>{item.type}</option>;
+          })} */}
+
+          {juris_type.map((item2) => {
+            var selected = "";
+           if(formData.type_3 === item2) {
+            selected = "selected";
+           } else {
+            selected = "";
+           }
+            return <option value={item2} key={item2} selected={selected}>{item2}</option>;
           })}
+
         </select><br />
     </div>
   )

@@ -58,7 +58,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
   
   const addData = () => {
-    Axios.post("http://localhost:3001/saveData", {
+    Axios.post("https://skwergroupapi.skwerzone.com/saveData", {
       jurisdiction: formData.jurisdiction,
       c_name1: formData.c_name1,
       type_1: formData.type_1,
@@ -115,7 +115,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   const payNow = async token => {
     try {
       const response = await Axios({
-        url:'http://localhost:3001/payment',
+        url:'https://skwergroupapi.skwerzone.com/payment',
         method: 'post',
         data: {
           name: formData.p_name,

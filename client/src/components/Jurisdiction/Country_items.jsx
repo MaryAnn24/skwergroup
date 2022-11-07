@@ -16,7 +16,7 @@ const Country_items = ({item, formData, setFormData, page, setPage}) => {
             <img src={item.image} alt="" className='country_img' />
             
             <span className="country__name">{item.country}
-            <ul class="pl-3 mb-0"><li>International Business Company (IBC)</li></ul>
+            {/* <ul class="pl-3 mb-0"><li>International Business Company (IBC)</li></ul> */}
             </span>
             
         </div>

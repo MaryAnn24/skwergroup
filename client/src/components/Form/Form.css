@@ -188,6 +188,7 @@ select {
     cursor: pointer;
     outline: 0;
     max-height: 50px!important;
+    min-width: 200px;
 }
 
 .form-control {

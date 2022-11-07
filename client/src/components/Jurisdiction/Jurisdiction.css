@@ -4,8 +4,8 @@
     height: 58px;
 }
 
-.grid__3 {
-    grid-template-columns: repeat(3, 33.3%);
+.grid__4 {
+    grid-template-columns: repeat(4, 25%);
     gap: 1rem;
     justify-content: center;
 }
@@ -18,9 +18,9 @@
     cursor: pointer;
     box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
     grid-template-columns: repeat(2, max-content);
-    gap: 1rem;
+    gap: 0.5rem;
     display: grid;
-    min-height: 154px;
+    min-height: 80px;
     background-color: #fff;
     border-radius: 8px;
     padding: 4px 20px 8px;
@@ -46,7 +46,7 @@
 
 .country__card span {
     font-weight: 500;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 32px;
     color: #2c2c51;
     margin-bottom: 0;

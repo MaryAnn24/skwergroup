@@ -1,3 +1,11 @@
 textarea {
     position: absolute;
 }
+
+.phoneInput {
+    width: 350px;
+}
+
+.PhoneInputInput {
+    height: 40px;
+}

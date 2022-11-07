@@ -57,9 +57,7 @@ app.post("/saveData", (req, res) => {
             res.send("Values Inserted");
           }
         }
-      );
-
-      
+    );
 });
 
 const Stripe = require('stripe')('sk_test_51LxV0VHy5jodEtzYOqTQt6pqz1eus4LRK0eyIXQcKcoq0VZHx16DpfmkbvAyl2s7pqxrfYqnOrRUGysoaqnQ5DK700HIhqt4ba');
