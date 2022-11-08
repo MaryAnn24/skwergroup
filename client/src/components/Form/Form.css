@@ -127,8 +127,6 @@ a {
   color: #fff;
 }
 
-.btn_disable {}
-
 button.backward {
   /* color: #333;
   background: #e8e8e8;
@@ -315,6 +313,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo.grid__2 h2{
   margin-top: 18px;
   font-size: 30px;
+  color: #2c2c51;
 }
 
 .bg__bldg {
@@ -322,6 +321,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   left: 0;
   line-height: 0;
+  width: 600px;
 }
 
 /* RIGHT SECTION - ORDER SUMMARY */
@@ -375,7 +375,7 @@ h1, h2, h3, h4, h5, h6 {
 
 error {
   font-size: 12px;
-  color: #ea4c89;
+  color: #db3a3a;
   height: 35px!important;
   line-height: 1.8em;
   display: block;

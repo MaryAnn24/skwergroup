@@ -1,6 +1,8 @@
 /* Steps 
-red : #ea4c89
+red : #db3a3a
 pink: #ea4c89
+green : rgb(48, 130, 78) #30824e
+yellow: rgb(240, 200, 17) f0c811
 */
 
 .step {
@@ -30,10 +32,10 @@ pink: #ea4c89
   } 
 
   .step-done .title {
-    color: #ea4c89!important;
+    color: #f0c811!important;
   } 
   .step.step-done .circle {
-    background-color: #ea4c89
+    background-color: #f0c811
   }
   
   /* Circle */

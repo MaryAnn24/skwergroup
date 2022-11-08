@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 
 import './Form.css';
@@ -14,10 +14,11 @@ import ClientDetails from '../ClientDetails/ClientDetails';
 import Order from '../Order/Order';
 
 import SkwerLogo from '../../assets/images/skwer_logo.svg';
-import Bldg from '../../assets/images/onboarding-incorp.png';
 
 import { servData } from '../Order/AddServ'; 
 import Icon_pin from '../../assets/images/icons/paper-pin.png';
+
+import lottie from 'lottie-web';
 
 function Form() {
   /* VARIABLES DECLARATION */
@@ -65,6 +66,25 @@ function Form() {
   function isValidEmail(email) {
     return /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i.test(email);
   }
+
+  /* Lotie Files */
+  const container = useRef(null);
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      name:"animateBldg",
+      container: container.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: false,
+      animationData: require('../../assets/images/lottie/blue_bldg.json')
+    })
+
+    // Return clean up function here
+    return () => {
+      lottie.destroy();
+    };
+  }, [])
 
   return (
     <div>
@@ -146,9 +166,10 @@ function Form() {
                     <div className="title">Confirm & pay</div>
                   </div>
                 </div>
-                <div className='bg__bldg'>
-                  <img src={Bldg} alt="" />
-                </div>
+                <div className='bg__bldg' ref={container}
+                  onMouseEnter={() => lottie.play("animateBldg")}
+                  onMouseLeave={() => lottie.pause("animateBldg")}
+                ></div>
               </div>
               
               {/* CENTER */}
