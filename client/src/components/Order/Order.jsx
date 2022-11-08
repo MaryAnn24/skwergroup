@@ -170,7 +170,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
             <div className="order__right">
               <p>Data</p>
               <ul>
-                <li>{formData.p_name}</li>
+                <li>{formData.salutation + ' ' + formData.f_name + ' ' + formData.l_name}</li>
                 <li>{formData.email}</li>
                 <li>{formData.contact_no}</li>
               </ul>

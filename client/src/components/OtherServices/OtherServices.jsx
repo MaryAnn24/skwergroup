@@ -35,7 +35,10 @@ function OtherServices ({formData, setFormData}) {
             //   checkMark = ""
             // }
       
-            return <label key={item.id}>        
+            return <label key={item.id}>
+              <div className='serv_box grid'>
+                <span className='icon'><img src={item.icon} alt="stamp_icon" /></span>
+              
               <input className='form-control checkbox' 
                 type="checkbox" 
                 name="c_name1"
@@ -72,11 +75,15 @@ function OtherServices ({formData, setFormData}) {
                   }
 
                 }
-                />{item.service} (${item.price})
+                />
+                </div>
+                <p className='serv_name'>{item.service}</p>
+                <span className='serv_price'>${item.price}</span>
                 <span className='desc'>{item.desc}</span>
+                
             </label>;
           })}
-      <p className=''>
+      <p className='none'>
           {formData.add_serv = arr}
       </p> 
          

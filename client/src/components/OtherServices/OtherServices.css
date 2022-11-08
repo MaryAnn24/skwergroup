@@ -1,21 +1,35 @@
 input.form-control.checkbox {
     width: 1em;
       height: 1.5rem;
-      accent-color: #28a745;
+      accent-color: #cb2027;
       margin: 0;
       position: absolute;
-      margin-left: -21px;
   }
 
-.add__services label {
-    margin-left: 20px;
-    margin-right: 20px;
+  .add__services label {
+    background: #fff;
+    color: #000;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+    grid-template-columns: repeat(2, max-content);
+    gap: 0.5rem;
+    display: grid;
+    min-height: 80px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px 20px 10px;
+    margin: 0 0 30px;
+    cursor: pointer;
+    align-items: center;
 }
 
 .grid__3 {
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(4, max-content);
     gap: 0.5rem;
     justify-content: center;
+    text-align: center;
 }
 
 span.desc {
@@ -23,4 +37,41 @@ span.desc {
     font-size: 0.7em;
     max-width: 150px;
     line-height: 1.5;
+}
+
+.serv_box .icon img{
+    width: 40px;
+}
+
+.serv_box .icon {
+    border-radius: 40px;
+    /* border: 1px solid red; */
+    width: fit-content;
+    padding: 10px;
+    height: 40px;
+    background: whitesmoke;
+}
+
+.serv_box {justify-content: center;}
+
+.serv_name {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 32px;
+    color: #2c2c51;
+    max-width: 150px;
+    margin: 0;
+}
+
+.serv_price {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 32px;
+    color: #080808;
+    background: #ebbcbe;
+    border-radius: 3px;
+}
+
+.pin img {
+    width: 40px;
 }

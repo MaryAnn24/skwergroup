@@ -1,14 +1,15 @@
 import './App.css';
-// import Form from './components/Form/Form';
-import Testing from './components/Testing/Testing';
+import Form from './components/Form/Form';
+
+// import Testing from './components/Testing/Testing';
 
 function App() {
  
   return (
     <>
-      {/* <Form /> */}
+      <Form />
 
-      <Testing />
+      {/* <Testing /> */}
 
     </>
   );

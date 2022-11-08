@@ -5,9 +5,9 @@
 }
 
 .grid__4 {
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(4, 22%);
     gap: 1rem;
-    justify-content: center;
+    justify-content: left;
 }
 
 .country__card {
@@ -50,6 +50,7 @@
     line-height: 32px;
     color: #2c2c51;
     margin-bottom: 0;
+    max-width: 100px;
 }
 
 .country__card ul {

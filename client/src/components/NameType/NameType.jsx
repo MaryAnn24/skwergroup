@@ -33,12 +33,10 @@ const NameType = ({formData, setFormData}) => {
 
   }, [item]);
 
-  
-
-  //console.log('hi');
 
   return (
     <div>
+      <div className='inline__grid'>
         <input className='form-control'
           type="text" 
           placeholder='Company name'
@@ -48,7 +46,10 @@ const NameType = ({formData, setFormData}) => {
               ...formData, c_name1: event.target.value
           })}
         />
-        
+        <error>{formData.c_name1 === "" ? " * Required " : "" }</error>
+      </div>
+      
+      
         <select name="type_1" id="" className='form-control'
           onChange={(event) => setFormData({
             ...formData, type_1: event.target.value
@@ -74,18 +75,22 @@ const NameType = ({formData, setFormData}) => {
            }
             return <option value={item2} key={item2} selected={selected}>{item2}</option>;
           })}
-
-        </select><br />
-
-        <input className='form-control'
-          type="text" 
-          placeholder='Company name' 
-          name="c_name2"
-          value={formData.c_name2}
-          onChange={(event) => setFormData({
-              ...formData, c_name2: event.target.value
-          })}
-        />
+          
+        </select>
+      
+        <br />
+        <div className='inline__grid'>
+          <input className='form-control'
+            type="text" 
+            placeholder='Company name' 
+            name="c_name2"
+            value={formData.c_name2}
+            onChange={(event) => setFormData({
+                ...formData, c_name2: event.target.value
+            })}
+          />
+          <error>{formData.c_name2 === "" ? " * Required " : "" }</error>
+        </div>
         <select name="type_1" id="" className='form-control'
           onChange={(event) => setFormData({
             ...formData, type_2: event.target.value
@@ -114,15 +119,18 @@ const NameType = ({formData, setFormData}) => {
 
         </select><br />
 
-        <input className='form-control'
-          type="text" 
-          placeholder='Company name' 
-          name="c_name3"
-          value={formData.c_name3}
-          onChange={(event) => setFormData({
-              ...formData, c_name3: event.target.value
-          })}
-        />
+        <div className='inline__grid'>
+          <input className='form-control'
+            type="text" 
+            placeholder='Company name' 
+            name="c_name3"
+            value={formData.c_name3}
+            onChange={(event) => setFormData({
+                ...formData, c_name3: event.target.value
+            })}
+          />
+          <error>{formData.c_name3 === "" ? " * Required " : "" }</error>
+        </div>
         <select name="type_3" id="" className='form-control'
           onChange={(event) => setFormData({
             ...formData, type_3: event.target.value
