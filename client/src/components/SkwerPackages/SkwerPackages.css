@@ -3,6 +3,7 @@
     margin-right: -15px;
     margin-left: -15px;
     cursor: pointer;
+    justify-content: center;
 }
 
 .package__section {
@@ -36,7 +37,8 @@
 
 .bg__white {
     background-color: #fff  !important;
-    box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+    /* box-shadow: 0 2px 8px rgb(201 201 201 / 25%); */
+    box-shadow: 0 0 5px #000;
 }
 
 .border-white-muted, .border-white-muted li {
@@ -47,9 +49,8 @@
     border-width: 0 0 1px 0;
     border-style: solid;
     padding-bottom: 15px;
-    margin-bottom: 20px;
+    margin: 20px;
     font-size: 36px;
-    line-height: 40px;
 }
 
 .dtr-pricing-details {
@@ -75,7 +76,7 @@
 
 .dtr-price {
     margin: 10px 0;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 36px;
     font-weight: 700;
 }
@@ -83,16 +84,22 @@
 
 .p__pic img {
     border-radius: 10px;
+    width: 80%;
+    margin: auto;
 }
 
-.basic__pacn, .basic__pack h3 {
-    color: #2c2c51!important;
+.basic__pac, .basic__pack h3 {
+    color: #386068!important;
 }
 
 .premium__pac, .premium__pac h3 {
-    color: #007eff!important;
+    color: #5182d1!important;
 }
 
 .plus__pac, .plus__pac h3 {
-    color: #f1cd0d!important;
+    color: #dd5940!important;
 }
+
+/* .dtr-pricing.bg__white:hover {
+    box-shadow: 0 0 10px #07a0ec;
+} */

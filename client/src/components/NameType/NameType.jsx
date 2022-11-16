@@ -46,7 +46,7 @@ const NameType = ({formData, setFormData}) => {
               ...formData, c_name1: event.target.value
           })}
         />
-        <error>{formData.c_name1 === "" ? " * Required " : "" }</error>
+        <span className='error'>{formData.c_name1 === "" ? " * Required " : "" }</span>
       </div>
       
       
@@ -89,7 +89,7 @@ const NameType = ({formData, setFormData}) => {
                 ...formData, c_name2: event.target.value
             })}
           />
-          <error>{formData.c_name2 === "" ? " * Required " : "" }</error>
+          <span className='error'>{formData.c_name2 === "" ? " * Required " : "" }</span>
         </div>
         <select name="type_1" id="" className='form-control'
           onChange={(event) => setFormData({
@@ -129,7 +129,7 @@ const NameType = ({formData, setFormData}) => {
                 ...formData, c_name3: event.target.value
             })}
           />
-          <error>{formData.c_name3 === "" ? " * Required " : "" }</error>
+          <span className='error'>{formData.c_name3 === "" ? " * Required " : "" }</span>
         </div>
         <select name="type_3" id="" className='form-control'
           onChange={(event) => setFormData({

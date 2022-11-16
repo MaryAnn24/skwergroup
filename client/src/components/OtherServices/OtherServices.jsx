@@ -5,76 +5,48 @@ import './OtherServices.css';
 
 function OtherServices ({formData, setFormData}) {
   /* VARIABLES DECLARATION */
-  const [service, setService] = useState([]);
+  const [service, setService] = useState(getData);
   const [item, setItem] = useState({remarks: 'active'});
-  const [arr, setArr] = useState([formData.add_serv]);
+  // const myJSON = JSON.stringify(arr);
   
-  useEffect(() => {
-    if(item.remarks === 'active'){
-      setService(getData);
-    } else {
-      /* Filter condition hear */
-      setItem({remarks: 'active'});
-    }
-  }, [item]);
+  const [checked, setChecked] = useState(formData.add_serv);
+    // Add/Remove checked item from list
+    const handleCheck = (event) => {
+      var updatedList = [...checked];
+      if (event.target.checked) {
+        updatedList = [...checked, event.target.value];
+      } else {
+        updatedList.splice(checked.indexOf(event.target.value), 1);
+      }
+      setChecked(updatedList);
+
+      setFormData({
+        ...formData, add_serv: updatedList
+      });
+      // console.log(updatedList);
+    };
 
   return (
-    <div className='add__services grid grid__3'>
+    <div className='add__services grid grid__4'>
      
-      <input className='form-control none'
+      {/* <input className='form-control none'
           type="text" 
           placeholder='Company name'
           name="c_name1"
           value={formData.add_serv}
-      />          
-          {service.map((item) => {
-            /*==== TO BE CONTINUE === */
-            //  if (arr.includes('item.id')) {
-            //   checkMark = "checked"
-            // }else {
-            //   checkMark = ""
-            // }
-      
-            return <label key={item.id}>
+      />           */}
+          {service.map((item, index) => {
+
+            return <label key={index}>
               <div className='serv_box grid'>
                 <span className='icon'><img src={item.icon} alt="stamp_icon" /></span>
               
               <input className='form-control checkbox' 
                 type="checkbox" 
                 name="c_name1"
-                /*==== TO BE CONTINUE === */
-                // onLoad={() => {
-                //    if (arr.includes('item.id')) {
-                //       checkMark = "checked";
-                //     }else {
-                //       checkMark = "not";
-                //     }
-                //     return checkMark;
-                // }}
-                value={item.id}
-
-                onClick={
-                  () => {
-                    if(arr.includes(item.id)) {
-                      setArr(current =>
-                        current.filter(services => {
-                          return services !== item.id;
-                        }),
-                      );
-                      setFormData({
-                        ...formData, add_serv_price: formData.add_serv_price-item.price
-                      });
-                      
-                    } else {
-                      setArr((oldArray) => [...oldArray, item.id]);
-                      setFormData({
-                        ...formData, add_serv_price: formData.add_serv_price+item.price
-                      });
-                    }
-                    formData.add_serv = arr;
-                  }
-
-                }
+                
+                onChange={handleCheck} checked = {formData.add_serv.includes((item.id).toString())} 
+                value= {item.id}
                 />
                 </div>
                 <p className='serv_name'>{item.service}</p>
@@ -83,10 +55,6 @@ function OtherServices ({formData, setFormData}) {
                 
             </label>;
           })}
-      <p className='none'>
-          {formData.add_serv = arr}
-      </p> 
-         
     </div>
   )
 }

@@ -12,7 +12,8 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
 
   /* CALCULATE AND DISPLAY ADDITIONAL SERVICES */
   const serv = formData.add_serv;
-  
+  console.log(formData);
+
   const servData = [
     {id: 1, service: "Company Rubber Stamp", desc:"", price: 70, remarks: "active"},
     {id: 2, service: "Company Seal", desc:"", price: 150, remarks: "active"},
@@ -31,23 +32,29 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
     {id: 15, service: "12mo. Digital Marketing Support", desc:"", price: 1350, remarks: "active"},
   ];
 
-  var total_serv = formData.add_serv_price;
+  var total_serv = 0;
   var package_amt = formData.package_price;
   
+  
    /*====DOUBLE CHECK AND DELETE=== */
+
+  // const [serveList, setServeList] = useState([]);
+  // var updatedList = [...serveList];
   // servData.map((data) => {
   //   {
   //     serv.map((item) => {
   //       if(item===data.id) {
-  //         total_serv = total_serv + data.price;
+  //         updatedList = [...serveList, data.service];
   //       }
   //       return "";
   //     });
+  //     setServeList(updatedList);
   //   }
   //   return "";
   // });
 
-  var total_charge = total_serv+package_amt;
+  // console.log(serveList);
+
   /* END */
 
   /* SAVE TO DATABASE */
@@ -58,7 +65,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
   
   const addData = () => {
-    Axios.post("https://skwergroupapi.skwerzone.com/saveData", {
+    Axios.post("http://localhost:3001/saveData", {
       jurisdiction: formData.jurisdiction,
       c_name1: formData.c_name1,
       type_1: formData.type_1,
@@ -68,9 +75,20 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       type_3: formData.type_3,
       skwer_package: formData.package,
       add_serv: add_serv,
-      p_name: formData.p_name,
+      salutation: formData.salutation,
+      f_name: formData.f_name,
+      l_name: formData.l_name,
       email: formData.email,
-      address: formData.address,
+      c_street: formData.c_street,
+      c_city: formData.c_city,
+      c_state: formData.c_state,
+      c_zip: formData.c_zip,
+      c_country: formData.c_country,
+      p_street: formData.p_street,
+      p_city: formData.p_city,
+      p_state: formData.p_state,
+      p_zip: formData.p_zip,
+      p_country: formData.p_country,
       contact_no: formData.contact_no,
       package_price: formData.package_price,
       add_serv_price: formData.add_serv_price,
@@ -112,13 +130,15 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
     });
   }
 
+  var total_charge = formData.package_price + formData.add_serv_price;
+
   const payNow = async token => {
     try {
       const response = await Axios({
-        url:'https://skwergroupapi.skwerzone.com/payment',
+        url:'http://localhost:3001/payment',
         method: 'post',
         data: {
-          name: formData.p_name,
+          name: "My Sample",
           amount: total_charge * 100,
           token,
         }
@@ -151,13 +171,33 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       setBtnStripe('deactivate');
     }
   }
+
+  servData.map((data) => {
+    serv.map((item) => {
+        // if(parseInt(item)===data.id) {
+        //   //'EQUAL';
+        //   total_serv = total_serv + data.price;
+        // }
+        parseInt(item)===data.id ? total_serv = total_serv + data.price : total_serv = total_serv
+        return "";
+    })
+
+    return total_serv;
+  })
+  
   /* END */
 
   return (
     <div>
       {/* ORDER SUMMARY */}
-      <div className='grid grid__2 grid__left'>
+      <div className='grid grid__left' 
+              onLoad={() => {
+                setFormData({
+                ...formData, add_serv_price: total_serv
+                });
+              }}>
         <div className='order'>
+           {/* CLIENT DETAILS */}
           <div className='grid grid__2 border__gray'>
             <div className="order__left">
               <p>CONTACT PERSON</p>
@@ -165,18 +205,22 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                 <li>Name:</li>
                 <li>Email:</li>
                 <li>Phone Number:</li>
+                <li>Company Address:</li>
+                <li>Personal Address:</li>
               </ul>
             </div>
             <div className="order__right">
-              <p>Data</p>
+              <p>__</p>
               <ul>
                 <li>{formData.salutation + ' ' + formData.f_name + ' ' + formData.l_name}</li>
                 <li>{formData.email}</li>
                 <li>{formData.contact_no}</li>
+                <li>{formData.c_street + ' ' + formData.c_city + ' ' + formData.c_state + ' (' + formData.c_zip + '), ' + formData.c_country}</li>
+                <li>{formData.p_street + ' ' + formData.p_city + ' ' + formData.p_state + ' (' + formData.p_zip + '), ' + formData.p_country}</li>
               </ul>
             </div>
           </div>
-
+           {/* COMPANY INFO */}
           <div className='grid grid__2 border__gray'>
             <div className="order__left">
               <p>COMPANY INFORMATION</p>
@@ -196,27 +240,27 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
             </div>
 
           </div>
-
+           {/* PACKAGE DETAILS */}
           <div className='grid grid__2 border__gray'>
             <div className="order__left">
               <p>COMPANY PACKAGE</p>
               <ul>
                 <li>Package - {formData.package}</li>
-                <li>+ Incorporation fee</li>
-                <li>+ One time banking support</li>
+                {/* <li>+ Incorporation fee</li>
+                <li>+ One time banking support</li> */}
               </ul>
             </div>
             <div className="order__right">
               <p>Price</p>
               <ul>
-                <li>${package_amt}</li>
-                <li>0</li>
-                <li>0</li>
+                <li>${package_amt.toLocaleString(undefined, {minimumFractionDigits:2})}</li>
+                {/* <li>0</li>
+                <li>0</li> */}
               </ul>
             </div>
 
           </div>
-
+            {/* ADDITIONAL SERVICES */}
           <div className='grid grid__2 border__gray'>
             <div className="order__left">
               <p>ADDITIONAL SERVICES</p>
@@ -230,9 +274,8 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                 {servData.map((data) => {
                       return <span>
                         {serv.map((item) => {
-                            if(item===data.id) {
+                            if(parseInt(item)===data.id) {
                               //'EQUAL';
-                              total_serv = total_serv + data.price;
                               return <li>{data.service}</li>;
                             }
                             return "";
@@ -251,11 +294,10 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
 
                   {servData.map((data) => {
                       return <span>
-                        
                         {serv.map((item) => {
-                            if(item===data.id) {
+                            if(parseInt(item)===data.id) {
                               //'EQUAL';
-                              return <li>${data.price}</li>;
+                              return <li>${(data.price).toLocaleString(undefined, {minimumFractionDigits:2})}</li>;
                             }
                             return "";
                         })}
@@ -265,11 +307,36 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
             </div>
 
           </div>
-        </div>
-        {/* PAYMENT COLUMN */}
-        <div className='payment__method'>
-          <div className='total'>
-            <h3>Total: <span className='amount'>${total_charge}</span></h3>
+            {/* TOTAL */}
+          <div className='grid grid__2 border__gray'>
+            <div className="order__left">
+              <p>TOTAL</p>
+            </div>
+            <div className="order__right">
+              <h3 className='amount'>${(formData.package_price + formData.add_serv_price).toLocaleString(undefined, {minimumFractionDigits:2})}</h3>
+            </div>
+
+          </div>
+           {/* TERMS CHECKBOX */}
+          <div className='order__left agreement'>
+            <label>
+              <input type="checkbox" className="form-control checkbox" 
+                onClick={() => {
+                  /*====DOUBLE CHECK AND DELETE=== */
+                  /*console.log(checkAgreement);*/
+                  //setCheckAgreement(!checkAgreement);
+                  activePay();
+                  
+                }}/>
+              <p class="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
+                <a href="#hi" target="_blank"> Terms</a> &amp; 
+                <a href="#hi" target="_blank"> Policy</a> and 
+                <a href="#hi" target="_blank"> Refund Policy</a> at skwergroup.com
+              </p>
+            </label>
+          </div>
+           {/* STRIPE */}
+          <div className='grid grid__2 total'>
             <div className={'stripe__btn ' + btnStripe}>
               <div className={'box ' + btnActive}></div>
               <StripeCheckout
@@ -279,36 +346,22 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                 billingAddress
                 shippingAddress
                 amount={priceForStripe}
-                description={`Your order amount is $${total_charge}`}
+                description={`Your order amount is $${package_amt + total_serv}`}
                 token={payNow}
               />
             </div>
+            <div className="stripe">
+              <img src={StripePic} alt="stripe_logo" />
+            </div>
             
-          </div>
-          <div className="stripe">
-            <img src={StripePic} alt="stripe_logo" />
+            
           </div>
         </div>
       </div>
-      {/* TERMS CHECKBOX */}
-      <div className='order__left agreement'>
-        <label>
-          <input type="checkbox" className="form-control checkbox" 
-            onClick={() => {
-              /*====DOUBLE CHECK AND DELETE=== */
-              /*console.log(checkAgreement);*/
-              //setCheckAgreement(!checkAgreement);
-               activePay();
-            }}/>
-          <p class="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
-            <a href="#hi" target="_blank"> Terms</a> &amp; 
-            <a href="#hi" target="_blank"> Policy</a> and 
-            <a href="#hi" target="_blank"> Refund Policy</a> at skwergroup.com
-          </p>
-        </label>
-      </div>
     </div>
   )
+
+  
 }
 
 export default Order;

@@ -9,7 +9,8 @@
 }
 
 .order {
-    min-width: 600px;
+    /* min-width: 600px; */
+    width: 94%;
 }
 
 .payment__method {
@@ -89,6 +90,7 @@
 
 .stripe__btn {
     margin-bottom: 5px;
+    padding-top: 35px;
 }
 
 button.StripeCheckout {
@@ -134,7 +136,8 @@ button.StripeCheckout span {
 }
 
 .order {
-    filter: drop-shadow(0 2px 8px rgba(201,201,201,.75));
+    /* filter: drop-shadow(0 2px 8px rgba(201,201,201,.75)); */
+    box-shadow: 0 0 10px #000;
     background-color: #fff;
     border-radius: 16px;
     padding: 50px;
@@ -145,4 +148,8 @@ button.StripeCheckout span {
     border-radius: 15px;
     -webkit-box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
     box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+}
+
+.total {
+    justify-content: center;
 }

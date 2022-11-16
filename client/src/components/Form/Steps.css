@@ -1,7 +1,7 @@
 /* Steps 
 red : #db3a3a
 pink: #ea4c89
-green : rgb(48, 130, 78) #30824e
+green : rgb(48, 130, 78) #30824e 
 yellow: rgb(240, 200, 17) f0c811
 */
 
@@ -32,10 +32,10 @@ yellow: rgb(240, 200, 17) f0c811
   } 
 
   .step-done .title {
-    color: #f0c811!important;
+    color: #34a853!important;
   } 
   .step.step-done .circle {
-    background-color: #f0c811
+    background-color: #34a853
   }
   
   /* Circle */
@@ -51,6 +51,7 @@ yellow: rgb(240, 200, 17) f0c811
     padding-top: 0.1rem;
     font-weight: bold;
     font-size: 16px;
+    top: 3px;
   }
   
   /* Vertical Line */
@@ -81,7 +82,7 @@ yellow: rgb(240, 200, 17) f0c811
   .title {
     line-height: 1.5em;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 22px;
     color:  #adadad; /*#28a745*/
   }
   .caption {

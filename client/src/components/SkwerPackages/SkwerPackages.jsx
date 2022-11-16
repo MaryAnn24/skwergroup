@@ -1,9 +1,9 @@
 import React from 'react';
 import './SkwerPackages.css';
 import { countryData } from '../Jurisdiction/Country_data';
-import BasicPic from '../../assets/images/packages/pac-basic.png';
-import PlusPic from '../../assets/images/packages/pac-plus.png';
-import PremiumPic from '../../assets/images/packages/pac-premium.png';
+import BasicPic from '../../assets/images/packages/pac_basic.jpg';
+import PlusPic from '../../assets/images/packages/pac_plus.jpg';
+import PremiumPic from '../../assets/images/packages/pac_premium.jpg';
 
 function SkwerPackages({formData, setFormData, page, setPage}) {
     /* VARIABLES DECLARATION */
@@ -38,11 +38,11 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 <div class="dtr-pricing bg__white basic__pac">
                     <div className='grid p__pic '>
                         <img src={BasicPic} alt="basic-pac" />
-                        <h3 class="dtr-pricing-heading border-white-muted color__black">Basic</h3>
+                        <h3 class="dtr-pricing-heading border-white-muted">Basic</h3>
                     </div>
                     <div className='p__data'>
                         <p class="dtr-price-subtext color-white-muted">from</p>
-                        <p class="dtr-price">${basicPrice}</p>
+                        <p class="dtr-price">${basicPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
                         <p class="dtr-price-subtext color-white-muted">per month</p>
 
                         <div class="dtr-pricing-details color__black">
@@ -77,7 +77,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                     </div>
                     <div className='p__data'>
                         <p class="dtr-price-subtext color-white-muted">from</p>
-                        <p class="dtr-price">${plusPrice}</p>
+                        <p class="dtr-price">${plusPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
                         <p class="dtr-price-subtext color-white-muted">per month</p>
 
                         <div class="dtr-pricing-details color__black">
@@ -112,7 +112,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                     </div>
                     <div className='p__data'>
                         <p class="dtr-price-subtext color-white-muted">from</p>
-                        <p class="dtr-price">${premiumPrice}</p>
+                        <p class="dtr-price">${premiumPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
                         <p class="dtr-price-subtext color-white-muted">per month</p>
 
                         <div class="dtr-pricing-details color__black">

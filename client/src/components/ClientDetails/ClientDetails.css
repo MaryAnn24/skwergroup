@@ -3,7 +3,7 @@ textarea {
 }
 
 .phoneInput {
-    width: 300px;
+    width: 400px;
 }
 
 .PhoneInputInput {
@@ -21,7 +21,6 @@ textarea {
     color: #565360;
     max-height: 35px;
     font-weight: 400;
-    margin-bottom: 25px;
     padding: 0.375rem 0.75rem;
     margin-right: 5px;
     font-family: "Roboto",sans-serif;
@@ -52,3 +51,32 @@ span.note {
 .txt_green {
     color: green;
 }
+
+.grid__3 {
+    grid-template-columns: repeat(3, max-content);
+    gap: 0.3rem;
+    justify-content: left;
+}
+.grid__3 input, .client__page input {
+    width: 400px;
+}
+.grid__3 select {
+    width: max-content;
+}
+
+.client__page .grid__2 {
+    grid-template-columns: repeat(2, max-content)!important;
+    gap: 0.3rem!important;
+    justify-content: left!important;
+}
+
+.street {
+    width: 87%!important;
+}
+
+.f_name {
+    width: 308px!important;
+}
+
+
+

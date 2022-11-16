@@ -19,13 +19,13 @@ input.form-control.checkbox {
     min-height: 80px;
     background-color: #fff;
     border-radius: 8px;
-    padding: 12px 20px 10px;
+    padding: 12px 10px 10px;
     margin: 0 0 30px;
     cursor: pointer;
     align-items: center;
 }
 
-.grid__3 {
+.add__services.grid__4 {
     grid-template-columns: repeat(4, max-content);
     gap: 0.5rem;
     justify-content: center;
@@ -57,7 +57,7 @@ span.desc {
 .serv_name {
     font-weight: 500;
     font-size: 18px;
-    line-height: 32px;
+    line-height: 1.2;
     color: #2c2c51;
     max-width: 150px;
     margin: 0;
@@ -74,4 +74,12 @@ span.desc {
 
 .pin img {
     width: 40px;
+}
+
+ol {
+    padding: 0;
+}
+
+ol li {
+    line-height: 1.4;
 }

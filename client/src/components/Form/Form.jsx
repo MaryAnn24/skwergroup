@@ -34,11 +34,20 @@ function Form() {
     type_3: "Limited",
     package: "",
     add_serv: [],
-    salutation: "Ms.",
+    salutation: "",
     f_name: "",
     l_name: "",
     email: "",
-    address: "",
+    c_street: "",
+    c_city: "",
+    c_state: "",
+    c_zip: "",
+    c_country: "",
+    p_street: "",
+    p_city: "",
+    p_state: "",
+    p_zip: "",
+    p_country: "",
     contact_no: "",
     package_price: 0,
     add_serv_price: 0
@@ -76,7 +85,7 @@ function Form() {
       container: container.current,
       renderer: 'svg',
       loop: true,
-      autoplay: false,
+      autoplay: true,
       animationData: require('../../assets/images/lottie/blue_bldg.json')
     })
 
@@ -96,7 +105,7 @@ function Form() {
               <div className="mbt__container__left">
                 
                 <div className='logo grid grid__2'>
-                  <a class="logo-default dtr-scroll-link" href="#home"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" />
+                  <a className="logo-default dtr-scroll-link" href="#home"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" />
                   
                   </a><h2>SKWER GROUP</h2>
                   {/* Mobile menu */}
@@ -166,26 +175,17 @@ function Form() {
                     <div className="title">Confirm & pay</div>
                   </div>
                 </div>
-                <div className='bg__bldg' ref={container}
+                {/* <div className='bg__bldg' ref={container}
                   onMouseEnter={() => lottie.play("animateBldg")}
                   onMouseLeave={() => lottie.pause("animateBldg")}
-                ></div>
+                ></div> */}
               </div>
               
               {/* CENTER */}
               <div className="mbt__container__right">
                 {/* Multi form */}
                 <div className="form___container">
-                  <div className="form__footer">
-                    <button className={page === 0 ? 'hidden' : ' backward'}
-                      disabled={page === 0}
-                      onClick={() => {
-                        setPage((currPage) => currPage - 1);
-                      }}>
-                      Back
-                    </button>
-                    
-                  </div>
+                  
                   <div className="header">
                     <h2>{FormTitles[page]}</h2>
                   </div>
@@ -193,7 +193,14 @@ function Form() {
                     {BodyContent[page]}
                   </div>
                   <div className="form__footer bottom_btn">
-                    <button className={(page === 0) || page === 2 || page === 5 ? 'btn hidden' : 'btn forward'}
+                    <button className={page === 0 ? 'none' : 'btn backward'}
+                      disabled={page === 0}
+                      onClick={() => {
+                        setPage((currPage) => currPage - 1);
+                      }}>
+                      Back
+                    </button>
+                    <button className={(page === 0) || page === 2 || page === 5 ? 'btn none' : 'btn forward'}
                       disabled={(page === 0) /*|| ((page === 5) && (checkAgreement === false))*/}
                       onClick={() => {
                         if (page === FormTitles.length - 1) {
@@ -216,80 +223,79 @@ function Form() {
                 </span>
                 <h3 className=''>Input Summary:</h3>
                 <table>
-                 
-                  {/* {table_fields.map((t_item) => {
-                    return <tr>
-                      <td>{t_item}</td>
+                  <tbody>
+                    <tr>
+                      <td>Jurisdiction: </td><td>{formData.jurisdiction === "" ? <span className='error'>* Required field</span> : formData.jurisdiction}</td>
                     </tr>
-                  })} */}
-                  <tr>
-                    <td>Jurisdiction: </td><td>{formData.jurisdiction}</td>
-                  </tr>
-                  <tr>
-                    <td>Company Name & Type: </td>
-                    <td>
-                      <ul>
-                      <li>{formData.c_name1} 
-                        {formData.c_name1 === "" ? <error>* Required field</error> : " (" + formData.type_1 +")" }
-                      </li>
-                      <li>{formData.c_name2}
-                        {formData.c_name2 === "" ? <error>* Required field</error> : " (" + formData.type_2 +")" }
-                      </li>
-                      <li>{formData.c_name3}
-                        {formData.c_name3 === "" ? <error>* Required field</error> : " (" + formData.type_3 +")" }
-                      </li>
-                      </ul>
-                    </td>
+                    <tr>
+                      <td>Company Name & Type: </td>
+                      <td>
+                        <ul>
+                        <li>{formData.c_name1} 
+                          {formData.c_name1 === "" ? <span className='error'>* Required field</span> : " (" + formData.type_1 +")" }
+                        </li>
+                        <li>{formData.c_name2}
+                          {formData.c_name2 === "" ? <span className='error'>* Required field</span> : " (" + formData.type_2 +")" }
+                        </li>
+                        <li>{formData.c_name3}
+                          {formData.c_name3 === "" ? <span className='error'>* Required field</span> : " (" + formData.type_3 +")" }
+                        </li>
+                        </ul>
+                      </td>
 
-                  </tr>
-                  <tr>
-                    <td>Selected Package: </td>
-                    <td className='uppercase'>
-                      {formData.package} 
-                      {
-                        conv_num === "0.00" ? "" : " ($" + conv_num +")"
-                      }
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Availed Additional Services: </td>
-                    <td>
-                      <ul>
-                          {
-                            formData.add_serv === "" ? "wala" : 
-                          servData.map((data) => {
-                              return <span>
-                                {formData.add_serv.map((item) => {
-                                    if(item===data.id) {
-                                      return <li>{data.service} ${data.price}</li>;
-                                    }
-                                    return "";
-                                })}
-                              </span>;
-                          })
-                          }
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Basic Details: </td>
-                    <td>
-                          <ul>
-                            <li>Name: 
-                              {formData.f_name === "" ? <error>* Required field</error>  : ' ' + formData.salutation + ' ' + formData.f_name + ' ' + formData.l_name}
-                            </li>
-                            <li>E-mail: 
-                              {formData.email === "" ? <error>* Required field</error>  : !isValidEmail(formData.email) ? <error>* Invalid Email</error> : ' ' + formData.email}
-                            </li>
-                            <li>Company Address: 
-                              {formData.address === "" ? <error>* Required field</error> : ' ' + formData.address}
-                            </li>
-                            <li>Contact Number: 
-                              {formData.contact_no === "" ? <error>* Required field</error> : ' ' + formData.contact_no}
-                            </li>
-                          </ul>
-                    </td>
-                  </tr>
+                    </tr>
+                    <tr>
+                      <td>Selected Package: </td>
+                      <td className='uppercase'>
+                        {formData.package === "" ? <span className='error'>* Required field</span> : formData.package}
+                        {
+                          conv_num === "0.00" ? "" : " ($" + conv_num +")"
+                        }
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Availed Additional Services: </td>
+                      <td>
+                        <ol>
+                            {
+                              formData.add_serv === "" ? "wala" : 
+                            servData.map((data, index) => {
+                                return <span key={index}>
+                                  {formData.add_serv.map((item) => {
+                                      if(parseInt(item)===data.id) {
+                                        return <li>{data.service} ${data.price}</li>;
+                                      }
+                                      return "";
+                                  })}
+                                </span>;
+                            })
+                            }
+                        </ol>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Basic Details: </td>
+                      <td>
+                            <ul>
+                              <li><span className='color__black'>Name: </span> 
+                                {formData.f_name === "" ? <span className='error'>* Required field</span>  : ' ' + formData.salutation + ' ' + formData.f_name + ' ' + formData.l_name}
+                              </li>
+                              <li><span className='color__black'>E-mail: </span>
+                                {formData.email === "" ? <span className='error'>* Required field</span>  : !isValidEmail(formData.email) ? <span>* Invalid Email</span> : ' ' + formData.email}
+                              </li>
+                              <li><span className='color__black'>Contact Number: </span>
+                                {formData.contact_no === "" ? <span className='error'>* Required field</span> : ' ' + formData.contact_no}
+                              </li>
+                              <li><span className='color__black'>Company Address: </span>
+                                {formData.c_city === "" ? <span className='error'>* Required field</span> : ' ' + formData.c_street + ' ' + formData.c_city + ' ' + formData.c_state + ' (' + formData.c_zip + '), ' + formData.c_country}
+                              </li>
+                              <li><span className='color__black'>Personal Address: </span>
+                                {formData.p_city === "" ? <span className='error'>* Required field</span> : ' ' + formData.p_street + ' ' + formData.p_city + ' ' + formData.p_state + ' (' + formData.p_zip + '), ' + formData.p_country}
+                              </li>
+                            </ul>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
