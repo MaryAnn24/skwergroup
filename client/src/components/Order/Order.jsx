@@ -63,9 +63,27 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   var today = new Date();
   var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+
+  /* OR NO */
+  var or_no_temp = 0;
+  function Random() {
+    var maxNumber = 99;
+    var randomNumber = Math.floor((Math.random() * maxNumber) + 1);
+    var randomNumber2 = Math.floor((Math.random() * maxNumber) + 1);
+    var today = new Date();
+    var date = today.getFullYear();
+    var final = date.toString().substring(2);
+    or_no_temp = randomNumber+''+randomNumber2+final;
+    
+    return or_no_temp;
+  }
+
+  formData.or_no =  formData.or_no != 0 ? formData.or_no : Random();
+  /* END */
   
   const addData = () => {
     Axios.post("http://localhost:3001/saveData", {
+      or_no: formData.or_no,
       jurisdiction: formData.jurisdiction,
       c_name1: formData.c_name1,
       type_1: formData.type_1,
@@ -79,11 +97,6 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       f_name: formData.f_name,
       l_name: formData.l_name,
       email: formData.email,
-      c_street: formData.c_street,
-      c_city: formData.c_city,
-      c_state: formData.c_state,
-      c_zip: formData.c_zip,
-      c_country: formData.c_country,
       p_street: formData.p_street,
       p_city: formData.p_city,
       p_state: formData.p_state,
@@ -178,7 +191,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
         //   //'EQUAL';
         //   total_serv = total_serv + data.price;
         // }
-        parseInt(item)===data.id ? total_serv = total_serv + data.price : total_serv = total_serv
+        item===data.service ? total_serv = total_serv + data.price : total_serv = total_serv
         return "";
     })
 
@@ -186,6 +199,8 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   })
   
   /* END */
+
+  
 
   return (
     <div>
@@ -205,7 +220,6 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                 <li>Name:</li>
                 <li>Email:</li>
                 <li>Phone Number:</li>
-                <li>Company Address:</li>
                 <li>Personal Address:</li>
               </ul>
             </div>
@@ -215,7 +229,6 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                 <li>{formData.salutation + ' ' + formData.f_name + ' ' + formData.l_name}</li>
                 <li>{formData.email}</li>
                 <li>{formData.contact_no}</li>
-                <li>{formData.c_street + ' ' + formData.c_city + ' ' + formData.c_state + ' (' + formData.c_zip + '), ' + formData.c_country}</li>
                 <li>{formData.p_street + ' ' + formData.p_city + ' ' + formData.p_state + ' (' + formData.p_zip + '), ' + formData.p_country}</li>
               </ul>
             </div>
@@ -274,7 +287,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                 {servData.map((data) => {
                       return <span>
                         {serv.map((item) => {
-                            if(parseInt(item)===data.id) {
+                            if(item===data.service) {
                               //'EQUAL';
                               return <li>{data.service}</li>;
                             }
@@ -295,7 +308,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                   {servData.map((data) => {
                       return <span>
                         {serv.map((item) => {
-                            if(parseInt(item)===data.id) {
+                            if(item===data.service) {
                               //'EQUAL';
                               return <li>${(data.price).toLocaleString(undefined, {minimumFractionDigits:2})}</li>;
                             }

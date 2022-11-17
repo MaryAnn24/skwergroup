@@ -14,15 +14,15 @@ var email_template_2 = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 async function main() {
   // SMTP config
   const transporter = nodemailer.createTransport({
-        host: 'mail.skwerzone.com',
+        host: 'mail.skwerzone.com' /* mail.skwergroup.com */, 
         port: 465,
         auth: {
-            user: 'maryann@skwerzone.com',
-            pass: 'mary_Skwer88'
+            user: 'maryann@skwerzone.com' /* 'no-reply@skwergroup.com' */,
+            pass: 'mary_Skwer88' /* 'T(frZlmv3UFZ' */
         }
     });
   let info = await transporter.sendMail({
-    from: '"Skwer Group" <maryann@skwerzone.com>',
+    from: '"Skwer Group" <maryann@skwerzone.com>', /* '"Skwer Group" <no-reply@skwergroup.com>', */
     to: "maryann.baricante24@gmail.com", // Test email address
     subject: "Order Summary!",
     cc: "maryann@skwergroup.com",
@@ -30,7 +30,6 @@ async function main() {
     html: email_template_2,
   });
   console.log("Message sent: %s", info.messageId); // Output message ID
-  console.log("View email: %s", nodemailer.getTestMessageUrl(info)); // URL to preview email
 }
 // Catch any errors and output them to the console
 main().catch(console.error);

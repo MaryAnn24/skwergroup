@@ -23,7 +23,7 @@ function OtherServices ({formData, setFormData}) {
       setFormData({
         ...formData, add_serv: updatedList
       });
-      // console.log(updatedList);
+      console.log(updatedList);
     };
 
   return (
@@ -45,12 +45,12 @@ function OtherServices ({formData, setFormData}) {
                 type="checkbox" 
                 name="c_name1"
                 
-                onChange={handleCheck} checked = {formData.add_serv.includes((item.id).toString())} 
-                value= {item.id}
+                onChange={handleCheck} checked = {formData.add_serv.includes((item.service).toString())} 
+                value= {item.service}
                 />
                 </div>
                 <p className='serv_name'>{item.service}</p>
-                <span className='serv_price'>${item.price}</span>
+                <span className='serv_price'>${(item.price).toLocaleString(undefined, {minimumFractionDigits:2})}</span>
                 <span className='desc'>{item.desc}</span>
                 
             </label>;

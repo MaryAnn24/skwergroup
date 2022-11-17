@@ -33,7 +33,6 @@ const NameType = ({formData, setFormData}) => {
 
   }, [item]);
 
-
   return (
     <div>
       <div className='inline__grid'>

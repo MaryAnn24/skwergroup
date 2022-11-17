@@ -94,65 +94,6 @@ function ClientDetails({formData, setFormData}) {
             {c_num&& isValidPhoneNumber(c_num) ? <span className='txt_green'> Valid </span> : <span className='txt_red'> Not valid </span> } </span>
           </article>
         </section>
-        {/* COMPANY ADDRESS */}
-        <section className='grid'>
-          <span>Company Address</span>
-          <article>
-            <input type="text" className='form-control street' placeholder='Street' 
-              value={formData.c_street}
-              onChange={(event) => setFormData({
-                ...formData, c_street: event.target.value
-              })}
-            />
-            <span className='error'>{formData.c_street === "" ? " * Required " : "" }</span>
-          </article>
-        </section>
-        <section className='grid grid__2'>
-          <article>
-            {/* <textarea className='form-control' name="address" id="" cols="35" rows="10" placeholder='Company Address ' value= {formData.address}
-              onChange={(event) => setFormData({
-                ...formData, address: event.target.value
-              })}
-            ></textarea> */}
-            {/* <span className='error'>{formData.address === "" ? " * Required " : "" }</span> */}
-            <input type="text" className='form-control' placeholder='City' 
-               value={formData.c_city}
-               onChange={(event) => setFormData({
-                 ...formData, c_city: event.target.value
-               })}
-            />
-            <span className='error'>{formData.c_city === "" ? " * Required " : "" }</span>
-          </article>
-          <article>
-            <input type="text" className='form-control' placeholder='State' 
-              value={formData.c_state}
-              onChange={(event) => setFormData({
-                ...formData, c_state: event.target.value
-              })}
-            />
-            <span className='error'>{formData.c_state === "" ? " * Required " : "" }</span>
-          </article>
-        </section>
-        <section className='grid grid__2'>
-          <article>
-            <input type="text" className='form-control' placeholder='Zipcode' 
-              value={formData.c_zip}
-              onChange={(event) => setFormData({
-                ...formData, c_zip: event.target.value
-              })}
-            />
-            <span className='error'>{formData.c_zip === "" ? " * Required " : "" }</span>
-          </article>
-          <article>
-            <input type="text" className='form-control' placeholder='Country' 
-              value={formData.c_country}
-              onChange={(event) => setFormData({
-                ...formData, c_country: event.target.value
-              })}
-            />
-            <span className='error'>{formData.c_country === "" ? " * Required " : "" }</span>
-          </article>
-        </section>
 
         {/* PERSONAL ADDRESS */}
         <section className='grid'>

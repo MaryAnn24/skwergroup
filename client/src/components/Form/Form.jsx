@@ -25,6 +25,7 @@ function Form() {
   const FormTitles = ["Select Country", "Propose Company Name and Company Type", "Select a Package", "Add Additional Services", "Input Your Basic Details", "Your Order Summary"]
  
   const fields = {
+    or_no: 0,
     jurisdiction: "",
     c_name1: "",
     type_1: "Limited",
@@ -34,15 +35,10 @@ function Form() {
     type_3: "Limited",
     package: "",
     add_serv: [],
-    salutation: "",
+    salutation: "Mr.",
     f_name: "",
     l_name: "",
     email: "",
-    c_street: "",
-    c_city: "",
-    c_state: "",
-    c_zip: "",
-    c_country: "",
     p_street: "",
     p_city: "",
     p_state: "",
@@ -94,6 +90,8 @@ function Form() {
       lottie.destroy();
     };
   }, [])
+
+  
 
   return (
     <div>
@@ -262,7 +260,7 @@ function Form() {
                             servData.map((data, index) => {
                                 return <span key={index}>
                                   {formData.add_serv.map((item) => {
-                                      if(parseInt(item)===data.id) {
+                                      if(item===data.service) {
                                         return <li>{data.service} ${data.price}</li>;
                                       }
                                       return "";
@@ -285,9 +283,6 @@ function Form() {
                               </li>
                               <li><span className='color__black'>Contact Number: </span>
                                 {formData.contact_no === "" ? <span className='error'>* Required field</span> : ' ' + formData.contact_no}
-                              </li>
-                              <li><span className='color__black'>Company Address: </span>
-                                {formData.c_city === "" ? <span className='error'>* Required field</span> : ' ' + formData.c_street + ' ' + formData.c_city + ' ' + formData.c_state + ' (' + formData.c_zip + '), ' + formData.c_country}
                               </li>
                               <li><span className='color__black'>Personal Address: </span>
                                 {formData.p_city === "" ? <span className='error'>* Required field</span> : ' ' + formData.p_street + ' ' + formData.p_city + ' ' + formData.p_state + ' (' + formData.p_zip + '), ' + formData.p_country}
