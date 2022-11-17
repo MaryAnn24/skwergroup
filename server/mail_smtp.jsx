@@ -33,3 +33,15 @@ async function main() {
 }
 // Catch any errors and output them to the console
 main().catch(console.error);
+
+/* FOR MICROSOFT infor@skwergroup.com (dont forget to activate the smtp authentication button)
+   const transporter = nodemailer.createTransport({
+        host: 'smtp.office365.com',
+        port: 587,
+        auth: {
+            user: 'info@skwergroup.com',
+            pass: 'P@ss_89322word'
+        }
+    });
+
+*/

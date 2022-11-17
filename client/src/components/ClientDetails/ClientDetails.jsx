@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber, isPossiblePhoneNumber } from "react-phone-number-input";
 import './ClientDetails.css';
 import 'react-phone-number-input/style.css';
 
 import { useForm } from "react-hook-form";
+
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
 
 function ClientDetails({formData, setFormData}) {
 
@@ -15,6 +18,33 @@ function ClientDetails({formData, setFormData}) {
     /* Validations */
     function isValidEmail(email) {
       return /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i.test(email);
+    }
+
+    const [value, setValue] = useState('')
+    const options = useMemo(() => countryList().getData(), [])
+  
+    const changeHandler = value => {
+      setValue(value);
+      setFormData({
+        ...formData, p_country: value.label
+      });
+      console.log(value.label);
+    }
+
+    /* CHECKBOX/MAKEPAYMENT APPEAR */
+  const [btnActive, setActive] = useState("block form-control txt__city");
+
+  const [countryStat, setCountryStat] = useState("none");
+  //const [btnStripe, setBtnStripe] = useState("deactivate");
+
+    const activeCountry = () => {
+      if(btnActive === "block form-control txt__city") {
+        setActive("none form-control txt__city");
+        setCountryStat("");
+      }else {
+        setActive("block form-control txt__city");
+        setCountryStat("block");
+      }
     }
 
   return (
@@ -110,7 +140,7 @@ function ClientDetails({formData, setFormData}) {
         </section>
         <section className='grid grid__2'>
           <article>
-            <input type="text" className='form-control' placeholder='City' 
+            <input type="text" className='form-control txt__city' placeholder='City' 
               value={formData.p_city}
               onChange={(event) => setFormData({
                 ...formData, p_city: event.target.value
@@ -139,11 +169,10 @@ function ClientDetails({formData, setFormData}) {
             <span className='error'>{formData.p_zip === "" ? " * Required " : "" }</span>
           </article>
           <article>
-            <input type="text" className='form-control' placeholder='Country' 
+            <Select options={options} value={value} onChange={changeHandler} className={countryStat} />
+            <input type="text" className={btnActive} placeholder='Country' 
               value={formData.p_country}
-              onChange={(event) => setFormData({
-                ...formData, p_country: event.target.value
-              })}
+              onClick = {activeCountry}
             />
             <span className='error'>{formData.p_country === "" ? " * Required " : "" }</span>
           </article>
