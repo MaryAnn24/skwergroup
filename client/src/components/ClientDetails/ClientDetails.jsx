@@ -14,7 +14,6 @@ function ClientDetails({formData, setFormData}) {
   const [c_num, setCNum] = useState(phone);
   const salutations = ['Mr.', 'Miss', 'Ms.', 'Mrs.', 'Dr.', 'Prof.', 'Sir' ]
 
-
     /* Validations */
     function isValidEmail(email) {
       return /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i.test(email);

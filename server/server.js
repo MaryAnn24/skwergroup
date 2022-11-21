@@ -123,10 +123,8 @@ app.post('/payment', async(req, res) => {
             source: token.id,
             amount,
             currency: 'usd',
-            description: 'Payment from LOCALHOST v2 skwergroup.com',
+            description: 'Payment from' + f_name +' '+ l_name + ' via skwergroup.com',
         });
-
-
         status = 'success';
         /* console.log(token); */
         

@@ -15,7 +15,7 @@ const Jurisdiction = ({formData, setFormData, page, setPage, fields}) => {
     if(item.cat === 'active'){
       setCountry(countryData);
     } else {
-      /* Filter condition hear */
+      /* Filter condition here */
       setItem({cat: 'active'});
     }
 

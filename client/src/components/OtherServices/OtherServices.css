@@ -17,12 +17,19 @@ input.form-control.checkbox {
     gap: 0.5rem;
     display: grid;
     min-height: 80px;
-    background-color: #fff;
     border-radius: 8px;
     padding: 12px 10px 10px;
     margin: 0 0 30px;
     cursor: pointer;
     align-items: center;
+}
+
+.add__services label:hover {
+    background: #1b2cb7!important;
+}
+
+.add__services label:hover .serv_name, .add__services label:hover span.desc {
+    color: #fff!important;
 }
 
 .add__services.grid__4 {
@@ -47,9 +54,9 @@ span.desc {
     border-radius: 40px;
     /* border: 1px solid red; */
     width: fit-content;
-    padding: 10px;
+    /*padding: 10px;*/
     height: 40px;
-    background: whitesmoke;
+    /* background: whitesmoke; */
 }
 
 .serv_box {justify-content: center;}
@@ -84,4 +91,8 @@ ol {
 
 ol li {
     line-height: 1.4;
+}
+
+.hide_serv {
+    display: none!important;
 }

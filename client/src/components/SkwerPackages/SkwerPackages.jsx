@@ -19,8 +19,20 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
         return "";
       });
     
+    const handleChange = () => {
+        const cyprus_serv = ['Company Secretary', "VAT number"];
+        if(formData.jurisdiction === "Cyprus") {
+        setFormData({
+            ...formData, add_serv: cyprus_serv
+        });
+        } else {
+            setFormData({
+                ...formData, add_serv: []
+            });
+        }
+    }
   return (
-    <div>
+    <div onLoad={handleChange}>
         <div class="flex package__container">     
             <section className='package__section' 
                 onClick={() => {
@@ -45,15 +57,12 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                         <p class="dtr-price">${basicPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
                         <p class="dtr-price-subtext color-white-muted">per month</p>
 
-                        <div class="dtr-pricing-details color__black">
-                        <p> <span class="dtr-pricing-details-title " data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Full Details </span> </p>
+                        <div class="dtr-pricing-details">
+                        <p> <span class="dtr-pricing-details-title " data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
                         <div class="collapse" id="pricing1">
                             <ul class="dtr-list-pricing">
-                                <li>Daily Feedback</li>
-                                <li>Marketing Support</li>
-                                <li>Dedicated Staff Member</li>
-                                <li>Cost Efficient</li>
-                                <li>Timely Service</li>
+                                <li>Set-up Fee</li>
+                                
                             </ul>
                         </div>
                         </div>
@@ -80,15 +89,14 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                         <p class="dtr-price">${plusPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
                         <p class="dtr-price-subtext color-white-muted">per month</p>
 
-                        <div class="dtr-pricing-details color__black">
-                        <p> <span class="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Full Details </span> </p>
+                        <div class="dtr-pricing-details">
+                        <p> <span class="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
                         <div class="collapse" id="pricing1">
                             <ul class="dtr-list-pricing">
-                                <li>Daily Feedback</li>
-                                <li>Marketing Support</li>
-                                <li>Dedicated Staff Member</li>
-                                <li>Cost Efficient</li>
-                                <li>Timely Service</li>
+                                <li>Set-up Fee</li>
+                                <li>Company Rubber Stamp</li>
+                                <li>Company Seal</li>
+                                <li>Notarisation and Apostille on Documents</li>
                             </ul>
                         </div>
                         </div>
@@ -103,7 +111,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 });
                 setPage((page) => page + 1);
                 }
-            }
+                }
             > 
                 <div class="dtr-pricing bg__white premium__pac">
                     <div className='grid p__pic'>
@@ -115,15 +123,16 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                         <p class="dtr-price">${premiumPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
                         <p class="dtr-price-subtext color-white-muted">per month</p>
 
-                        <div class="dtr-pricing-details color__black">
-                        <p> <span class="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Full Details </span> </p>
+                        <div class="dtr-pricing-details">
+                        <p> <span class="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
                         <div class="collapse" id="pricing1">
                             <ul class="dtr-list-pricing">
-                                <li>Daily Feedback</li>
-                                <li>Marketing Support</li>
-                                <li>Dedicated Staff Member</li>
-                                <li>Cost Efficient</li>
-                                <li>Timely Service</li>
+                                <li>Set-up Fee</li>
+                                <li>Company Rubber Stamp</li>
+                                <li>Company Seal</li>
+                                <li>Notarisation and Apostille on Documents</li>
+                                <li>International Courier</li>
+                                <li>Creation of Company Logo; Business Card; and Letter Head</li>
                             </ul>
                         </div>
                         </div>

@@ -20,12 +20,9 @@ const NameType = ({formData, setFormData}) => {
     return "";
   });
 
-  //console.log(c_type);
-
   useEffect(() => {
     if(item.remarks === 'active'){
       setType(getData);
-      //console.log(type);
     } else {
       /* Filter condition hear */
       setItem({remarks: 'active'});

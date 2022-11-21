@@ -4,8 +4,8 @@ import { useState } from 'react';
 import './Form.css';
 import './Steps.css';
 
-// import Header from '../Header/Header';
-// import Footer from '../Footer/Footer';
+/* import Header from '../Header/Header';
+ import Footer from '../Footer/Footer';*/
 import Jurisdiction from '../Jurisdiction/Jurisdiction';
 import NameType from '../NameType/NameType';
 import SkwerPackages from '../SkwerPackages/SkwerPackages';
@@ -14,10 +14,9 @@ import ClientDetails from '../ClientDetails/ClientDetails';
 import Order from '../Order/Order';
 
 import SkwerLogo from '../../assets/images/skwer_logo.svg';
-
 import { servData } from '../Order/AddServ'; 
+import { bankData } from '../OtherServices/BankServ'; 
 import Icon_pin from '../../assets/images/icons/paper-pin.png';
-
 import lottie from 'lottie-web';
 
 function Form() {
@@ -34,6 +33,7 @@ function Form() {
     c_name3: "",
     type_3: "Limited",
     package: "",
+    bank: [],
     add_serv: [],
     salutation: "Mr.",
     f_name: "",
@@ -46,7 +46,8 @@ function Form() {
     p_country: "",
     contact_no: "",
     package_price: 0,
-    add_serv_price: 0
+    add_serv_price: 0,
+    bank_serv_price: 0
   };
 
   const [formData, setFormData] = useState(fields);
@@ -85,13 +86,13 @@ function Form() {
       animationData: require('../../assets/images/lottie/blue_bldg.json')
     })
 
-    // Return clean up function here
+    /* Return clean up function here */
     return () => {
       lottie.destroy();
     };
   }, [])
 
-  
+  var inclusion = (formData.package) === "plus" ? ["Setup fee", "Company Rubber Stamp", "Company Seal", "Notarisation and Apostille on Documents"] : (formData.package) === "premium" ? ["Setup fee", "Company Rubber Stamp", "Company Seal", "Notarisation and Apostille on Documents", "International Courier", "Creation of Company Logo; Business Card; and Letter Head"] : ["Setup fee"];
 
   return (
     <div>
@@ -173,10 +174,12 @@ function Form() {
                     <div className="title">Confirm & pay</div>
                   </div>
                 </div>
+
                 {/* <div className='bg__bldg' ref={container}
                   onMouseEnter={() => lottie.play("animateBldg")}
                   onMouseLeave={() => lottie.pause("animateBldg")}
                 ></div> */}
+
               </div>
               
               {/* CENTER */}
@@ -199,7 +202,7 @@ function Form() {
                       Back
                     </button>
                     <button className={(page === 0) || page === 2 || page === 5 ? 'btn none' : 'btn forward'}
-                      disabled={(page === 0) /*|| ((page === 5) && (checkAgreement === false))*/}
+                      disabled={(page === 0)}
                       onClick={() => {
                         if (page === FormTitles.length - 1) {
                           /* LAST PAGE */
@@ -214,6 +217,7 @@ function Form() {
                   </div>
                 </div>
               </div>
+
                {/* RIGHT */}
                <div className="mbt__container__left order_summary ">
                 <span className='pin'>
@@ -222,10 +226,11 @@ function Form() {
                 <h3 className=''>Input Summary:</h3>
                 <table>
                   <tbody>
+                     {/* Jurisdiction */}
                     <tr>
                       <td>Jurisdiction: </td><td>{formData.jurisdiction === "" ? <span className='error'>* Required field</span> : formData.jurisdiction}</td>
                     </tr>
-                    <tr>
+                    <tr> {/* Company name and type */}
                       <td>Company Name & Type: </td>
                       <td>
                         <ul>
@@ -242,16 +247,24 @@ function Form() {
                       </td>
 
                     </tr>
-                    <tr>
+                    <tr> {/* Package */}
                       <td>Selected Package: </td>
                       <td className='uppercase'>
                         {formData.package === "" ? <span className='error'>* Required field</span> : formData.package}
                         {
                           conv_num === "0.00" ? "" : " ($" + conv_num +")"
                         }
+                        <ul className='data__inclusion'>
+                        {formData.package === "" ? "" : inclusion.map((data) => {
+                            return <li>{data}</li>
+                        })}
+                        </ul>
+                          
+                        
+                        
                       </td>
                     </tr>
-                    <tr>
+                    <tr> {/* Additional Services */}
                       <td>Availed Additional Services: </td>
                       <td>
                         <ol>
@@ -261,7 +274,7 @@ function Form() {
                                 return <span key={index}>
                                   {formData.add_serv.map((item) => {
                                       if(item===data.service) {
-                                        return <li>{data.service} ${data.price}</li>;
+                                        return <li>{data.service} (${data.price})</li>;
                                       }
                                       return "";
                                   })}
@@ -271,7 +284,27 @@ function Form() {
                         </ol>
                       </td>
                     </tr>
-                    <tr>
+                    <tr> {/* Bank Services */}
+                      <td>Availed Bank Services: </td>
+                      <td>
+                        <ol>
+                            {
+                              formData.bank === "" ? "wala" : 
+                              bankData.map((data, index) => {
+                                return <span key={index}>
+                                  {formData.bank.map((item) => {
+                                      if(item===data.bank) {
+                                        return <li>{data.bank} (${data.price.toLocaleString(undefined, {minimumFractionDigits:2})})</li>;
+                                      }
+                                      return "";
+                                  })}
+                                </span>;
+                            })
+                            }
+                        </ol>
+                      </td>
+                    </tr>
+                    <tr> {/* Basic Details */}
                       <td>Basic Details: </td>
                       <td>
                             <ul>

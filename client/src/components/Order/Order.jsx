@@ -5,59 +5,42 @@ import Axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
+import { bankData } from '../OtherServices/BankServ';
 
 const MySwal = withReactContent(Swal);
 
 function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, setPage, fields}) {
 
-  /* CALCULATE AND DISPLAY ADDITIONAL SERVICES */
+  /* VARIABLE DECLARATIONS */
   const serv = formData.add_serv;
   console.log(formData);
 
   const servData = [
-    {id: 1, service: "Company Rubber Stamp", desc:"", price: 70, remarks: "active"},
-    {id: 2, service: "Company Seal", desc:"", price: 150, remarks: "active"},
-    {id: 3, service: "Notarisation on Documents", desc:"", price: 200, remarks: "active"},
-    {id: 4, service: "Apostille on Documents", desc:"", price: 220, remarks: "active"},
-    {id: 5, service: "Nominee Director", desc:"", price: 550, remarks: "active"},
-    {id: 6, service: "Nominee Shareholder", desc:"", price: 550, remarks: "active"},
-    {id: 7, service: "Power(s) of Attorney", desc:"", price: 200, remarks: "active"},
-    {id: 8, service: "International Courier", desc:"", price: 80, remarks: "active"},
-    {id: 9, service: "TIN number", desc:"", price: 250, remarks: "active"},
-    {id: 10, service: "Visual Branding Pack", desc:"(Company Logo + Business Card +  Letter Head)", price: 250, remarks: "active"},
-    {id: 11, service: "Website Pack", desc:"(1 Year Website Domain + 1 Year Website Hosting +  One Page Website Building)", price: 500, remarks: "active"},
-    {id: 12, service: "1mo. Digital Marketing Support", desc:"", price: 150, remarks: "active"},
-    {id: 13, service: "3mo. Digital Marketing Support", desc:"", price: 380, remarks: "active"},
-    {id: 14, service: "6mo. Digital Marketing Support", desc:"", price: 720, remarks: "active"},
-    {id: 15, service: "12mo. Digital Marketing Support", desc:"", price: 1350, remarks: "active"},
+      {id: 2, service: "Company Seal", desc:"", price: 150, remarks: "active"},
+      {id: 3, service: "Notarisation on Documents", desc:"", price: 200, remarks: "active"},
+      {id: 4, service: "Apostille on Documents", desc:"", price: 220, remarks: "active"},
+      {id: 5, service: "Professional Directors", desc:"", price: 1100, remarks: "active"},
+      {id: 6, service: "Professional Shareholders", desc:"", price: 1100, remarks: "active"},
+      {id: 7, service: "Power(s) of Attorney", desc:"", price: 250, remarks: "active"},
+      {id: 8, service: "Notarisation and Apostille on Documents", desc:"", price: 300, remarks: "active"},
+      {id: 10, service: "Company Secretary", desc:"", price: 790, remarks: "active"},
+      {id: 11, service: "VAT number", desc:"", price: 1000, remarks: "active"},
+      {id: 12, service: "EIN & Physical Address", desc:"Employer Identification Number ($790.00) + Physical Address ($1580.00)", price: 2370, remarks: "active"},
+      /*{id: 13, service: "Physical Address", desc:"", price: 1580, remarks: "active", icon: Icon_tin},*/
+      {id: 13, service: "Visual Branding Pack", desc:"(Company Logo + Business Card +  Letter Head)", price: 400, remarks: "active"},
+      {id: 14, service: "Website Pack", desc:"(1 Year Website Domain + 1 Year Website Hosting +  One Page Website Building)", price: 1000, remarks: "active"},
+      {id: 15, service: "1mo. Digital Marketing Support", desc:"", price: 300, remarks: "active"},
+      {id: 16, service: "3mo. Digital Marketing Support", desc:"", price: 750, remarks: "active"},
+      {id: 17, service: "6mo. Digital Marketing Support", desc:"", price: 1500, remarks: "active"},
+      {id: 18, service: "12mo. Digital Marketing Support", desc:"", price: 3000, remarks: "active"},
+      {id: 19, service: "International Courier", desc:"", price: 90, remarks: "active"},
+      {id: 20, service: "Creation of Company Logo; Business Card; and Letter Head", desc:"", price: 200, remarks: "active"},
   ];
 
   var total_serv = 0;
+  var total_bank = 0;
   var package_amt = formData.package_price;
-  
-  
-   /*====DOUBLE CHECK AND DELETE=== */
 
-  // const [serveList, setServeList] = useState([]);
-  // var updatedList = [...serveList];
-  // servData.map((data) => {
-  //   {
-  //     serv.map((item) => {
-  //       if(item===data.id) {
-  //         updatedList = [...serveList, data.service];
-  //       }
-  //       return "";
-  //     });
-  //     setServeList(updatedList);
-  //   }
-  //   return "";
-  // });
-
-  // console.log(serveList);
-
-  /* END */
-
-  /* SAVE TO DATABASE */
   const add_serv = formData.add_serv;
 
   var today = new Date();
@@ -77,10 +60,10 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
     
     return or_no_temp;
   }
-
   formData.or_no =  formData.or_no != 0 ? formData.or_no : Random();
-  /* END */
+  /* END  OR NO */
   
+  /* DATABASE AXIOS */
   const addData = () => {
     Axios.post("https://api.skwergroup.com/saveData", {
       or_no: formData.or_no,
@@ -116,13 +99,6 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   /* END */
 
   /* STRIPE PAYMENT */
-
-  /*====DOUBLE CHECK AND DELETE=== */
-  // const [product, setProduct] = useState({
-  //   name: formData.package,
-  //   price: total_charge
-  // });
-
   const publishableKey = "pk_test_51LxV0VHy5jodEtzYJKTNcEC16U8FbvAjDlq7iJ5bUIhQTAYmMabixF29xPJnP6SNkYlEt3J5t7SdKqZuLtULwkLg009bSzCj2i";
 
   const priceForStripe = total_charge*100;
@@ -143,8 +119,8 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
     });
   }
 
-  var total_charge = formData.package_price + formData.add_serv_price;
-
+  var total_charge = formData.package_price + formData.add_serv_price + formData.bank_serv_price;
+console.log(formData.bank_serv_price);
   const payNow = async token => {
     try {
       const response = await Axios({
@@ -168,8 +144,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       handleError();
       console.log(error);
     }
-  }
-  /* END */
+  } /* END */
 
   /* CHECKBOX/MAKEPAYMENT APPEAR */
   const [btnActive, setActive] = useState("block");
@@ -183,24 +158,27 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       setActive("block");
       setBtnStripe('deactivate');
     }
-  }
+  } /* END */
 
+  /* CALCULATE THE TOTAL ADDITIONAL SERVICES */
   servData.map((data) => {
     serv.map((item) => {
-        // if(parseInt(item)===data.id) {
-        //   //'EQUAL';
-        //   total_serv = total_serv + data.price;
-        // }
         item===data.service ? total_serv = total_serv + data.price : total_serv = total_serv
         return "";
     })
 
     return total_serv;
-  })
-  
-  /* END */
+  }) /* END */
 
-  
+  /* CALCULATE THE TOTAL BANK SERVICES */
+  bankData.map((data) => {
+    (formData.bank).map((item) => {
+        item===data.bank ? total_bank = total_bank + data.price : total_bank = total_bank
+        return "";
+    })
+
+    return total_bank;
+  }) /* END */
 
   return (
     <div>
@@ -208,7 +186,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       <div className='grid grid__left' 
               onLoad={() => {
                 setFormData({
-                ...formData, add_serv_price: total_serv
+                ...formData, add_serv_price: total_serv, bank_serv_price: total_bank
                 });
               }}>
         <div className='order'>
@@ -320,13 +298,49 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
             </div>
 
           </div>
+          {/* BANK SERVICES */}
+          <div className='grid grid__2 border__gray'>
+            <div className="order__left">
+              <p>BANK SERVICES</p>
+              <ul className='add_serv'>
+                <li>
+                </li>
+                {bankData.map((data) => {
+                      return <span>
+                        {(formData.bank).map((item) => {
+                            if(item===data.bank) {
+                              return <li>Bank in {data.bank}</li>;
+                            }
+                            return "";
+                        })}
+                      </span>;
+                  })}
+              </ul>
+            </div>
+            <div className="order__right">
+              <p>__</p>
+              <ul>
+                  {bankData.map((data) => {
+                      return <span>
+                        {(formData.bank).map((item) => {
+                            if(item===data.bank) {
+                              return <li>${(data.price).toLocaleString(undefined, {minimumFractionDigits:2})}</li>;
+                            }
+                            return "";
+                        })}
+                      </span>;
+                  })}
+              </ul>
+            </div>
+
+          </div>
             {/* TOTAL */}
           <div className='grid grid__2 border__gray'>
             <div className="order__left">
               <p>TOTAL</p>
             </div>
             <div className="order__right">
-              <h3 className='amount'>${(formData.package_price + formData.add_serv_price).toLocaleString(undefined, {minimumFractionDigits:2})}</h3>
+              <h3 className='amount'>${(formData.package_price + formData.add_serv_price + formData.bank_serv_price).toLocaleString(undefined, {minimumFractionDigits:2})}</h3>
             </div>
 
           </div>
@@ -359,7 +373,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                 billingAddress
                 shippingAddress
                 amount={priceForStripe}
-                description={`Your order amount is $${package_amt + total_serv}`}
+                description={`Your order amount is $${package_amt + total_serv + total_bank}`}
                 token={payNow}
               />
             </div>
