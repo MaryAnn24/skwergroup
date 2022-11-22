@@ -18,9 +18,7 @@ const Jurisdiction = ({formData, setFormData, page, setPage, fields}) => {
       /* Filter condition here */
       setItem({cat: 'active'});
     }
-
   }, [item]);
-
 
   return (
     <div className='jurisdiction'>

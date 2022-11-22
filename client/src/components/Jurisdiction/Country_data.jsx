@@ -1,14 +1,3 @@
-/*import Flag1 from '../../assets/images/flags/belize.svg';
-import Flag2 from '../../assets/images/flags/bvi.svg';
-import Flag3 from '../../assets/images/flags/cy.svg';
-import Delaware from '../../assets/images/flags/delaware.svg';
-import Mauritius from '../../assets/images/flags/mauritius.svg';
-import Panama from '../../assets/images/flags/panama.svg';
-import Seychelles from '../../assets/images/flags/seychelles.svg';
-import Singapore from '../../assets/images/flags/singapore.svg';
-import UAE from '../../assets/images/flags/uae.svg';
-import UK from '../../assets/images/flags/uk.svg';*/
-
 export const countryData = [
     {id: 1, country: 'Belize', image: "https://cdn-icons-png.flaticon.com/512/197/197522.png", basic: 1000, plus: 1520, premium: 1810, cat: 'active', type: ['Limited', 'Ltd', 'Corporation', 'Corp.', 'Inc.', 'Societe Anonyme', 'Sociedad Anonima', 'S.A', 'Incorporated']},
     {id: 2, country: 'BVI', image: "https://cdn-icons-png.flaticon.com/512/7826/7826132.png", basic: 1599, plus: 2119, premium: 2409, cat: 'active', type: ['Limited', 'Ltd', 'Corporation', 'Corp.', 'Inc.', 'Societe Anonyme', 'Sociedad Anonima', 'S.A', 'Incorporated']},

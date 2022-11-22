@@ -9,7 +9,6 @@
 }
 
 .order {
-    /* min-width: 600px; */
     width: 94%;
 }
 
@@ -134,7 +133,6 @@ button.StripeCheckout span {
 }
 
 .order {
-    /* filter: drop-shadow(0 2px 8px rgba(201,201,201,.75)); */
     box-shadow: 0 0 10px #000;
     background-color: #fff;
     border-radius: 16px;

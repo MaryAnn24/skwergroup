@@ -23,7 +23,6 @@
 }
 
 .dtr-pricing:hover h3 {
-    /* border-bottom: 1px solid #000!important; */
     transition: all .3s ease;
 }
 
@@ -37,7 +36,6 @@
 
 .bg__white {
     background-color: #fff  !important;
-    /* box-shadow: 0 2px 8px rgb(201 201 201 / 25%); */
     box-shadow: 0 0 5px #000;
 }
 
@@ -57,8 +55,8 @@
 .dtr-pricing-details {
     position: relative;
     text-align: left;
-    margin-top: 50px;
-    min-height: 280px;
+    margin-top: 30px;
+    min-height: 250px;
 }
 
 .dtr-pricing-details-title {
@@ -102,22 +100,10 @@
     color: #dd5940!important;
 }
 
-/* .dtr-pricing.bg__white:hover {
-    box-shadow: 0 0 10px #07a0ec;
-} */
 
 .dtr-pricing.bg__white:hover h3 {
     background: #07a0ec!important;
     color: #fff!important;
-    /* border: none; */
-    
-}
-
-
-
-.dtr-pricing.bg__white:hover .p__data {
-    /* background: #1b2cb7!important;
-    color: #fff!important; */
 }
 
 .p__data {
@@ -127,4 +113,5 @@
 ul.dtr-list-pricing {
     margin: 0;
     line-height: 1.5;
+    font-size: 14px;
 }

@@ -6,6 +6,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
 import { bankData } from '../OtherServices/BankServ';
+import { servData } from './AddServ'; 
 
 const MySwal = withReactContent(Swal);
 
@@ -15,7 +16,8 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   const serv = formData.add_serv;
   console.log(formData);
 
-  const servData = [
+  /* ADDITIONAL SERVICES DATA */
+  /*const servData = [
       {id: 2, service: "Company Seal", desc:"", price: 150, remarks: "active"},
       {id: 3, service: "Notarisation on Documents", desc:"", price: 200, remarks: "active"},
       {id: 4, service: "Apostille on Documents", desc:"", price: 220, remarks: "active"},
@@ -26,7 +28,6 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       {id: 10, service: "Company Secretary", desc:"", price: 790, remarks: "active"},
       {id: 11, service: "VAT number", desc:"", price: 1000, remarks: "active"},
       {id: 12, service: "EIN & Physical Address", desc:"Employer Identification Number ($790.00) + Physical Address ($1580.00)", price: 2370, remarks: "active"},
-      /*{id: 13, service: "Physical Address", desc:"", price: 1580, remarks: "active", icon: Icon_tin},*/
       {id: 13, service: "Visual Branding Pack", desc:"(Company Logo + Business Card +  Letter Head)", price: 400, remarks: "active"},
       {id: 14, service: "Website Pack", desc:"(1 Year Website Domain + 1 Year Website Hosting +  One Page Website Building)", price: 1000, remarks: "active"},
       {id: 15, service: "1mo. Digital Marketing Support", desc:"", price: 300, remarks: "active"},
@@ -35,7 +36,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       {id: 18, service: "12mo. Digital Marketing Support", desc:"", price: 3000, remarks: "active"},
       {id: 19, service: "International Courier", desc:"", price: 90, remarks: "active"},
       {id: 20, service: "Creation of Company Logo; Business Card; and Letter Head", desc:"", price: 200, remarks: "active"},
-  ];
+  ];*/
 
   var total_serv = 0;
   var total_bank = 0;
@@ -60,12 +61,12 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
     
     return or_no_temp;
   }
-  formData.or_no =  formData.or_no != 0 ? formData.or_no : Random();
+  formData.or_no =  formData.or_no !== 0 ? formData.or_no : Random();
   /* END  OR NO */
   
   /* DATABASE AXIOS */
   const addData = () => {
-    Axios.post("https://api.skwergroup.com/saveData", {
+    Axios.post("http://localhost:3001/saveData", {
       or_no: formData.or_no,
       jurisdiction: formData.jurisdiction,
       c_name1: formData.c_name1,
@@ -75,6 +76,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       c_name3: formData.c_name3,
       type_3: formData.type_3,
       skwer_package: formData.package,
+      bank: formData.bank,
       add_serv: add_serv,
       salutation: formData.salutation,
       f_name: formData.f_name,
@@ -88,18 +90,21 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
       contact_no: formData.contact_no,
       package_price: formData.package_price,
       add_serv_price: formData.add_serv_price,
+      bank_serv_price: formData.bank_serv_price,
       regis_remarks: "registered",
       payment_remarks: "success",
       dateCreated: date + ' ' + time,
       dateUpdated: date + ' ' + time
     }).then(() => {
-            console.log("sucess");
+      console.log("sucess");
     });
   };
   /* END */
 
   /* STRIPE PAYMENT */
   const publishableKey = "pk_test_51LxV0VHy5jodEtzYJKTNcEC16U8FbvAjDlq7iJ5bUIhQTAYmMabixF29xPJnP6SNkYlEt3J5t7SdKqZuLtULwkLg009bSzCj2i";
+
+  var total_charge = formData.package_price + formData.add_serv_price + formData.bank_serv_price;
 
   const priceForStripe = total_charge*100;
 
@@ -119,15 +124,15 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
     });
   }
 
-  var total_charge = formData.package_price + formData.add_serv_price + formData.bank_serv_price;
-console.log(formData.bank_serv_price);
+  
+  
   const payNow = async token => {
     try {
       const response = await Axios({
-        url:'https://api.skwergroup.com/payment',
+        url:'http://localhost:3001/payment',
         method: 'post',
         data: {
-          name: "My Sample",
+          name: formData.f_name + ' ' + formData.l_name,
           amount: total_charge * 100,
           token,
         }
@@ -237,16 +242,12 @@ console.log(formData.bank_serv_price);
               <p>COMPANY PACKAGE</p>
               <ul>
                 <li>Package - {formData.package}</li>
-                {/* <li>+ Incorporation fee</li>
-                <li>+ One time banking support</li> */}
               </ul>
             </div>
             <div className="order__right">
               <p>Price</p>
               <ul>
                 <li>${package_amt.toLocaleString(undefined, {minimumFractionDigits:2})}</li>
-                {/* <li>0</li>
-                <li>0</li> */}
               </ul>
             </div>
 
@@ -264,10 +265,10 @@ console.log(formData.bank_serv_price);
                 </li>
                 {servData.map((data) => {
                       return <span>
-                        {serv.map((item) => {
+                        {serv.map((item, index) => {
                             if(item===data.service) {
                               //'EQUAL';
-                              return <li>{data.service}</li>;
+                              return <li key={index}>{data.service}</li>;
                             }
                             return "";
                         })}
@@ -285,10 +286,10 @@ console.log(formData.bank_serv_price);
 
                   {servData.map((data) => {
                       return <span>
-                        {serv.map((item) => {
+                        {serv.map((item, index) => {
                             if(item===data.service) {
                               //'EQUAL';
-                              return <li>${(data.price).toLocaleString(undefined, {minimumFractionDigits:2})}</li>;
+                              return <li key={index}>${(data.price).toLocaleString(undefined, {minimumFractionDigits:2})}</li>;
                             }
                             return "";
                         })}
@@ -307,9 +308,9 @@ console.log(formData.bank_serv_price);
                 </li>
                 {bankData.map((data) => {
                       return <span>
-                        {(formData.bank).map((item) => {
+                        {(formData.bank).map((item, index) => {
                             if(item===data.bank) {
-                              return <li>Bank in {data.bank}</li>;
+                              return <li key={index}>Bank in {data.bank}</li>;
                             }
                             return "";
                         })}
@@ -322,9 +323,9 @@ console.log(formData.bank_serv_price);
               <ul>
                   {bankData.map((data) => {
                       return <span>
-                        {(formData.bank).map((item) => {
+                        {(formData.bank).map((item, index) => {
                             if(item===data.bank) {
-                              return <li>${(data.price).toLocaleString(undefined, {minimumFractionDigits:2})}</li>;
+                              return <li key={index}>${(data.price).toLocaleString(undefined, {minimumFractionDigits:2})}</li>;
                             }
                             return "";
                         })}
@@ -355,7 +356,7 @@ console.log(formData.bank_serv_price);
                   activePay();
                   
                 }}/>
-              <p class="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
+              <p className="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
                 <a href="#hi" target="_blank"> Terms</a> &amp; 
                 <a href="#hi" target="_blank"> Policy</a> and 
                 <a href="#hi" target="_blank"> Refund Policy</a> at skwergroup.com
@@ -388,7 +389,6 @@ console.log(formData.bank_serv_price);
     </div>
   )
 
-  
 }
 
 export default Order;

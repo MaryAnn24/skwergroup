@@ -219,18 +219,17 @@ function Form() {
               </div>
 
                {/* RIGHT */}
-               <div className="mbt__container__left order_summary ">
+               <div className="order_summary ">
                 <span className='pin'>
                   <img src={Icon_pin} alt="" />
                 </span>
                 <h3 className=''>Input Summary:</h3>
                 <table>
                   <tbody>
-                     {/* Jurisdiction */}
-                    <tr>
+                    <tr>{/* Jurisdiction */}
                       <td>Jurisdiction: </td><td>{formData.jurisdiction === "" ? <span className='error'>* Required field</span> : formData.jurisdiction}</td>
                     </tr>
-                    <tr> {/* Company name and type */}
+                    <tr>{/* Company name and type */}
                       <td>Company Name & Type: </td>
                       <td>
                         <ul>
@@ -245,9 +244,8 @@ function Form() {
                         </li>
                         </ul>
                       </td>
-
                     </tr>
-                    <tr> {/* Package */}
+                    <tr>{/* Package */}
                       <td>Selected Package: </td>
                       <td className='uppercase'>
                         {formData.package === "" ? <span className='error'>* Required field</span> : formData.package}
@@ -264,7 +262,7 @@ function Form() {
                         
                       </td>
                     </tr>
-                    <tr> {/* Additional Services */}
+                    <tr>{/* Additional Services */}
                       <td>Availed Additional Services: </td>
                       <td>
                         <ol>
@@ -272,9 +270,9 @@ function Form() {
                               formData.add_serv === "" ? "wala" : 
                             servData.map((data, index) => {
                                 return <span key={index}>
-                                  {formData.add_serv.map((item) => {
+                                  {formData.add_serv.map((item, index) => {
                                       if(item===data.service) {
-                                        return <li>{data.service} (${data.price})</li>;
+                                        return <li key={index}>{data.service} (${data.price})</li>;
                                       }
                                       return "";
                                   })}
@@ -284,7 +282,7 @@ function Form() {
                         </ol>
                       </td>
                     </tr>
-                    <tr> {/* Bank Services */}
+                    <tr>{/* Bank Services */}
                       <td>Availed Bank Services: </td>
                       <td>
                         <ol>
@@ -292,9 +290,9 @@ function Form() {
                               formData.bank === "" ? "wala" : 
                               bankData.map((data, index) => {
                                 return <span key={index}>
-                                  {formData.bank.map((item) => {
+                                  {formData.bank.map((item, index) => {
                                       if(item===data.bank) {
-                                        return <li>{data.bank} (${data.price.toLocaleString(undefined, {minimumFractionDigits:2})})</li>;
+                                        return <li key={index}>{data.bank} (${data.price.toLocaleString(undefined, {minimumFractionDigits:2})})</li>;
                                       }
                                       return "";
                                   })}
@@ -304,7 +302,7 @@ function Form() {
                         </ol>
                       </td>
                     </tr>
-                    <tr> {/* Basic Details */}
+                    <tr>{/* Basic Details */}
                       <td>Basic Details: </td>
                       <td>
                             <ul>

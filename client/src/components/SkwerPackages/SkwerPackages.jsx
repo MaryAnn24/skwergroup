@@ -33,7 +33,8 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
     }
   return (
     <div onLoad={handleChange}>
-        <div class="flex package__container">     
+        <div className="flex package__container">
+            {/* BASIC */}    
             <section className='package__section' 
                 onClick={() => {
                     setFormData({
@@ -47,20 +48,20 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                     }   
                 }
             > 
-                <div class="dtr-pricing bg__white basic__pac">
+                <div className="dtr-pricing bg__white basic__pac">
                     <div className='grid p__pic '>
                         <img src={BasicPic} alt="basic-pac" />
-                        <h3 class="dtr-pricing-heading border-white-muted">Basic</h3>
+                        <h3 className="dtr-pricing-heading border-white-muted">Basic</h3>
                     </div>
                     <div className='p__data'>
-                        <p class="dtr-price-subtext color-white-muted">from</p>
-                        <p class="dtr-price">${basicPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
-                        <p class="dtr-price-subtext color-white-muted">per month</p>
+                        <p className="dtr-price-subtext color-white-muted">from</p>
+                        <p className="dtr-price">${basicPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
+                        <p className="dtr-price-subtext color-white-muted">per month</p>
 
-                        <div class="dtr-pricing-details">
-                        <p> <span class="dtr-pricing-details-title " data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
-                        <div class="collapse" id="pricing1">
-                            <ul class="dtr-list-pricing">
+                        <div className="dtr-pricing-details">
+                        <p> <span className="dtr-pricing-details-title " data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
+                        <div className="collapse" id="pricing1">
+                            <ul className="dtr-list-pricing">
                                 <li>Set-up Fee</li>
                                 
                             </ul>
@@ -69,7 +70,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                     </div>    
                 </div>
             </section>
-
+            {/* PLUS */} 
             <section className='package__section '
               onClick={() => {
                 setFormData({
@@ -79,20 +80,20 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 }
             }
             > 
-                <div class="dtr-pricing bg__white plus__pac">
+                <div className="dtr-pricing bg__white plus__pac">
                     <div className='grid p__pic'>
                         <img src={PlusPic} alt="basic-pac" />
-                        <h3 class="dtr-pricing-heading border-white-muted color__black">Plus</h3>
+                        <h3 className="dtr-pricing-heading border-white-muted color__black">Plus</h3>
                     </div>
                     <div className='p__data'>
-                        <p class="dtr-price-subtext color-white-muted">from</p>
-                        <p class="dtr-price">${plusPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
-                        <p class="dtr-price-subtext color-white-muted">per month</p>
+                        <p className="dtr-price-subtext color-white-muted">from</p>
+                        <p className="dtr-price">${plusPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
+                        <p className="dtr-price-subtext color-white-muted">per month</p>
 
-                        <div class="dtr-pricing-details">
-                        <p> <span class="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
-                        <div class="collapse" id="pricing1">
-                            <ul class="dtr-list-pricing">
+                        <div className="dtr-pricing-details">
+                        <p> <span className="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
+                        <div className="collapse" id="pricing1">
+                            <ul className="dtr-list-pricing">
                                 <li>Set-up Fee</li>
                                 <li>Company Rubber Stamp</li>
                                 <li>Company Seal</li>
@@ -103,7 +104,7 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                     </div>    
                 </div>
             </section>
-
+            {/* PREMIUM */} 
             <section className='package__section'
               onClick={() => {
                 setFormData({
@@ -113,20 +114,20 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
                 }
                 }
             > 
-                <div class="dtr-pricing bg__white premium__pac">
+                <div className="dtr-pricing bg__white premium__pac">
                     <div className='grid p__pic'>
                         <img src={PremiumPic} alt="basic-pac" />
-                        <h3 class="dtr-pricing-heading border-white-muted">Premium</h3>
+                        <h3 className="dtr-pricing-heading border-white-muted">Premium</h3>
                     </div>
                     <div className='p__data'>
-                        <p class="dtr-price-subtext color-white-muted">from</p>
-                        <p class="dtr-price">${premiumPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
-                        <p class="dtr-price-subtext color-white-muted">per month</p>
+                        <p className="dtr-price-subtext color-white-muted">from</p>
+                        <p className="dtr-price">${premiumPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
+                        <p className="dtr-price-subtext color-white-muted">per month</p>
 
-                        <div class="dtr-pricing-details">
-                        <p> <span class="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
-                        <div class="collapse" id="pricing1">
-                            <ul class="dtr-list-pricing">
+                        <div className="dtr-pricing-details">
+                        <p> <span className="dtr-pricing-details-title" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pricing1"> Inclusion: </span> </p>
+                        <div className="collapse" id="pricing1">
+                            <ul className="dtr-list-pricing">
                                 <li>Set-up Fee</li>
                                 <li>Company Rubber Stamp</li>
                                 <li>Company Seal</li>
@@ -141,7 +142,6 @@ function SkwerPackages({formData, setFormData, page, setPage}) {
             </section>
         </div>
     </div>
-
   )
 }
 

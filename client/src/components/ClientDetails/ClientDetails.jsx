@@ -1,9 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber, isPossiblePhoneNumber } from "react-phone-number-input";
+import PhoneInput, { formatPhoneNumberIntl, isValidPhoneNumber } from "react-phone-number-input";
 import './ClientDetails.css';
 import 'react-phone-number-input/style.css';
-
-import { useForm } from "react-hook-form";
 
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
@@ -27,7 +25,6 @@ function ClientDetails({formData, setFormData}) {
       setFormData({
         ...formData, p_country: value.label
       });
-      console.log(value.label);
     }
 
     /* CHECKBOX/MAKEPAYMENT APPEAR */
@@ -56,9 +53,10 @@ function ClientDetails({formData, setFormData}) {
                 ...formData, salutation: event.target.value
                 });
               }}
+              value={formData.salutation}
             >
               {salutations.map((s_item, index) => {
-                return <option value={s_item} key={index} selected={formData.salutation === s_item} >{s_item}</option>
+                return <option value={s_item} key={index} /*selected={formData.salutation === s_item}*/ >{s_item}</option>
               })}
             </select>
             <span className='error'>{formData.salutation === "" ? " * Required " : "" }</span>
@@ -168,40 +166,15 @@ function ClientDetails({formData, setFormData}) {
             <span className='error'>{formData.p_zip === "" ? " * Required " : "" }</span>
           </article>
           <article>
-            <Select options={options} value={value} onChange={changeHandler} className={countryStat} />
+            <Select options={options} value={value} onChange={changeHandler} className={countryStat}/>
             <input type="text" className={btnActive} placeholder='Country' 
               value={formData.p_country}
               onClick = {activeCountry}
+              readOnly
             />
             <span className='error'>{formData.p_country === "" ? " * Required " : "" }</span>
           </article>
         </section>
-
-        {/* <section>
-          <article>
-            <textarea className='form-control' name="address" id="" cols="35" rows="10" placeholder='Personal Address ' value= {formData.address}
-              onChange={(event) => setFormData({
-                ...formData, address: event.target.value
-              })}
-            ></textarea>
-            <span className='error'>{formData.address === "" ? " * Required " : "" }</span>
-          </article>
-        </section> */}
-
-       
-         
-        {/* <input className='form-control'
-          type="text" 
-          placeholder='Your Contact Number'
-          name="p_name"
-          value={formData.contact_no}
-          onChange={(event) => setFormData({
-            ...formData, contact_no: event.target.value
-          })}
-  
-        /> */}
-        
-
     </div>
   )
       

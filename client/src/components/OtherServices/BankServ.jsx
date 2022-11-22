@@ -1,5 +1,3 @@
-
-
 export const bankData = [
         {bank: "Lithuania", desc: "Financial Institution", icon: "https://cdn-icons-png.flaticon.com/512/197/197612.png", jurisdiction: ["Belize", "BVI", "Canada", "Cyprus", "Delaware", "Florida", "Gibraltar", "Hong Kong", "Mauritius", "Ras al-Khaimah", "Seychelles", "Singapore", "Switzerland", "UK"], price: 800},
         {bank: "Belize", desc: "", icon: "https://cdn-icons-png.flaticon.com/512/197/197522.png", jurisdiction: ["Belize", "BVI", "Canada", "Cyprus", "Delaware", "Florida", "Gibraltar", "Hong Kong", "Mauritius", "Panama", "Ras al-Khaimah", "Seychelles", "Singapore", "Switzerland", "UK"], price: 1000},

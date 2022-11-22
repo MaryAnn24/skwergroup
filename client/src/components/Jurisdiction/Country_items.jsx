@@ -1,8 +1,6 @@
 import React from 'react';
 
-
 const Country_items = ({item, formData, setFormData, page, setPage}) => {
- // const cyprus_serv = ['Company Secretary', "VAT number"];
   return (
     <div>
         <label>
@@ -13,10 +11,7 @@ const Country_items = ({item, formData, setFormData, page, setPage}) => {
             });
 
             setPage((page) => page + 1);
-
-            }
-
-            
+            } 
           }
         >
             <img src={item.image} alt="" className='country_img' />
@@ -27,7 +22,6 @@ const Country_items = ({item, formData, setFormData, page, setPage}) => {
         </div>
         </label>
     </div>
-    
   )
 }
 

@@ -24,7 +24,6 @@ export function getData() {
         {id: 10, service: "Company Secretary", desc:"", price: 790, remarks: "active", icon: Icon_inter},
         {id: 11, service: "VAT number", desc:"", price: 1000, remarks: "active", icon: Icon_tin},
         {id: 12, service: "EIN & Physical Address", desc:"Employer Identification Number ($790.00) + Physical Address ($1580.00)", price: 2370, remarks: "active", icon: Icon_tin},
-        /*{id: 13, service: "Physical Address", desc:"", price: 1580, remarks: "active", icon: Icon_tin},*/
         {id: 13, service: "Visual Branding Pack", desc:"(Company Logo + Business Card +  Letter Head)", price: 400, remarks: "active", icon: Icon_branding},
         {id: 14, service: "Website Pack", desc:"(1 Year Website Domain + 1 Year Website Hosting +  One Page Website Building)", price: 1000, remarks: "active", icon: Icon_web},
         {id: 15, service: "1mo. Digital Marketing Support", desc:"", price: 300, remarks: "active", icon: Icon_marketing},

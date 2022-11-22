@@ -6,7 +6,7 @@ input.form-control.checkbox {
       position: absolute;
   }
 
-  .add__services label {
+.add__services label {
     background: #fff;
     color: #000;
     padding: 5px;
@@ -25,7 +25,7 @@ input.form-control.checkbox {
 }
 
 .add__services label:hover {
-    background: #1b2cb7!important;
+    background: #07a0ec!important;
 }
 
 .add__services label:hover .serv_name, .add__services label:hover span.desc {
@@ -52,21 +52,18 @@ span.desc {
 
 .serv_box .icon {
     border-radius: 40px;
-    /* border: 1px solid red; */
     width: fit-content;
-    /*padding: 10px;*/
     height: 40px;
-    /* background: whitesmoke; */
 }
 
 .serv_box {justify-content: center;}
 
 .serv_name {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.2;
     color: #2c2c51;
-    max-width: 150px;
+    max-width: 120px;
     margin: 0;
 }
 
