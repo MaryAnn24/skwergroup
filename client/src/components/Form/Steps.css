@@ -21,14 +21,33 @@ yellow: rgb(240, 200, 17) f0c811
     padding-left: 1em;
   }
   .step.step-active {
-    color: #07a0ec!important;
+    color: #1475F7!important;
   }
   .step.step-active .circle {
-    background-color: #07a0ec;
+    background-color: #1475F7;
   }
 
   .step-active .title {
-    color: #07a0ec!important;
+    /* color: #07a0ec!important; */
+    font-weight: 700;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#7114EF), to(#1475F7));
+    background-image: -webkit-linear-gradient(to left, #7114EF, #1475F7);
+    background-image: -moz-linear-gradient(to left, #7114EF, #1475F7);
+    background-image: -ms-linear-gradient(to left, #7114EF, #1475F7);
+    background-image: -o-linear-gradient(to left, #7114EF, #1475F7);
+    background-image: linear-gradient(to left, #7114EF, #1475F7);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#7114EF', endColorStr='#1475F7');
+    background-color: transparent;
+    background-clip: text;
+    -o-background-clip: text;
+    -ms-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -o-text-fill-color: transparent;
+    -ms-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
   } 
 
   .step-done .title {
@@ -88,3 +107,5 @@ yellow: rgb(240, 200, 17) f0c811
   .caption {
     font-size: 0.8em;
   }
+
+ 

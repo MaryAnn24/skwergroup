@@ -65,7 +65,7 @@
 }
 
 .amount {
-    color: #07a0ec;
+    color: #1475F7;
     font-size: 2.5rem;
 }
 
@@ -129,14 +129,18 @@ button.StripeCheckout span {
 }
 
 .active button.StripeCheckout span {
-    background: #32407e!important;
+    background: #1475F7!important;
 }
 
 .order {
-    box-shadow: 0 0 10px #000;
+    -ms-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.3);
+    -o-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.3);
+    box-shadow: 0 11px 27px rgb(0 9 71 / 30%);
     background-color: #fff;
     border-radius: 16px;
     padding: 50px;
+    position: relative;
+    z-index: 0;
 }
 
 .stripe {

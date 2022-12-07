@@ -86,24 +86,23 @@ app.post("/saveData", (req, res) => {
     async function main() {
         // SMTP config
         const transporter = nodemailer.createTransport({
-              host: 'mail.kicklaced.com' /* mail.skwergroup.com */, 
+              host: 'mail.skwerzone.com' /* mail.skwergroup.com */, 
               port: 465,
               auth: {
-                  user: 'maryann@kicklaced.com' /* 'no-reply@skwergroup.com' */,
-                  pass: '0-;umLl#EZ]J' /* 'T(frZlmv3UFZ' */
+                  user: 'no-reply@skwerzone.com' /* 'no-reply@skwergroup.com' */,
+                  pass: '.%}qPS(NY[Q_' /* 'T(frZlmv3UFZ' */
               }
           });
         let info = await transporter.sendMail({
-          from: '"Skwer Group" <maryann@kicklaced.com>', /* '"Skwer Group" <no-reply@skwergroup.com>', */
-          to: email, // Test email address
+          from: '"Skwer Group" <no-reply@skwerzone.com>', /* '"Skwer Group" <no-reply@skwergroup.com>', */
+          to: email, /* Test email address*/
           subject: "Order Summary!",
           cc: "maryann@skwergroup.com",
           text: "Thanks for your order.",
           html: email_template_3,
         });
-        console.log("Message sent: %s", info.messageId); // Output message ID
+        console.log("Message sent: %s", info.messageId); 
       }
-      // Catch any errors and output them to the console
     main().catch(console.error);
 });
 

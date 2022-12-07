@@ -36,7 +36,9 @@
 
 .bg__white {
     background-color: #fff  !important;
-    box-shadow: 0 0 5px #000;
+    -ms-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.13);
+    -o-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.13);
+    box-shadow: 0 11px 27px rgb(0 9 71 / 13%);
 }
 
 .border-white-muted, .border-white-muted li {
@@ -93,7 +95,7 @@
 }
 
 .premium__pac, .premium__pac h3 {
-    color: #5182d1!important;
+    color: #1475F7!important;
 }
 
 .plus__pac, .plus__pac h3 {
@@ -102,7 +104,7 @@
 
 
 .dtr-pricing.bg__white:hover h3 {
-    background: #07a0ec!important;
+    background: #1475F7!important;
     color: #fff!important;
 }
 

@@ -65,7 +65,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   /* END  OR NO */
   
   /* DATABASE AXIOS */
-  const addData = () => {
+  const addData = () => { /* http://localhost:3001 */
     Axios.post("http://localhost:3001/saveData", {
       or_no: formData.or_no,
       jurisdiction: formData.jurisdiction,
@@ -129,7 +129,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
   const payNow = async token => {
     try {
       const response = await Axios({
-        url:'http://localhost:3001/payment',
+        url:'http://localhost:3001/payment', /* 'https://api.skwergroup.com/payment' */
         method: 'post',
         data: {
           name: formData.f_name + ' ' + formData.l_name,

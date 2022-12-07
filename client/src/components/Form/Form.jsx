@@ -16,7 +16,7 @@ import Order from '../Order/Order';
 import SkwerLogo from '../../assets/images/skwer_logo.svg';
 import { servData } from '../Order/AddServ'; 
 import { bankData } from '../OtherServices/BankServ'; 
-import Icon_pin from '../../assets/images/icons/paper-pin.png';
+import Icon_pin from '../../assets/images/icons/cart.png';
 import lottie from 'lottie-web';
 
 function Form() {
@@ -93,6 +93,14 @@ function Form() {
   }, [])
 
   var inclusion = (formData.package) === "plus" ? ["Setup fee", "Company Rubber Stamp", "Company Seal", "Notarisation and Apostille on Documents"] : (formData.package) === "premium" ? ["Setup fee", "Company Rubber Stamp", "Company Seal", "Notarisation and Apostille on Documents", "International Courier", "Creation of Company Logo; Business Card; and Letter Head"] : ["Setup fee"];
+
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = event => {
+    // 👇️ toggle isActive state on click
+    setIsActive(current => !current);
+  };
+
 
   return (
     <div>
@@ -183,7 +191,7 @@ function Form() {
               </div>
               
               {/* CENTER */}
-              <div className="mbt__container__right">
+              <div className={isActive ? 'mbt__container__right closeBar' : 'mbt__container__right'}>
                 {/* Multi form */}
                 <div className="form___container">
                   
@@ -199,7 +207,7 @@ function Form() {
                       onClick={() => {
                         setPage((currPage) => currPage - 1);
                       }}>
-                      Back
+                      BACK
                     </button>
                     <button className={(page === 0) || page === 2 || page === 5 ? 'btn none' : 'btn forward'}
                       disabled={(page === 0)}
@@ -212,18 +220,22 @@ function Form() {
 
                       }}
                     >
-                      {page === FormTitles.length - 1 ? "Make Payment" : "Next"}
+                      {page === FormTitles.length - 1 ? "Make Payment" : "NEXT"}
                     </button>
                   </div>
                 </div>
               </div>
 
                {/* RIGHT */}
-               <div className="order_summary ">
-                <span className='pin'>
-                  <img src={Icon_pin} alt="" />
+               <div className={isActive ? 'order_summary closeBar' : 'order_summary'}>
+                <span className={isActive ? 'toggleDiv closeBar' : 'toggleDiv'} onClick={handleClick}></span>
+                {/* <span className='pin'>
+                  <img src={Icon_pin} alt="skwer_pin" />
+                </span> */}
+                <span className="skwer__label">
+                  <img src={Icon_pin} alt="skwer_pin" />
+                  <h3 className=''>Input Summary</h3>  
                 </span>
-                <h3 className=''>Input Summary:</h3>
                 <table>
                   <tbody>
                     <tr>{/* Jurisdiction */}

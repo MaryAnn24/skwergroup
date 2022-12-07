@@ -75,7 +75,7 @@ function OtherServices ({formData, setFormData}) {
             })}
       </div>
       <h3>Bank Services</h3>
-      <div className='add__services grid grid__4'>{/* BANK SERVICES */}
+      <div className='add__services grid grid__4 bank_services'>{/* BANK SERVICES */}
             {bankData.map((item, index) => {
               return <label key={index} className={item.jurisdiction.includes(formData.jurisdiction) ? "display" : "none"}>
                 <div className='serv_box grid'>

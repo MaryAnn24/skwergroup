@@ -8,11 +8,14 @@ input.form-control.checkbox {
 
 .add__services label {
     background: #fff;
+    position: relative;
     color: #000;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+    -ms-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.13);
+    -o-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.13);
+    box-shadow: 0 11px 27px rgb(0 9 71 / 13%);
     grid-template-columns: repeat(2, max-content);
     gap: 0.5rem;
     display: grid;
@@ -25,7 +28,10 @@ input.form-control.checkbox {
 }
 
 .add__services label:hover {
-    background: #07a0ec!important;
+    background: #1475F7;
+    background-image: linear-gradient(132deg, #1475F7 0%, #7114EF 50%, #1475F7) !important;
+    background-position: 0%;
+    background-size: 200%, 1px;
 }
 
 .add__services label:hover .serv_name, .add__services label:hover span.desc {
@@ -55,6 +61,11 @@ span.desc {
     width: fit-content;
     height: 40px;
 }
+
+.bank_services .serv_box .icon {
+    border:2px solid #fff;
+}
+
 
 .serv_box {justify-content: center;}
 
