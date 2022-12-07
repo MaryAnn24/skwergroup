@@ -17,7 +17,7 @@ yellow: rgb(240, 200, 17) f0c811
     height: 0;
   }
   .step > div:not(:first-child) {
-    margin-left: 1.5em;
+    margin-left: 1em;
     padding-left: 1em;
   }
   .step.step-active {
@@ -61,8 +61,6 @@ yellow: rgb(240, 200, 17) f0c811
   .circle {
     background: #adadad;
     position: relative;
-    width: 1.6em;
-    height: 1.5em;
     line-height: 1.5em;
     border-radius: 100%;
     color: #fff;
@@ -70,7 +68,7 @@ yellow: rgb(240, 200, 17) f0c811
     padding-top: 0.1rem;
     font-weight: bold;
     font-size: 16px;
-    top: 3px;
+    /* top: 3px; */
   }
   
   /* Vertical Line */
@@ -100,8 +98,6 @@ yellow: rgb(240, 200, 17) f0c811
   /* Stepper Titles */
   .title {
     line-height: 1.5em;
-    font-weight: 500;
-    font-size: 22px;
     color:  #adadad; /*#28a745*/
   }
   .caption {
@@ -109,3 +105,108 @@ yellow: rgb(240, 200, 17) f0c811
   }
 
  
+/* RESPONSIVE STYLE */
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      .circle {
+        width: 1.25em;
+        height: 1.1em;
+      }
+      .title, .order_summary h3 {
+        font-size: 14px;
+      }
+
+      .title {
+        display: none;
+      }
+
+      .circle .fa {
+        font-size: 12px;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+      .circle {
+        width: 1.25em;
+        height: 1.1em;
+      }
+      .title, .order_summary h3 {
+        font-size: 14px;
+      }
+
+      .title {
+        display: none;
+      }
+
+      .circle .fa {
+        font-size: 12px;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+      .circle {
+        width: 1.25em;
+        height: 1.1em;
+      }
+      .title, .order_summary h3 {
+        font-size: 14px;
+      }
+
+      .title {
+        display: none;
+      }
+
+      .circle .fa {
+        font-size: 12px;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+      
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+      .title, .order_summary h3 {
+        font-size: 16px;
+      }
+
+      .title {
+        display: block;
+        font-weight: 700;
+      }
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      .title, .order_summary h3 {
+        font-size: 18px;
+      }
+
+      .title {
+        display: block;
+        font-weight: 700;
+      }
+
+      .circle {
+        width: 1.6em;
+        height: 1.5em;
+      }
+
+      .circle .fa {
+        font-size: 16px;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+      }
+    }
+  

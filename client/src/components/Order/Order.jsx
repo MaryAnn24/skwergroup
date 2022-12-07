@@ -124,8 +124,6 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
     });
   }
 
-  
-  
   const payNow = async token => {
     try {
       const response = await Axios({
