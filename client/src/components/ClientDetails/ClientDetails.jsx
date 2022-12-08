@@ -59,7 +59,7 @@ function ClientDetails({formData, setFormData}) {
                 return <option value={s_item} key={index} /*selected={formData.salutation === s_item}*/ >{s_item}</option>
               })}
             </select>
-            <span className='error'>{formData.salutation === "" ? " * Required " : "" }</span>
+            {/* <span className='error'>{formData.salutation === "" ? " * Required " : "" }</span> */}
           </article>
           <article>
             <input className='form-control f_name'
@@ -76,7 +76,7 @@ function ClientDetails({formData, setFormData}) {
             <span className='error'>{formData.f_name === "" ? " * Required " : "" }</span>
           </article>
           <article>
-            <input className='form-control'
+            <input className='form-control l_name'
               type="text" 
               placeholder='Last Name'
               name="l_name"

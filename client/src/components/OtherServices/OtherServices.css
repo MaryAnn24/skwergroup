@@ -16,13 +16,11 @@ input.form-control.checkbox {
     -ms-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.13);
     -o-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.13);
     box-shadow: 0 11px 27px rgb(0 9 71 / 13%);
-    grid-template-columns: repeat(2, max-content);
-    gap: 0.5rem;
     display: grid;
     min-height: 80px;
     border-radius: 8px;
     padding: 12px 10px 10px;
-    margin: 0 0 30px;
+    margin: 0;
     cursor: pointer;
     align-items: center;
 }
@@ -39,7 +37,6 @@ input.form-control.checkbox {
 }
 
 .add__services.grid__4 {
-    grid-template-columns: repeat(4, max-content);
     gap: 0.5rem;
     justify-content: center;
     text-align: center;
@@ -47,8 +44,6 @@ input.form-control.checkbox {
 
 span.desc {
     display: block;
-    font-size: 0.7em;
-    max-width: 150px;
     line-height: 1.5;
 }
 
@@ -71,16 +66,14 @@ span.desc {
 
 .serv_name {
     font-weight: 500;
-    font-size: 16px;
     line-height: 1.2;
     color: #2c2c51;
-    max-width: 120px;
-    margin: 0;
+    margin: 5px 0;
 }
 
 .serv_price {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 32px;
     color: #080808;
     background: #ebbcbe;
@@ -104,3 +97,133 @@ ol li {
 .hide_serv {
     display: none!important;
 }
+
+/* RESPONSIVE STYLE */
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+        .add__services.grid__4 {
+            grid-template-columns: repeat(3, max-content);
+        }
+
+        .serv_name {
+            font-size: 12px;
+            max-width: 70px;
+        }
+
+        span.desc {
+            font-size: 10px;
+            max-width: 70px;
+        }
+
+        .add__services label {
+            grid-template-columns: repeat(1, max-content);
+        }
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        .add__services.grid__4 {
+            grid-template-columns: repeat(4, max-content);
+        }
+
+        .serv_name {
+            font-size: 14px;
+            max-width: 80px;
+        }
+
+        span.desc {
+            font-size: 12px;
+            max-width: 100px;
+        }
+
+        .add__services label {
+            grid-template-columns: repeat(1, max-content);
+        }
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        .add__services.grid__4 {
+            grid-template-columns: repeat(3, max-content);
+        }
+
+        .serv_name {
+            font-size: 14px;
+            max-width: 80px;
+        }
+
+        span.desc {
+            font-size: 12px;
+            max-width: 100px;
+        }
+
+        .add__services label {
+            grid-template-columns: repeat(1, max-content);
+        }
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 1100px) {
+        .add__services.grid__4 {
+            grid-template-columns: repeat(3, max-content);
+        }
+
+        .serv_name {
+            font-size: 14px;
+            max-width: 80px;
+        }
+
+        span.desc {
+            font-size: 12px;
+            max-width: 100px;
+        }
+
+        .add__services label {
+            grid-template-columns: repeat(2, max-content);
+        }
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        .add__services.grid__4 {
+            grid-template-columns: repeat(3, max-content);
+        }
+
+        .serv_name {
+            font-size: 14px;
+            max-width: 80px;
+        }
+
+        span.desc {
+            font-size: 12px;
+            max-width: 100px;
+        }
+
+        .add__services label {
+            grid-template-columns: repeat(2, max-content);
+        }
+        
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1570px) {
+        .add__services.grid__4 {
+            grid-template-columns: repeat(4, max-content);
+        }
+
+        .serv_name {
+            font-size: 14px;
+            max-width: 80px;
+        }
+
+        span.desc {
+            font-size: 12px;
+            max-width: 100px;
+        }
+
+        .add__services label {
+            grid-template-columns: repeat(2, max-content);
+        }
+    }
+    

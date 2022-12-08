@@ -5,7 +5,7 @@
 }
 
 .grid__left {
-    justify-content: left!important;
+    justify-content: center!important;
 }
 
 .order {
@@ -27,7 +27,7 @@
 
 .order li {
     line-height: 1.5em;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .order__left ul, .order__left p {
@@ -49,12 +49,10 @@
     font-size: 15px;
     margin-bottom: 0px!important;
     color: #2c2c51;
-    font-size: 20px;
 }
 
 .agreement p {
     font-weight: normal;
-    font-size: 14px;
     display: inline;
     margin-left: 20px;
 }
@@ -66,7 +64,6 @@
 
 .amount {
     color: #1475F7;
-    font-size: 2.5rem;
 }
 
 .stripe img {
@@ -138,7 +135,7 @@ button.StripeCheckout span {
     box-shadow: 0 11px 27px rgb(0 9 71 / 30%);
     background-color: #fff;
     border-radius: 16px;
-    padding: 50px;
+    padding: 4%;
     position: relative;
     z-index: 0;
 }
@@ -153,3 +150,101 @@ button.StripeCheckout span {
 .total {
     justify-content: center;
 }
+
+.order__left.agreement label {
+    display: flex;
+    vertical-align: middle;
+}
+
+/* RESPONSIVE STYLE */
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+        .total {
+            grid-template-columns: repeat(1, max-content);
+            gap: 1rem;
+        }
+        .stripe__btn {
+            order: 1;
+            padding-top: 0;
+        }
+
+        .order li, .agreement p {
+            font-size: 12px;
+        }
+
+        .amount {
+            font-size: 25px;
+        }
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        .total {
+            grid-template-columns: repeat(1, max-content);
+            gap: 1rem;
+        }
+        .stripe__btn {
+            order: 1;
+            padding-top: 0;
+        }
+
+        .order li, .agreement p {
+            font-size: 12px;
+        }
+
+        .amount {
+            font-size: 25px;
+        }
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        .total {
+            grid-template-columns: repeat(1, max-content);
+            gap: 1rem;
+        }
+        .stripe__btn {
+            order: 1;
+            padding-top: 0;
+        }
+
+        .order li, .agreement p {
+            font-size: 12px;
+        }
+
+        .amount {
+            font-size: 25px;
+        }
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        .order li, .agreement p{
+            font-size: 12px;
+        }
+
+        .amount {
+            font-size: 28px;
+        }
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        .total {
+            grid-template-columns: repeat(2, max-content);
+            gap: 1rem;
+        }
+        .stripe__btn {
+            order: 0;
+        }
+
+        .order li, .agreement p {
+            font-size: 14px;
+        }
+
+        .amount {
+            font-size: 28px;
+        }
+    }
+    

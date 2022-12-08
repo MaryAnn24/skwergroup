@@ -3,7 +3,8 @@ textarea {
 }
 
 .phoneInput {
-    width: 400px;
+    width: 90%;
+     position: relative;
 }
 
 .PhoneInputInput {
@@ -57,27 +58,135 @@ span.note {
     gap: 0.3rem;
     justify-content: left;
 }
-.grid__3 input, .client__page input {
-    width: 400px;
-}
+
 .grid__3 select {
     width: max-content;
 }
 
 .client__page .grid__2 {
-    grid-template-columns: repeat(2, max-content)!important;
     gap: 0.3rem!important;
     justify-content: left!important;
 }
 
 .street {
-    width: 87%!important;
-}
-
-.f_name {
-    width: 308px!important;
+    width: 77%!important;
 }
 
 .css-b62m3t-container {
     width: 425px;
 }
+
+/* RESPONSIVE STYLE */
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+        .f_name, .l_name{
+            width: 100%;
+            margin-right: 0;
+        }
+
+        .grid__3 input, .client__page input {
+            width: 95%;
+        }
+
+        .phoneInput {
+            width: 95%;
+        }
+
+        .street {
+            width: 95%!important;
+        }
+
+        .client__page .grid__2 {
+            grid-template-columns: repeat(1, 100%)!important;
+        }
+
+        .grid__3 {
+            grid-template-columns: repeat(1, 100%);
+        }
+
+        .grid__3 select {
+            width: 100%;
+        }
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        .f_name, .l_name{
+            width: 165px!important;
+            margin-right: 0;
+        }
+
+        .grid__3 input, .client__page input {
+            width: 86%;
+        }
+
+        .client__page .grid__2 {
+            grid-template-columns: repeat(2, 48%)!important;
+        }
+
+        .phoneInput {
+            width: 90%;
+        }
+
+        .street {
+            width: 90%!important;
+        }
+
+        .grid__3 {
+            grid-template-columns: repeat(3, max-content);
+        }
+
+        .grid__3 select {
+            width: 90%;
+        }
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        .f_name, .l_name{
+            width: 130px!important;
+            margin-right: 0;
+        }
+
+        .grid__3 input, .client__page input {
+            width: 86%;
+        }
+
+        .client__page .grid__2 {
+            grid-template-columns: repeat(2, 48%)!important;
+        }
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        .f_name, .l_name{
+            width: 150px!important;
+            margin-right: 0;
+        }
+
+        .grid__3 input, .client__page input {
+            width: 88%;
+        }
+
+        .client__page .grid__2 {
+            grid-template-columns: repeat(2, 40%)!important;
+        }
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        .f_name, .l_name{
+            width: 250px!important;
+            margin-right: 0;
+        }
+
+        .grid__3 input, .client__page input {
+            width: 90%;
+        }
+
+        .client__page .grid__2 {
+            grid-template-columns: repeat(2, 40%)!important;
+        }
+    }
+    

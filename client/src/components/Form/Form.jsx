@@ -111,13 +111,13 @@ function Form() {
               {/* LEFT */}
               <div className="mbt__container__left">
                 
-                <div className='logo grid grid__2'>
+                <div className='logo grid grid__2 header_desk'>
                   <a className="logo-default dtr-scroll-link" href="#home"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" />
                   
                   </a><h2>SKWER GROUP</h2>
                   {/* Mobile menu */}
                 </div>
-                <p className="lead"></p>
+
                 {/* Left Steps */}
                 <div className= {`step ${step === page ? "step-active " : null} ${step < page ? "step-done " : ""}` + step} >
                   <div>
@@ -193,6 +193,12 @@ function Form() {
               {/* CENTER */}
               <div className={isActive ? 'mbt__container__right closeBar' : 'mbt__container__right'}>
                 {/* Multi form */}
+                <div className='logo grid grid__2 header_mobile'>
+                  <a className="logo-default dtr-scroll-link" href="#home"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" />
+                  
+                  </a><h2>SKWER GROUP</h2>
+                  {/* Mobile menu */}
+                </div>
                 <div className="form___container">
                   
                   <div className="header">

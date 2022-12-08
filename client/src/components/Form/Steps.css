@@ -22,6 +22,7 @@ yellow: rgb(240, 200, 17) f0c811
   }
   .step.step-active {
     color: #1475F7!important;
+    font-weight: 700;
   }
   .step.step-active .circle {
     background-color: #1475F7;
@@ -99,6 +100,7 @@ yellow: rgb(240, 200, 17) f0c811
   .title {
     line-height: 1.5em;
     color:  #adadad; /*#28a745*/
+    font-weight: 500;
   }
   .caption {
     font-size: 0.8em;
@@ -182,7 +184,6 @@ yellow: rgb(240, 200, 17) f0c811
 
       .title {
         display: block;
-        font-weight: 700;
       }
     }
 
@@ -194,7 +195,6 @@ yellow: rgb(240, 200, 17) f0c811
 
       .title {
         display: block;
-        font-weight: 700;
       }
 
       .circle {
