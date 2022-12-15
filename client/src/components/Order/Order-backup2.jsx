@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Order.css';
 import StripePic from '../../assets/images/card-stripe.svg';
 import Axios from 'axios';
@@ -7,10 +7,9 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
 import { bankData } from '../OtherServices/BankServ';
 import { servData } from './AddServ';
-
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "../Payment/CheckoutForm";
-import { loadStripe } from "@stripe/stripe-js";
+import Payment from "../Payment/Payment";
+import Completion from "../Payment/Completion";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
@@ -18,6 +17,7 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
 
   /* VARIABLE DECLARATIONS */
   const serv = formData.add_serv;
+  console.log(formData);
 
   /* ADDITIONAL SERVICES DATA */
   /*const servData = [
@@ -152,42 +152,17 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
     }
   } /* END */
 
-  const [clientSecret, setClientSecret] = useState("");
-  const [stripePromise, setStripePromise] = useState(null);
-
-  useEffect(() => {
-    fetch("/config").then(async (r) => {
-      const { publishableKey } = await r.json();
-      setStripePromise(loadStripe(publishableKey));
-    });
-  }, []);
-  
-  const dataOrder = {
-    fname: formData.f_name + ' ' + formData.l_name,
-    amount: total_charge * 100,
-
-  }
-
-  const handleCheckout = () => {
-    Axios.post('http://localhost:3001/orderPay', {
-      dataOrder,
-    }).then((res) => {
-      if(res.data.message) {
-        // console.log(res.data.message);
-        setClientSecret(res.data.message);
-      }
-    })
-  }
-
   /* CHECKBOX/MAKEPAYMENT APPEAR */
   const [btnActive, setActive] = useState("block");
-  const [btnStripe, setBtnStripe] = useState("deactivated");
+  const [btnStripe, setBtnStripe] = useState("deactivate");
 
   const activePay = () => {
-    if(btnStripe === "deactivated") {
-      setBtnStripe('activated');
+    if(btnActive === "block") {
+      setActive("none");
+      setBtnStripe('active');
     }else {
-      setBtnStripe('deactivated');
+      setActive("block");
+      setBtnStripe('deactivate');
     }
   } /* END */
 
@@ -379,8 +354,8 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
                   /*====DOUBLE CHECK AND DELETE=== */
                   /*console.log(checkAgreement);*/
                   //setCheckAgreement(!checkAgreement);
-                   activePay();
-                 // handleCheckout();
+                  activePay();
+                  
                 }}/>
               <p className="m-0" >I confirm that I have read, understood and agreed to all terms and conditions in
                 <a href="#hi" target="_blank"> Terms</a> &amp; 
@@ -390,40 +365,29 @@ function Order({formData, setFormData, checkAgreement, setCheckAgreement, page, 
             </label>
           </div>
            {/* STRIPE */}
-              <div className='stripe__btn grid'>
-                {/* <div className={'box ' + btnActive}></div> */}
+          <div className='grid grid__2 total'>
+            <div className={'stripe__btn ' + btnStripe}>
+              <div className={'box ' + btnActive}></div>
+              
+              {/* <StripeCheckout
+                stripeKey={publishableKey}
+                label='Make Payment'
+                name='Pay With Credit Card'
+                billingAddress
+                shippingAddress
+                amount={priceForStripe}
+                description={`Your order amount is $${package_amt + total_serv + total_bank}`}
+                token={payNow}
+              /> */}
 
-                {/* <StripeCheckout
-                  stripeKey={publishableKey}
-                  label='Make Payment'
-                  name='Pay With Credit Card'
-                  billingAddress
-                  shippingAddress
-                  amount={priceForStripe}
-                  description={`Your order amount is $${package_amt + total_serv + total_bank}`}
-                  token={payNow}
-                /> */}
-                <div className="stripe">
-                  <img src={StripePic} alt="stripe_logo" />
-                </div>
-                <button className={'btn ' + btnStripe} onClick={() => handleCheckout()} >MAKE PAYMENT via STRIPE</button>
-                <div className={'stripe__form ' + btnStripe}>
-                  {clientSecret && stripePromise && (
-                    <Elements stripe={stripePromise} options={{ clientSecret }}>
-                      <CheckoutForm  formData = {formData} setFormData = {setFormData} />
-                    </Elements>
-                  )}
-                </div>
-                
-              </div>
-              
-              
-              
             </div>
+            <div className='stripe__box'>
+              <Payment formData = {formData} setFormData = {setFormData} />
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-
-
   )
 
 }

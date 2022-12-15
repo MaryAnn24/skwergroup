@@ -67,7 +67,7 @@
 }
 
 .stripe img {
-    width: 200px;
+    width: 250px;
 }
 
 .add_serv p {
@@ -86,47 +86,14 @@
 
 .stripe__btn {
     margin-bottom: 5px;
-    padding-top: 35px;
 }
 
-button.StripeCheckout {
-    border-radius: 2px!important;
-    background: transparent!important;
-    box-shadow: none!important;
+.deactivated {
+    display: none;
 }
 
-button.StripeCheckout span {
-    border-radius: 2px!important;
-    box-shadow: none!important;
-    font-family: "Roboto",sans-serif;
-    font-weight: 400!important;
-    padding: 5px 22px !important;
-    width: 150px;
-    text-transform: uppercase;
-}
-
-.deactivate button.StripeCheckout {
-    background: gray!important;
-    border: none;
-    opacity: .8;
-    cursor: help!important;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    pointer-events: none;
-}
-
-.deactivate button.StripeCheckout span {
-    background: gray!important;
-    border: none;
-    opacity: .8;
-    cursor: help!important;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    pointer-events: none;
-}
-
-.active button.StripeCheckout span {
-    background: #1475F7!important;
+.activated {
+    display: block;
 }
 
 .order {
@@ -141,10 +108,11 @@ button.StripeCheckout span {
 }
 
 .stripe {
-    border: 2px solid transparent;
     border-radius: 15px;
-    -webkit-box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
-    box-shadow: 0 2px 8px rgb(201 201 201 / 25%);
+    margin-bottom: 10px;
+    margin-top: -30px;
+    right: 0;
+    text-align: right;
 }
 
 .total {
@@ -156,95 +124,77 @@ button.StripeCheckout span {
     vertical-align: middle;
 }
 
+.order__page input.form-control.checkbox {
+    top:auto;
+}
+
+form#payment-form {
+    padding: 35px;
+}
+
+.stripe__form button {
+    margin-top: 10px;
+}
+
 /* RESPONSIVE STYLE */
+.total {
+    grid-template-columns: repeat(2, max-content);
+    gap: 1rem;
+}
+.stripe__btn {
+    order: 0;
+}
 
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
-        .total {
-            grid-template-columns: repeat(1, max-content);
-            gap: 1rem;
-        }
-        .stripe__btn {
-            order: 1;
-            padding-top: 0;
-        }
+.stripe__btn .btn {
+    width: initial;
+    width: 90%;
+    margin: auto;
+}
 
-        .order li, .agreement p {
-            font-size: 12px;
-        }
+.order li, .agreement p {
+    font-size: 14px;
+}
 
-        .amount {
-            font-size: 25px;
-        }
+.amount {
+    font-size: 28px;
+}
+  
+  /* 1366 down - large */
+  @media only screen and (max-width: 1366px) {
+          
+  }
+
+  /* 1024 down - laptop */
+  @media only screen and (max-width: 1024px) {
+
+  }
+
+  /* 960 down - tablet */
+  @media only screen and (max-width: 960px) {
+
+  }
+
+  /* 600 down - small screen */
+  @media only screen and (max-width: 600px) {
+    .total {
+        grid-template-columns: repeat(1, max-content);
+        gap: 1rem;
+    }
+    .stripe__btn {
+        order: 1;
+        padding-top: 0;
     }
 
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-        .total {
-            grid-template-columns: repeat(1, max-content);
-            gap: 1rem;
-        }
-        .stripe__btn {
-            order: 1;
-            padding-top: 0;
-        }
-
-        .order li, .agreement p {
-            font-size: 12px;
-        }
-
-        .amount {
-            font-size: 25px;
-        }
+    .order li, .agreement p {
+        font-size: 12px;
     }
 
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px) {
-        .total {
-            grid-template-columns: repeat(1, max-content);
-            gap: 1rem;
-        }
-        .stripe__btn {
-            order: 1;
-            padding-top: 0;
-        }
-
-        .order li, .agreement p {
-            font-size: 12px;
-        }
-
-        .amount {
-            font-size: 25px;
-        }
+    .amount {
+        font-size: 25px;
     }
+  }
 
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media only screen and (min-width: 992px) {
-        .order li, .agreement p{
-            font-size: 12px;
-        }
+  /* 360 down - mobile */
+  @media only screen and (max-width: 360px) {
 
-        .amount {
-            font-size: 28px;
-        }
-    }
-
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media only screen and (min-width: 1200px) {
-        .total {
-            grid-template-columns: repeat(2, max-content);
-            gap: 1rem;
-        }
-        .stripe__btn {
-            order: 0;
-        }
-
-        .order li, .agreement p {
-            font-size: 14px;
-        }
-
-        .amount {
-            font-size: 28px;
-        }
-    }
-    
+  }

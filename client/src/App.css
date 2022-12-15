@@ -40,29 +40,29 @@
 }
 
 /* RESPONSIVE STYLE */
+  
+  /* 1366 down - large */
+  @media only screen and (max-width: 1366px) {
+          
+  }
 
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
-        
-    }
+  /* 1024 down - laptop */
+  @media only screen and (max-width: 1024px) {
 
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-       
-    }
+  }
 
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px) {
-        
-    }
+  /* 960 down - tablet */
+  @media only screen and (max-width: 960px) {
 
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media only screen and (min-width: 992px) {
-       
-    }
+  }
 
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media only screen and (min-width: 1200px) {
-       
-    }
-    
+  /* 600 down - small screen */
+  @media only screen and (max-width: 600px) {
+
+  }
+
+  /* 360 down - mobile */
+  @media only screen and (max-width: 360px) {
+
+  }
+

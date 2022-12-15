@@ -23,7 +23,7 @@
     -ms-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.13);
     -o-box-shadow: 0 11px 27px rgba(0, 9, 71, 0.13);
     box-shadow: 0 11px 27px rgb(0 9 71 / 13%);
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: 55px 1fr;
     gap: 0.5rem;
     display: grid;
     min-height: 80px;
@@ -79,155 +79,92 @@
 }
 
 /* RESPONSIVE STYLE */
+.grid__4 {
+    grid-template-columns: repeat(4, 22%);
+    justify-content: center;
+}
 
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
-        .grid__4 {
-            grid-template-columns: repeat(3, 30%);
-        }
+.order_summary {
+    padding-left: 15px;
+    padding-right: 15px;
+}
 
-        .order_summary {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
+.country__card img {
+    width: 50px;
+    height: 50px;
+}
 
-        .country__card img {
-            width: 35px;
-            height: 35px;
-        }
+.country__card span {
+    font-size: 14px;
+}
 
-        .country__card span {
-            font-size: 14px;
-            max-width: 95px;
-        }
+.country__card {
+    min-height: 70px;
+    margin:0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
-        .country__card {
-            min-height: 70px;
-            margin:0;
-            padding-left: 10px;
-            padding-right: 10px;
-            grid-template-columns: repeat(1, 100%);
-            justify-items: center;
-        }
+    
+
+ /* 1366 down - large */
+ @media only screen and (max-width: 1366px) {
+    .grid__4 {
+        grid-template-columns: repeat(3, 30%);
+    }
+ }
+
+ /* 1024 down - laptop */
+ @media only screen and (max-width: 1024px) {
+    .grid__4 {
+        grid-template-columns: repeat(4, 22.2%);
     }
 
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-        .grid__4 {
-            grid-template-columns: repeat(3, 30%);
-        }
-
-        .order_summary {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .country__card img {
-            width: 35px;
-            height: 35px;
-        }
-
-        .country__card span {
-            font-size: 14px;
-            max-width: 95px;
-        }
-
-        .country__card {
-            min-height: 70px;
-            margin:0;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
+    .order_summary {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px) {
-        .grid__4 {
-            grid-template-columns: repeat(3, 30%);
-        }
-
-        .order_summary {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .country__card img {
-            width: 35px;
-            height: 35px;
-        }
-
-        .country__card span {
-            font-size: 14px;
-            max-width: 95px;
-        }
-
-        .country__card {
-            min-height: 70px;
-            margin:0;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
+    .country__card img {
+        width: 40px;
+        height: 40px;
     }
 
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media only screen and (min-width: 992px) {
-        .grid__4 {
-            grid-template-columns: repeat(3, 30%);
-            justify-content: center;
-        }
+    .country__card {
+        min-height: 70px;
+        margin:0;
+        padding-left: 10px;
+        padding-right: 10px;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+ }
 
-        .order_summary {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
+ /* 960 down - tablet */
+ @media only screen and (max-width: 960px) {
+    .country__card img {
+        width: 35px;
+        height: 35px;
+    }
+ }
 
-        .country__card img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .country__card span {
-            font-size: 14px;
-            max-width: 95px;
-        }
-
-        .country__card {
-            min-height: 70px;
-            margin:0;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        
+ /* 600 down - small screen */
+ @media only screen and (max-width: 600px) {
+    .grid__4 {
+        grid-template-columns: repeat(3, 30%);
     }
 
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media only screen and (min-width: 1200px) {
-        .grid__4 {
-            grid-template-columns: repeat(4, 22%);
-            justify-content: center;
-        }
-
-        .order_summary {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
-        .country__card img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .country__card span {
-            font-size: 14px;
-            max-width: 95px;
-        }
-
-        .country__card {
-            min-height: 70px;
-            margin:0;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
+    .country__card span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-  
+
+ }
+
+ /* 360 down - mobile */
+ @media only screen and (max-width: 360px) {
+    .grid__4 {
+        grid-template-columns: repeat(2, 50%);
+    }
+ }

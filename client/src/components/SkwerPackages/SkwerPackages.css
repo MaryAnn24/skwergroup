@@ -115,66 +115,51 @@ ul.dtr-list-pricing {
 
 
 /* RESPONSIVE STYLE */
+.package__section {
+    width: 30%;
+    font-size: 12px;
+}
 
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
-        .package__section {
-            width: 60%;
-            font-size: 12px;
-        }
+.dtr-pricing-heading,  .dtr-price {
+    font-size: 30px;
+}
+  
+  /* 1366 down - large */
+  @media only screen and (max-width: 1366px) {
+          
+  }
 
-        .dtr-pricing-heading,  .dtr-price {
-            font-size: 25px;
-        }
+  /* 1024 down - laptop */
+  @media only screen and (max-width: 1024px) {
+    .dtr-pricing-heading,  .dtr-price {
+        font-size: 25px;
+    }
+  }
 
-        .dtr-pricing-details {display: none;}
+  /* 960 down - tablet */
+  @media only screen and (max-width: 960px) {
+    .dtr-pricing-heading,  .dtr-price {
+        font-size: 30px;
+    }
+  }
+
+  /* 600 down - small screen */
+  @media only screen and (max-width: 600px) {
+    .package__section {
+        width: 80%;
+        font-size: 14px;
     }
 
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-        .package__section {
-            max-width: 30%;
-            font-size: 12px;
-        }
-
-        .dtr-pricing-heading,  .dtr-price {
-            font-size: 28px;
-        }
+    .dtr-pricing-heading,  .dtr-price {
+        font-size: 28px;
     }
 
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px) {
-        .package__section {
-            max-width: 30%;
-            font-size: 10px;
-        }
-
-        .dtr-pricing-heading,  .dtr-price {
-            font-size: 22px;
-        }
+    .dtr-pricing-details {
+        min-height: 0;
     }
+  }
 
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media only screen and (min-width: 992px) {
-        .package__section {
-            max-width: 30%;
-            font-size: 12px;
-        }
+  /* 360 down - mobile */
+  @media only screen and (max-width: 360px) {
 
-        .dtr-pricing-heading,  .dtr-price {
-            font-size: 25px;
-        }
-    }
-
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media only screen and (min-width: 1200px) {
-        .package__section {
-            max-width: 30%;
-            font-size: 12px;
-        }
-
-        .dtr-pricing-heading,  .dtr-price {
-            font-size: 30px;
-        }
-    }
-    
+  }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useState } from 'react';
 
 import './Form.css';
@@ -17,11 +17,12 @@ import SkwerLogo from '../../assets/images/skwer_logo.svg';
 import { servData } from '../Order/AddServ'; 
 import { bankData } from '../OtherServices/BankServ'; 
 import Icon_pin from '../../assets/images/icons/cart.png';
-import lottie from 'lottie-web';
+/* import lottie from 'lottie-web';*/
+
 
 function Form() {
   /* VARIABLES DECLARATION */
-  const FormTitles = ["Select Country", "Propose Company Name and Company Type", "Select a Package", "Add Additional Services", "Input Your Basic Details", "Your Order Summary"]
+  const FormTitles = ["Select Country", "Propose Company Name and Company Type", "Select a Package", "Add Additional Services", "Input Your Basic Details", "Your Order Summary", "Thank you!"]
  
   const fields = {
     or_no: 0,
@@ -61,7 +62,9 @@ function Form() {
     <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  />, 
     <OtherServices formData = {formData} setFormData = {setFormData}  />, 
     <ClientDetails formData = {formData} setFormData = {setFormData}  />,
-    <Order fields = {fields} page = {page} setPage = {setPage} checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} />];
+    <Order fields = {fields} page = {page} setPage = {setPage} checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} />,
+    
+  ];
 
   var step = 0;
 
@@ -73,7 +76,7 @@ function Form() {
     return /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i.test(email);
   }
 
-  /* Lotie Files */
+  /* Lotie Files 
   const container = useRef(null);
 
   useEffect(() => {
@@ -86,11 +89,10 @@ function Form() {
       animationData: require('../../assets/images/lottie/blue_bldg.json')
     })
 
-    /* Return clean up function here */
     return () => {
       lottie.destroy();
     };
-  }, [])
+  }, []) */
 
   var inclusion = (formData.package) === "plus" ? ["Setup fee", "Company Rubber Stamp", "Company Seal", "Notarisation and Apostille on Documents"] : (formData.package) === "premium" ? ["Setup fee", "Company Rubber Stamp", "Company Seal", "Notarisation and Apostille on Documents", "International Courier", "Creation of Company Logo; Business Card; and Letter Head"] : ["Setup fee"];
 
@@ -100,7 +102,6 @@ function Form() {
     // 👇️ toggle isActive state on click
     setIsActive(current => !current);
   };
-
 
   return (
     <div>
@@ -113,75 +114,76 @@ function Form() {
                 
                 <div className='logo grid grid__2 header_desk'>
                   <a className="logo-default dtr-scroll-link" href="#home"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" />
-                  
                   </a><h2>SKWER GROUP</h2>
-                  {/* Mobile menu */}
                 </div>
 
                 {/* Left Steps */}
-                <div className= {`step ${step === page ? "step-active " : null} ${step < page ? "step-done " : ""}` + step} >
-                  <div>
-                    <div className="circle">
-                      {step+1 > page ? "" : <i className='fa fa-check'></i>}
+                <div className='left__steps__box'>
+                  <div className= {`step ${step === page ? "step-active " : null} ${step < page ? "step-done " : ""}` + step} >
+                    <div>
+                      <div className="circle">
+                        {step+1 > page ? "" : <i className='fa fa-check'></i>}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="title">Select Jurisdiction</div>
+                      {/* <div className="caption">Add inst. here</div> */}
                     </div>
                   </div>
-                  <div>
-                    <div className="title">Select Jurisdiction</div>
-                    {/* <div className="caption">Add inst. here</div> */}
+                  <div className={`step ${step+1 === page ? "step-active " : null} ${step+1 < page ? "step-done " : ""}`}
+                  >
+                    <div>
+                      <div className="circle" >
+                        {(step+1 === page) || (step+1 > page) ? "" : <i className='fa fa-check'></i>}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="title">Propose Company Name & Type</div>
+                    </div>
+                  </div>
+                  <div className={`step ${step+2 === page ? "step-active " : null} ${step+2 < page ? "step-done " : ""}`}>
+                    <div>
+                      <div className="circle">
+                        {(step+2 === page) || (step+2 > page) ? "" : <i className='fa fa-check'></i>}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="title">Select a Package</div>
+                    </div>
+                  </div>    
+                  <div className={`step ${step+3 === page ? "step-active " : null} ${step+3 < page ? "step-done " : ""}`}>
+                    <div>
+                      <div className="circle">
+                        {(step+3 === page) || (step+3 > page) ? "": <i className='fa fa-check'></i>}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="title">Add additional services</div>
+                    </div>
+                  </div>
+                  <div className={`step ${step+4 === page ? "step-active " : null} ${step+4 < page ? "step-done " : ""}`}>
+                    <div>
+                      <div className="circle">
+                        {(step+4 === page) || (step+4 > page) ? "" : <i className='fa fa-check'></i>}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="title">Input Your Basic Details</div>
+                    </div>
+                  </div>
+                  <div className={`step ${step+5 === page ? "step-active " : null} ${step+5 < page ? "step-done " : ""}`}>
+                    <div>
+                      <div className="circle">
+                        {(step+5 === page) || (step+5 > page) ? "" : <i className='fa fa-check'></i>}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="title">Confirm & pay</div>
+                    </div>
                   </div>
                 </div>
-                <div className={`step ${step+1 === page ? "step-active " : null} ${step+1 < page ? "step-done " : ""}`}
-                >
-                  <div>
-                    <div className="circle" >
-                      {(step+1 === page) || (step+1 > page) ? "" : <i className='fa fa-check'></i>}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="title">Propose Company Name & Type</div>
-                  </div>
-                </div>
-                <div className={`step ${step+2 === page ? "step-active " : null} ${step+2 < page ? "step-done " : ""}`}>
-                  <div>
-                    <div className="circle">
-                      {(step+2 === page) || (step+2 > page) ? "" : <i className='fa fa-check'></i>}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="title">Select a Package</div>
-                  </div>
-                </div>    
-                <div className={`step ${step+3 === page ? "step-active " : null} ${step+3 < page ? "step-done " : ""}`}>
-                  <div>
-                    <div className="circle">
-                      {(step+3 === page) || (step+3 > page) ? "": <i className='fa fa-check'></i>}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="title">Add additional services</div>
-                  </div>
-                </div>
-                <div className={`step ${step+4 === page ? "step-active " : null} ${step+4 < page ? "step-done " : ""}`}>
-                  <div>
-                    <div className="circle">
-                      {(step+4 === page) || (step+4 > page) ? "" : <i className='fa fa-check'></i>}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="title">Input Your Basic Details</div>
-                  </div>
-                </div>
-                     
-                <div className={`step ${step+5 === page ? "step-active " : null} ${step+5 < page ? "step-done " : ""}`}>
-                  <div>
-                    <div className="circle">
-                      {(step+5 === page) || (step+5 > page) ? "" : <i className='fa fa-check'></i>}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="title">Confirm & pay</div>
-                  </div>
-                </div>
+                
+
 
                 {/* <div className='bg__bldg' ref={container}
                   onMouseEnter={() => lottie.play("animateBldg")}

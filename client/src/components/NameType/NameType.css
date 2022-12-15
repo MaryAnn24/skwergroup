@@ -1,0 +1,22 @@
+.name__type .grid.grid__2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+}
+
+.name__type select {
+    width: 100%;
+}
+
+/* RESPONSIVE STYLE */
+
+  /* 600 down - small screen */
+  @media only screen and (max-width: 600px) {
+    .name__type .grid.grid__2 {
+        grid-template-columns: 1fr;
+    }
+  }
+
+  /* 360 down - mobile */
+  @media only screen and (max-width: 360px) {
+
+  }

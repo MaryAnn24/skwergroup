@@ -7,33 +7,24 @@ textarea {
      position: relative;
 }
 
-.PhoneInputInput {
-    height: 40px;
-}
-
 .PhoneInput {
-    display: flex;
-    align-items: center;
-    border: 1px solid red;
     border: 1px solid #ccc;
     border-radius: 0.25rem;
     box-shadow: none;
     -webkit-transition: none;
     color: #565360;
-    max-height: 35px;
+    height: 35px;
     font-weight: 400;
-    padding: 0.375rem 0.75rem;
-    margin-right: 5px;
-    font-family: "Roboto",sans-serif;
+    padding: 0.2% 2%;
     font-size: 17px;
-    font-size: 1rem;
-    height: 56px;
+    width: 95%;
 }
 
 input.PhoneInputInput {
     border: 0;
     font-size: 1rem;
     color: #565360;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 input.PhoneInputInput:focus-visible {
@@ -54,13 +45,9 @@ span.note {
 }
 
 .grid__3 {
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: 80px 1fr 1fr;
     gap: 0.3rem;
     justify-content: left;
-}
-
-.grid__3 select {
-    width: max-content;
 }
 
 .client__page .grid__2 {
@@ -69,7 +56,8 @@ span.note {
 }
 
 .street {
-    width: 77%!important;
+    width: 98%!important;
+    padding: 1%;
 }
 
 .css-b62m3t-container {
@@ -78,115 +66,33 @@ span.note {
 
 /* RESPONSIVE STYLE */
 
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
-        .f_name, .l_name{
-            width: 100%;
-            margin-right: 0;
-        }
+.client__page .grid__2 {
+    grid-template-columns: 1fr 1fr;
+}
+  
+  /* 1366 down - large */
+  @media only screen and (max-width: 1366px) {
+          
+  }
 
-        .grid__3 input, .client__page input {
-            width: 95%;
-        }
+  /* 1024 down - laptop */
+  @media only screen and (max-width: 1024px) {
 
-        .phoneInput {
-            width: 95%;
-        }
+  }
 
-        .street {
-            width: 95%!important;
-        }
+  /* 960 down - tablet */
+  @media only screen and (max-width: 960px) {
 
-        .client__page .grid__2 {
-            grid-template-columns: repeat(1, 100%)!important;
-        }
+  }
 
-        .grid__3 {
-            grid-template-columns: repeat(1, 100%);
-        }
-
-        .grid__3 select {
-            width: 100%;
-        }
+  /* 600 down - small screen */
+  @media only screen and (max-width: 600px) {
+    .grid__3, .client__page .grid__2 {
+        grid-template-columns: 1fr;
     }
+  }
 
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-        .f_name, .l_name{
-            width: 165px!important;
-            margin-right: 0;
-        }
+  /* 360 down - mobile */
+  @media only screen and (max-width: 360px) {
 
-        .grid__3 input, .client__page input {
-            width: 86%;
-        }
-
-        .client__page .grid__2 {
-            grid-template-columns: repeat(2, 48%)!important;
-        }
-
-        .phoneInput {
-            width: 90%;
-        }
-
-        .street {
-            width: 90%!important;
-        }
-
-        .grid__3 {
-            grid-template-columns: repeat(3, max-content);
-        }
-
-        .grid__3 select {
-            width: 90%;
-        }
-    }
-
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px) {
-        .f_name, .l_name{
-            width: 130px!important;
-            margin-right: 0;
-        }
-
-        .grid__3 input, .client__page input {
-            width: 86%;
-        }
-
-        .client__page .grid__2 {
-            grid-template-columns: repeat(2, 48%)!important;
-        }
-    }
-
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media only screen and (min-width: 992px) {
-        .f_name, .l_name{
-            width: 150px!important;
-            margin-right: 0;
-        }
-
-        .grid__3 input, .client__page input {
-            width: 88%;
-        }
-
-        .client__page .grid__2 {
-            grid-template-columns: repeat(2, 40%)!important;
-        }
-    }
-
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media only screen and (min-width: 1200px) {
-        .f_name, .l_name{
-            width: 250px!important;
-            margin-right: 0;
-        }
-
-        .grid__3 input, .client__page input {
-            width: 90%;
-        }
-
-        .client__page .grid__2 {
-            grid-template-columns: repeat(2, 40%)!important;
-        }
-    }
-    
+  }
