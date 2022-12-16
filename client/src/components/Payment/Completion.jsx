@@ -13,6 +13,7 @@ export default function Completion() {
 
     updateData();
 
+    /* REDIRECT AFTER SAVING */
     useEffect(() => {
         navigate('/', {replace: true})
     });

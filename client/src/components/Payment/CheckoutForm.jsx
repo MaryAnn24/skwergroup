@@ -75,30 +75,22 @@ export default function CheckoutForm({formData, setFormData}) {
     console.log('hi');
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
+      /* Stripe.js has not yet loaded.
+        Make sure to disable form submission until Stripe.js has loaded.*/
       return;
     }
-
     
     setIsProcessing(true);
 
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
         return_url: `http://localhost:3000/completion`,
       },
       
     }).then(
       addData()
     );
-
-    // if (error) {
-    //   alert('error');
-    // }else {
-    //   alert('save');
-    // }
 
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);

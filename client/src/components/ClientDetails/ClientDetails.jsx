@@ -31,7 +31,6 @@ function ClientDetails({formData, setFormData}) {
   const [btnActive, setActive] = useState("block form-control txt__city");
 
   const [countryStat, setCountryStat] = useState("none");
-  //const [btnStripe, setBtnStripe] = useState("deactivate");
 
     const activeCountry = () => {
       if(btnActive === "block form-control txt__city") {

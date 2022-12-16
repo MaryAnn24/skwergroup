@@ -17,8 +17,6 @@ import SkwerLogo from '../../assets/images/skwer_logo.svg';
 import { servData } from '../Order/AddServ'; 
 import { bankData } from '../OtherServices/BankServ'; 
 import Icon_pin from '../../assets/images/icons/cart.png';
-/* import lottie from 'lottie-web';*/
-
 
 function Form() {
   /* VARIABLES DECLARATION */
@@ -76,30 +74,11 @@ function Form() {
     return /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i.test(email);
   }
 
-  /* Lotie Files 
-  const container = useRef(null);
-
-  useEffect(() => {
-    lottie.loadAnimation({
-      name:"animateBldg",
-      container: container.current,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      animationData: require('../../assets/images/lottie/blue_bldg.json')
-    })
-
-    return () => {
-      lottie.destroy();
-    };
-  }, []) */
-
   var inclusion = (formData.package) === "plus" ? ["Setup fee", "Company Rubber Stamp", "Company Seal", "Notarisation and Apostille on Documents"] : (formData.package) === "premium" ? ["Setup fee", "Company Rubber Stamp", "Company Seal", "Notarisation and Apostille on Documents", "International Courier", "Creation of Company Logo; Business Card; and Letter Head"] : ["Setup fee"];
 
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = event => {
-    // 👇️ toggle isActive state on click
     setIsActive(current => !current);
   };
 
@@ -182,14 +161,6 @@ function Form() {
                     </div>
                   </div>
                 </div>
-                
-
-
-                {/* <div className='bg__bldg' ref={container}
-                  onMouseEnter={() => lottie.play("animateBldg")}
-                  onMouseLeave={() => lottie.pause("animateBldg")}
-                ></div> */}
-
               </div>
               
               {/* CENTER */}
@@ -197,12 +168,10 @@ function Form() {
                 {/* Multi form */}
                 <div className='logo grid grid__2 header_mobile'>
                   <a className="logo-default dtr-scroll-link" href="#home"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" />
-                  
                   </a><h2>SKWER GROUP</h2>
                   {/* Mobile menu */}
                 </div>
                 <div className="form___container">
-                  
                   <div className="header">
                     <h2>{FormTitles[page]}</h2>
                   </div>
@@ -237,9 +206,6 @@ function Form() {
                {/* RIGHT */}
                <div className={isActive ? 'order_summary closeBar' : 'order_summary'}>
                 <span className={isActive ? 'toggleDiv closeBar' : 'toggleDiv'} onClick={handleClick}></span>
-                {/* <span className='pin'>
-                  <img src={Icon_pin} alt="skwer_pin" />
-                </span> */}
                 <span className="skwer__label">
                   <img src={Icon_pin} alt="skwer_pin" />
                   <h3 className=''>Input Summary</h3>  
@@ -276,10 +242,7 @@ function Form() {
                         {formData.package === "" ? "" : inclusion.map((data) => {
                             return <li>{data}</li>
                         })}
-                        </ul>
-                          
-                        
-                        
+                        </ul>  
                       </td>
                     </tr>
                     <tr>{/* Additional Services */}
