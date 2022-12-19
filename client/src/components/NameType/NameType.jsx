@@ -38,6 +38,7 @@ const NameType = ({formData, setFormData}) => {
           })}
           value={formData.type_1}
         >
+          <option>-- SELECT --</option>
 
           {juris_type.map((item2) => {
             return <option value={item2} key={item2} >{item2}</option>;
@@ -64,6 +65,7 @@ const NameType = ({formData, setFormData}) => {
           })}
           value={formData.type_2}
         >
+          <option>-- SELECT --</option>
           {juris_type.map((item2) => {
             return <option value={item2} key={item2}>{item2}</option>;
           })}
@@ -89,25 +91,9 @@ const NameType = ({formData, setFormData}) => {
           })}
           value={formData.type_3}
         >
-          {/* {type.map((item) => {
-            
-            var selected = "";
-            if(formData.type_3 === item.type) {
-            selected = "selected";
-            } else {
-            selected = "";
-            }
-            return <option value={item.type} key={item.id} selected={selected}>{item.type}</option>;
-          })} */}
-
+          <option>-- SELECT --</option>
           {juris_type.map((item2) => {
-          /* var selected = "";
-          if(formData.type_3 === item2) {
-            selected = "selected";
-            } else {
-            selected = "";
-            }*/
-            return <option value={item2} key={item2} /*selected={selected}*/ >{item2}</option>;
+            return <option value={item2} key={item2} >{item2}</option>;
           })}
         </select>
       </div>
