@@ -7,7 +7,7 @@ export default function Completion() {
     const navigate = useNavigate();
     /* DATABASE AXIOS */
     const updateData = () => { /* http://localhost:3001 */   
-        Axios.post("http://localhost:3001/updatePayment", {  
+        Axios.post("https://api.skwergroup.com/updatePayment", {  
         }).then(() => {});
     };
 
@@ -25,5 +25,3 @@ export default function Completion() {
   </div>
  );
 }
-
-  

@@ -41,7 +41,7 @@ function Order({formData, setFormData}) {
   const [stripePromise, setStripePromise] = useState(null);
 
   useEffect(() => {
-    fetch("/config").then(async (r) => {
+    fetch("https://api.skwergroup.com/config").then(async (r) => {
       const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));
     });
@@ -53,8 +53,8 @@ function Order({formData, setFormData}) {
 
   }
 
-  const handleCheckout = () => {
-    Axios.post('http://localhost:3001/orderPay', {
+  const handleCheckout = () => { /*  https://api.skwergroup.com */
+    Axios.post('https://api.skwergroup.com/orderPay', {
       dataOrder,
     }).then((res) => {
       if(res.data.message) {

@@ -29,7 +29,7 @@ export default function CheckoutForm({formData, setFormData}) {
  
  /* DATABASE AXIOS */
   const addData = () => { /* http://localhost:3001 */
-  Axios.post("http://localhost:3001/saveData", {
+  Axios.post("https://api.skwergroup.com/saveData", {
     or_no: formData.or_no,
     jurisdiction: formData.jurisdiction,
     c_name1: formData.c_name1,
@@ -85,7 +85,7 @@ export default function CheckoutForm({formData, setFormData}) {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `http://localhost:3000/completion`,
+        return_url: `https://app.skwergroup.com/completion`,
       },
       
     }).then(
