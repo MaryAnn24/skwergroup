@@ -275,8 +275,6 @@ function Order({formData, setFormData}) {
         </div>
       </div>
     </div>
-
-
   )
 
 }

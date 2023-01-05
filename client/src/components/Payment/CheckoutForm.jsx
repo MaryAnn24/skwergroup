@@ -85,7 +85,7 @@ export default function CheckoutForm({formData, setFormData}) {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `https://app.skwergroup.com/completion`,
+        return_url: `https://skwergroup.com/order-online/completion`,
       },
       
     }).then(

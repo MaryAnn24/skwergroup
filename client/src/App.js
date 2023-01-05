@@ -10,7 +10,7 @@ function App() {
     <>
 
       {/* <Testing /> */}
-      <BrowserRouter>
+      <BrowserRouter basename='/order-online'>
         <Routes>
           <Route path="/" element={<Form />} />
           <Route path="/completion" element={<Completion />} />

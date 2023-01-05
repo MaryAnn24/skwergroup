@@ -187,7 +187,10 @@ function Form() {
                       BACK
                     </button>
                     <button className={(page === 0) || page === 2 || page === 5 ? 'btn none' : 'btn forward'}
-                      disabled={(page === 0)}
+                      disabled={(page === 0) || 
+                        (page === 1 && ((formData.c_name1==="") || (formData.c_name2==="") || (formData.c_name3==="")) || 
+                        (page === 4 && ((formData.f_name === "") || (formData.l_name === "") || (formData.email === "") || 
+                          (formData.p_street === "") || (formData.p_city === "") || (formData.p_country === "") || (formData.p_zip === "") || (formData.p_state === "") || (formData.contact_no === ""))))}
                       onClick={() => {
                         if (page === FormTitles.length - 1) {
                           /* LAST PAGE */

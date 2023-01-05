@@ -261,9 +261,9 @@ select {
 }
 
 button[disabled], button[disabled]:hover {
-  background: #e8e8e8;
-  color: gray;
+  color: #888d95;
   cursor: help;
+  background-image: linear-gradient(90deg, #afafaf 0%, #afafaf 50%, #afafaf) !important;
 }
 
 /***************/
