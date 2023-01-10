@@ -56,8 +56,10 @@ function OtherServices ({formData, setFormData}) {
     <div>
       <div className='add__services grid grid__4'>{/* ADDITIONAL SERVICES */}
             {service.map((item, index) => {
-              return <label key={index} className={(formData.jurisdiction !== "Cyprus") && ((item.service === "Company Secretary") || (item.service === "VAT number")) ? "hide_serv" : ((item.service === "EIN & Physical Address") && ((formData.jurisdiction !== "Florida") && (formData.jurisdiction !== "Delaware")) ) ? "hide_serv" : "display"}>
-                <div className='serv_box grid'>
+              return <label key={index} className={(formData.jurisdiction !== "Cyprus") && ((item.service === "Company Secretary") || (item.service === "VAT number")) ? "hide_serv" : ((item.service === "EIN & Physical Address") && ((formData.jurisdiction !== "Florida") && (formData.jurisdiction !== "Delaware")) ) ? "hide_serv" : "display"}
+              disabled = {(inclusion.includes((item.service).toString()) || ((item.service === "Company Secretary") || (item.service === "VAT number")))}
+              >
+                <div className={`serv_box grid ${item.service}`} key={index}>
                   <span className='icon'><img src={item.icon} alt="stamp_icon" /></span>
                 
                 <input className='form-control checkbox' key={index}
@@ -78,7 +80,7 @@ function OtherServices ({formData, setFormData}) {
       <div className='add__services grid grid__4 bank_services'>{/* BANK SERVICES */}
             {bankData.map((item, index) => {
               return <label key={index} className={item.jurisdiction.includes(formData.jurisdiction) ? "display" : "none"}>
-                <div className='serv_box grid'>
+                <div className='serv_box grid' key={index}>
                   <span className='icon'><img src={item.icon} alt="stamp_icon" /></span>
                 
                 <input className='form-control checkbox' key={index}

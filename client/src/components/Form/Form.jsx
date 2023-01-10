@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import './Form.css';
 import './Steps.css';
@@ -13,16 +13,16 @@ import OtherServices from '../OtherServices/OtherServices';
 import ClientDetails from '../ClientDetails/ClientDetails';
 import Order from '../Order/Order';
 
-import SkwerLogo from '../../assets/images/skwer_logo.svg';
+import SkwerLogo from '../../assets/images/skwer_b.png';
 import { servData } from '../Order/AddServ'; 
 import { bankData } from '../OtherServices/BankServ'; 
 import Icon_pin from '../../assets/images/icons/cart.png';
 
-function Form() {
+function Form({formData, setFormData, fields}) {
   /* VARIABLES DECLARATION */
   const FormTitles = ["Select Country", "Propose Company Name and Company Type", "Select a Package", "Add Additional Services", "Input Your Basic Details", "Your Order Summary", "Thank you!"]
  
-  const fields = {
+  /*const fields = {
     or_no: 0,
     jurisdiction: "",
     c_name1: "",
@@ -38,6 +38,8 @@ function Form() {
     f_name: "",
     l_name: "",
     email: "",
+    nationality: "",
+    bdate: "",
     p_street: "",
     p_city: "",
     p_state: "",
@@ -49,18 +51,46 @@ function Form() {
     bank_serv_price: 0
   };
 
-  const [formData, setFormData] = useState(fields);
+  const [formData, setFormData] = useState(fields);*/
 
   const [page, setPage] = useState(0);
 
   const [checkAgreement, setCheckAgreement] = useState(false);
 
-  const BodyContent = [<Jurisdiction page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData} />, 
+  const ref = useRef(null);
+
+  function removeSpace(titleTxt) {
+    var myStr = titleTxt;
+    var newStr = myStr.replace(/\s/g, "");
+
+    return newStr;
+}
+
+
+
+  useEffect(() => {
+    /*console.log('className 👉️', ref.current.className);*/
+    const className = {class: removeSpace(FormTitles[page]), id: 'ID'+removeSpace(FormTitles[page])};
+    console.log(className);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function getClassname() {
+    const className = {class: removeSpace(FormTitles[page+1]), id: 'ID'+removeSpace(FormTitles[page+1])};
+    console.log(className);
+  };
+  function getClassnameBack() {
+    const className = {class: removeSpace(FormTitles[page-1]), id: 'ID'+removeSpace(FormTitles[page-1])};
+    console.log(className);
+  };
+
+  const BodyContent = [<Jurisdiction page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData} getClassname = {getClassname} />, 
     <NameType formData = {formData} setFormData = {setFormData} />, 
-    <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  />, 
+    <SkwerPackages page = {page} setPage={setPage} formData = {formData} setFormData = {setFormData}  getClassname = {getClassname} />, 
     <OtherServices formData = {formData} setFormData = {setFormData}  />, 
     <ClientDetails formData = {formData} setFormData = {setFormData}  />,
-    <Order fields = {fields} page = {page} setPage = {setPage} checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} />,
+    <Order fields = {fields} page = {page} setPage = {setPage} checkAgreement = {checkAgreement} setCheckAgreement = {setCheckAgreement} formData = {formData} setFormData = {setFormData} getClassname = {getClassname}/>,
     
   ];
 
@@ -82,6 +112,7 @@ function Form() {
     setIsActive(current => !current);
   };
 
+
   return (
     <div>
       <main>
@@ -92,8 +123,8 @@ function Form() {
               <div className="mbt__container__left">
                 
                 <div className='logo grid grid__2 header_desk'>
-                  <a className="logo-default dtr-scroll-link" href="#home"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" />
-                  </a><h2>SKWER GROUP</h2>
+                  <a className="logo-default dtr-scroll-link" href="http://skwergroup.com/"><img src={SkwerLogo} alt="skwer__logo" className="skwer__logo" />
+                  <h1>Ask!</h1></a>
                 </div>
 
                 {/* Left Steps */}
@@ -173,7 +204,7 @@ function Form() {
                 </div>
                 <div className="form___container">
                   <div className="header">
-                    <h2>{FormTitles[page]}</h2>
+                    <h2 ref={ref} className={removeSpace(FormTitles[page])} id={removeSpace(FormTitles[page])}>{FormTitles[page]}</h2>
                   </div>
                   <div className="body">
                     {BodyContent[page]}
@@ -183,13 +214,14 @@ function Form() {
                       disabled={page === 0}
                       onClick={() => {
                         setPage((currPage) => currPage - 1);
+                        getClassnameBack();
                       }}>
                       BACK
                     </button>
                     <button className={(page === 0) || page === 2 || page === 5 ? 'btn none' : 'btn forward'}
                       disabled={(page === 0) || 
-                        (page === 1 && ((formData.c_name1==="") || (formData.c_name2==="") || (formData.c_name3==="")) || 
-                        (page === 4 && ((formData.f_name === "") || (formData.l_name === "") || (formData.email === "") || 
+                        ((page === 1) & ((formData.c_name1==="") || (formData.c_name2==="") || (formData.c_name3==="")) || 
+                        ((page === 4) & ((formData.f_name === "") || (formData.l_name === "") || (formData.email === "") || 
                           (formData.p_street === "") || (formData.p_city === "") || (formData.p_country === "") || (formData.p_zip === "") || (formData.p_state === "") || (formData.contact_no === ""))))}
                       onClick={() => {
                         if (page === FormTitles.length - 1) {
@@ -197,7 +229,7 @@ function Form() {
                         } else {
                           setPage((currPage) => currPage + 1);
                         }
-
+                         getClassname();
                       }}
                     >
                       {page === FormTitles.length - 1 ? "Make Payment" : "NEXT"}
@@ -300,6 +332,9 @@ function Form() {
                               </li>
                               <li><span className='color__black'>Contact Number: </span>
                                 {formData.contact_no === "" ? <span className='error'>* Required field</span> : ' ' + formData.contact_no}
+                              </li>
+                              <li><span className='color__black'>Nationality: </span>
+                                {formData.nationality === "" ? <span className='error'>* Required field</span> : ' ' + formData.nationality}
                               </li>
                               <li><span className='color__black'>Personal Address: </span>
                                 {formData.p_city === "" ? <span className='error'>* Required field</span> : ' ' + formData.p_street + ' ' + formData.p_city + ' ' + formData.p_state + ' (' + formData.p_zip + '), ' + formData.p_country}

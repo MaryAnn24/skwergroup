@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import PhoneInput, { formatPhoneNumberIntl, isValidPhoneNumber } from "react-phone-number-input";
 import './ClientDetails.css';
 import 'react-phone-number-input/style.css';
-
+import { country_list } from './Country_list';
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 
@@ -16,8 +16,10 @@ function ClientDetails({formData, setFormData}) {
     function isValidEmail(email) {
       return /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i.test(email);
     }
+    
+    const dateDiffer = require("date-differ");
 
-    const [value, setValue] = useState('')
+    /*const [value, setValue] = useState('')
     const options = useMemo(() => countryList().getData(), [])
   
     const changeHandler = value => {
@@ -27,8 +29,18 @@ function ClientDetails({formData, setFormData}) {
       });
     }
 
+    const [valueNat, setValueNat] = useState('')
+    const optionsNat = useMemo(() => countryList().getData(), [])
+
+    const changeHandlerNat = valueNat => {
+      setValueNat(valueNat);
+      setFormData({
+        ...formData, nationality: valueNat.label
+      });
+    }*/
+
     /* CHECKBOX/MAKEPAYMENT APPEAR */
-  const [btnActive, setActive] = useState("block form-control txt__city");
+ /* const [btnActive, setActive] = useState("block form-control txt__city");
 
   const [countryStat, setCountryStat] = useState("none");
 
@@ -41,6 +53,46 @@ function ClientDetails({formData, setFormData}) {
         setCountryStat("block");
       }
     }
+
+  const [btnActiveNat, setActiveNat] = useState("block form-control txt__city");
+  const [countryNat, setCountryNat] = useState("none");
+
+    const activeNat = () => {
+      if(btnActiveNat === "block form-control txt__city") {
+        setActiveNat("none form-control txt__city");
+        setCountryNat("");
+      }else {
+        setActiveNat("block form-control txt__city");
+        setCountryNat("block");
+      }
+    }
+
+    const [country, setCountry] = useState([]);
+    const [item, setItem] = useState({cat: 'active'});
+
+    useEffect(() => {
+      if(item.cat === 'active'){
+        setCountry(country_list);
+      } else {
+        setItem({cat: 'active'});
+      }
+    }, [item]);
+
+    console.log(country_list);*/
+
+  function chechBDate() {
+    //const today = new Date();
+    var date = new Date();
+    var today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    var bdate = formData.bdate;
+    //var diff = Date.parse(today)-Date.parsebdate;
+    const date1 = new Date(today);
+    const date2 = new Date(bdate);
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+    return Math.floor(diffDays/365);
+  }
 
   return (
     <div className='client__page'>
@@ -98,7 +150,6 @@ function ClientDetails({formData, setFormData}) {
               onChange={(event) => setFormData({
                 ...formData, email: event.target.value
               })}
-      
             />
             <span className='error'>{formData.email === "" ? " * Required " : !isValidEmail(formData.email) ? " * Invalid Email" : "" }</span>
           </article>
@@ -118,6 +169,37 @@ function ClientDetails({formData, setFormData}) {
             />
             <span className='error'>* Phone Number : {" "} 
             {c_num&& isValidPhoneNumber(c_num) ? <span className='txt_green'> Valid </span> : <span className='txt_red'> Not valid </span> } </span>
+          </article>
+        </section>
+        <section className='grid grid__2'>
+          <article>
+            <select className='form-control'
+              onChange={(event) => {
+                setFormData({
+                ...formData, nationality: event.target.value
+                });
+              }}
+              value={formData.nationality}
+            >
+                <option>-- Nationality --</option>
+                {country_list.map((item, index) => {
+                   return <option key={index} value={item.name}>{item.name}</option>;
+                })}
+            </select>
+            
+            <span className='error'>{formData.nationality === "" ? " * Required " : "" }</span>
+          </article>
+          <article>
+            
+              <input type="date" name="" id="" 
+                className='form-control'
+                onChange={(event) => {
+                  setFormData({
+                  ...formData, bdate: event.target.value
+                  });
+              }}
+              />
+            <span className='error'>{formData.bdate === "" ? " * Required (should be above 18 y/o) " : chechBDate() >= 18 ? "" : `* Age: ${chechBDate()} y/o (should be above 18 y/o)` }</span>
           </article>
         </section>
 
@@ -165,12 +247,19 @@ function ClientDetails({formData, setFormData}) {
             <span className='error'>{formData.p_zip === "" ? " * Required " : "" }</span>
           </article>
           <article>
-            <Select options={options} value={value} onChange={changeHandler} className={countryStat}/>
-            <input type="text" className={btnActive} placeholder='Country' 
+          <select className='form-control'
+              onChange={(event) => {
+                setFormData({
+                ...formData, p_country: event.target.value
+                });
+              }}
               value={formData.p_country}
-              onClick = {activeCountry}
-              readOnly
-            />
+            >
+                <option>-- Country --</option>
+                {country_list.map((item, index) => {
+                   return <option key={index} value={item.name}>{item.name}</option>;
+                })}
+            </select>
             <span className='error'>{formData.p_country === "" ? " * Required " : "" }</span>
           </article>
         </section>

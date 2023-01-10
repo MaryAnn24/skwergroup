@@ -292,7 +292,7 @@ h1, h2, h3, h4, h5, h6 {
 /* NEW CSS */
 
 .css__new .logo img {
-  width: 60px;
+  width: 360px;
   margin-right: 20px;
 }
 
@@ -552,7 +552,7 @@ span.skwer__label {
 }
 
 .btn {
-  width: 150px;
+  width: 500px;
   margin-bottom: 10px;
 }
 

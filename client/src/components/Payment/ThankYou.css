@@ -1,0 +1,61 @@
+.thank_div {
+    text-align: center;
+    padding: 100px 50px;
+    background:url("../../assets/images/h2-bg-section-04.jpg") no-repeat ;
+    background-position: left bottom;
+    min-height: 780px;
+}
+
+.thank_div section {
+    width: 50%;
+    margin: auto;
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 8px rgb(38 62 179 / 73%);
+    border-top: 8px solid #1475F7;
+    background: #fff;
+}
+
+.thank_div img.logo {
+    width: 100px;
+    width: 50px;
+    margin-top: -70px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 100%;
+    box-shadow: 0 2px 8px rgb(38 62 179 / 73%);
+}
+
+.thank_div h1 {
+    color: #203569;
+    font-size: 40px;
+    margin-top: 0px;
+}
+
+.thank_div p {
+    padding: 0px 40px;
+}
+
+.thank_div:before {
+    content: url("../../assets/images/h2-shape2.png");
+    position: absolute;
+    top: 0;
+    right: 10%;
+    animation: MoveUpDown 15s linear infinite;
+  }
+
+.thank_div:after {
+    content: url("../../assets/images/skwer_dots_2.png");
+    position: absolute;
+    top: -80px;
+    left: 0;
+    animation: MoveLR 15s linear infinite;
+    opacity: .5;
+  }
+
+  .thank_div .btn {
+    margin-bottom: 50px;
+  }
+
+  

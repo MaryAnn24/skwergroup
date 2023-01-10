@@ -45,6 +45,8 @@ app.post("/saveData", (req, res) => {
     const f_name = req.body.f_name;
     const l_name = req.body.l_name;
     const email = req.body.email;
+    const nationality = req.body.nationality;
+    const bdate = req.body.bdate;
     const p_street = req.body.p_street;
     const p_city = req.body.p_city;
     const p_state = req.body.p_state;
@@ -66,9 +68,9 @@ app.post("/saveData", (req, res) => {
    
     if(results[0].c_or===0) {
       db.query(
-        "INSERT INTO tbl_registration (or_no, jurisdiction, c_name1, type_1, c_name2, type_2, c_name3, type_3, package, bank, add_serv, salutation, f_name, l_name, email, p_street, p_city, p_state, p_zip, p_country, contact_no, package_price, add_serv_price, bank_serv_price, regis_remarks, payment_remarks, dateCreated, dateUpdated) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO tbl_registration (or_no, jurisdiction, c_name1, type_1, c_name2, type_2, c_name3, type_3, package, bank, add_serv, salutation, f_name, l_name, email, nationality, bdate, p_street, p_city, p_state, p_zip, p_country, contact_no, package_price, add_serv_price, bank_serv_price, regis_remarks, payment_remarks, dateCreated, dateUpdated) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [or_no, jurisdiction, c_name1, type_1, c_name2, type_2, c_name3, type_3, skwer_package, bank, add_serv, salutation,
-        f_name, l_name, email, p_street, p_city, p_state, p_zip, p_country, contact_no, package_price, 
+        f_name, l_name, email, nationality, bdate, p_street, p_city, p_state, p_zip, p_country, contact_no, package_price, 
         add_serv_price, bank_serv_price, regis_remarks, payment_remarks, dateCreated, dateUpdated],
         (err, result) => {
           if (err) {
@@ -146,7 +148,6 @@ app.post("/updatePayment", (req, res) => {
   });
 
 });
-
 
 const stripe = require("stripe")("sk_test_51LxV0VHy5jodEtzYOqTQt6pqz1eus4LRK0eyIXQcKcoq0VZHx16DpfmkbvAyl2s7pqxrfYqnOrRUGysoaqnQ5DK700HIhqt4ba", {
   apiVersion: "2022-08-01",

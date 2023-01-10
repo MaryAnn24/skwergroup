@@ -41,7 +41,7 @@ function Order({formData, setFormData}) {
   const [stripePromise, setStripePromise] = useState(null);
 
   useEffect(() => {
-    fetch("https://api.skwergroup.com/config").then(async (r) => {
+    fetch("http://localhost:3001/config").then(async (r) => {
       const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));
     });
@@ -49,12 +49,12 @@ function Order({formData, setFormData}) {
   
   const dataOrder = {
     fname: formData.f_name + ' ' + formData.l_name,
-    amount: total_charge * 100,
+    amount: /*total_charge*/ 1 * 100,
 
   }
 
   const handleCheckout = () => { /*  https://api.skwergroup.com */
-    Axios.post('https://api.skwergroup.com/orderPay', {
+    Axios.post('http://localhost:3001/orderPay', {
       dataOrder,
     }).then((res) => {
       if(res.data.message) {

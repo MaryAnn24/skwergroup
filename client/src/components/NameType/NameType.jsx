@@ -16,8 +16,10 @@ const NameType = ({formData, setFormData}) => {
     return "";
   });
 
+  /*console.log("ProposeCompanyNameandCompanyType");*/
+
   return (
-    <div className='name__type'>
+    <div className='name__type' >
       {/* FIRST COMPANY NAME */}
       <div className='grid grid__2'>
         <div className='inline__grid'>

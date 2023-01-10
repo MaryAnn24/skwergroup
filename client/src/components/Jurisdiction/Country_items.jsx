@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Country_items = ({item, formData, setFormData, page, setPage}) => {
+const Country_items = ({item, formData, setFormData, page, setPage, getClassname}) => {
   return (
     <div>
         <label>
@@ -11,6 +11,7 @@ const Country_items = ({item, formData, setFormData, page, setPage}) => {
             });
 
             setPage((page) => page + 1);
+            getClassname();
             } 
           }
         >

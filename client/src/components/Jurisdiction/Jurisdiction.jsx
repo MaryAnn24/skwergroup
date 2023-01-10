@@ -6,12 +6,14 @@ import CountryItems from './Country_items';
 
 import './Jurisdiction.css';
 
-const Jurisdiction = ({formData, setFormData, page, setPage, fields}) => {
+const Jurisdiction = ({formData, setFormData, page, setPage, fields, getClassname}) => {
   /* VARIABLES DECLARATION */
+  
   const [country, setCountry] = useState([]);
   const [item, setItem] = useState({cat: 'active'});
 
   useEffect(() => {
+    /*console.log("SelectCountry");*/
     if(item.cat === 'active'){
       setCountry(countryData);
     } else {
@@ -24,7 +26,7 @@ const Jurisdiction = ({formData, setFormData, page, setPage, fields}) => {
     <div className='jurisdiction'>
       <div className="country__container container grid grid__4">
         {country.map((item) => {
-          return <CountryItems formData = {formData} setFormData = {setFormData} page = {page} setPage = {setPage} item={item} key={item.id} />;
+          return <CountryItems formData = {formData} setFormData = {setFormData} page = {page} setPage = {setPage} item={item} key={item.id} getClassname = {getClassname} />;
         })}
       </div>
     </div>

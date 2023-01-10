@@ -13,6 +13,12 @@
     margin-bottom: 10px;
 }
 
+.package__section:hover .bg__white{
+    background-image: linear-gradient(0deg, rgba(113,20,239,1) 0%, rgba(113,20,239,1) 35%, rgba(20,117,247,1) 100%)!important;
+    background-position: 0%;
+    background-size: 200%, 1px;
+}
+
 .dtr-pricing {
     position: relative;
     text-align: center;
@@ -41,6 +47,10 @@
 
 .border-white-muted, .border-white-muted li {
     border-color: #f2f2f2 !important;
+}
+
+.select_txt {
+    font-size: 20px;
 }
 
 .dtr-pricing-heading {
@@ -98,8 +108,7 @@
 }
 
 
-.dtr-pricing.bg__white:hover h3 {
-    background: #1475F7!important;
+.dtr-pricing.bg__white:hover h3, .dtr-pricing.bg__white:hover .p__data {
     color: #fff!important;
 }
 

@@ -28,8 +28,8 @@ export default function CheckoutForm({formData, setFormData}) {
   /* END  OR NO */
  
  /* DATABASE AXIOS */
-  const addData = () => { /* http://localhost:3001 */
-  Axios.post("https://api.skwergroup.com/saveData", {
+  const addData = () => { /* http://localhost:3001 https://api.skwergroup.com*/
+  Axios.post("http://localhost:3001/saveData", {
     or_no: formData.or_no,
     jurisdiction: formData.jurisdiction,
     c_name1: formData.c_name1,
@@ -45,6 +45,8 @@ export default function CheckoutForm({formData, setFormData}) {
     f_name: formData.f_name,
     l_name: formData.l_name,
     email: formData.email,
+    nationality: formData.nationality,
+    bdate: formData.bdate,
     p_street: formData.p_street,
     p_city: formData.p_city,
     p_state: formData.p_state,
@@ -72,7 +74,7 @@ export default function CheckoutForm({formData, setFormData}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('hi');
+    /*console.log('hi');*/
 
     if (!stripe || !elements) {
       /* Stripe.js has not yet loaded.
@@ -82,10 +84,13 @@ export default function CheckoutForm({formData, setFormData}) {
     
     setIsProcessing(true);
 
+    var total = formData.package_price + formData.add_serv_price + formData.bank_serv_price;
+    var juris = formData.jurisdiction;
+
     const { error } = await stripe.confirmPayment({
       elements,
-      confirmParams: {
-        return_url: `https://skwergroup.com/order-online/completion`,
+      confirmParams: {/*https://skwergroup.com/order-online/completion http://localhost:3000/completion*/
+        return_url: `http://localhost:3000/completion?j=${juris}&p=${total}`,
       },
       
     }).then(
